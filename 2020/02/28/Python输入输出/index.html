@@ -1,0 +1,731 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Python输入输出"><meta name="keywords" content="学习笔记,Python"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>Python输入输出 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%BE%8E%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">输出格式美化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="toc-number">1.0.1.</span> <span class="toc-text">对齐方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#str-format-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">str.format() 的基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A7%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">旧式字符串格式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5"><span class="toc-number">1.3.</span> <span class="toc-text">读取键盘输入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%92%8C%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">读和写文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#File%EF%BC%88%E6%96%87%E4%BB%B6%EF%BC%89%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">File（文件）方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#open-%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.1.</span> <span class="toc-text">open()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">2.1.2.</span> <span class="toc-text">参数说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mode%E5%8F%82%E6%95%B0"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">mode参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#file%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.3.</span> <span class="toc-text">file对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">文件对象的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f-read"><span class="toc-number">2.3.</span> <span class="toc-text">f.read()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#f-readline"><span class="toc-number">2.3.1.</span> <span class="toc-text">f.readline()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-readlines"><span class="toc-number">2.3.2.</span> <span class="toc-text">f.readlines()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-write"><span class="toc-number">2.3.3.</span> <span class="toc-text">f.write()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-tell"><span class="toc-number">2.3.4.</span> <span class="toc-text">f.tell()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-seek"><span class="toc-number">2.3.5.</span> <span class="toc-text">f.seek()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-close"><span class="toc-number">2.3.6.</span> <span class="toc-text">f.close()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pickle%E6%A8%A1%E5%9D%97"><span class="toc-number">2.4.</span> <span class="toc-text">pickle模块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OS%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">OS文件&#x2F;目录方法</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Python输入输出</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-28</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Python/">Python</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">7k</span><span class="post-meta__separator">|</span><span>阅读时长: 26 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2020/02/28/Python%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/Python%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA.png" class="" title="Python输入输出">
+<p>Python输入输出</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="输出格式美化"><a href="#输出格式美化" class="headerlink" title="输出格式美化"></a>输出格式美化</h1><p> Python两种输出值的方式: <code>表达式语句</code>和 <code>print()</code> 函数。</p>
+<p>第三种方式是使用文件对象的 <code>write()</code> 方法，标准输出文件可以用 <code>sys.stdout</code> 引用。</p>
+<p>如果你希望输出的形式更加多样，可以使用 <code>str.format()</code> 函数来格式化输出值。</p>
+<p>如果你希望将输出的值转成字符串，可以使用 <code>repr()</code> 或 <code>str()</code> 函数来实现。</p>
+<ul>
+<li><code>str()</code>： 函数返回一个用户易读的表达形式。</li>
+<li><code>repr()</code>： 产生一个解释器易读的表达形式。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">&#x27;Hello, Runoob&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(s)</span><br><span class="line"><span class="string">&#x27;Hello, Runoob&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">repr</span>(s)</span><br><span class="line"><span class="string">&quot;&#x27;Hello, Runoob&#x27;&quot;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">str</span>(<span class="number">1</span>/<span class="number">7</span>)</span><br><span class="line"><span class="string">&#x27;0.14285714285714285&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">10</span> * <span class="number">3.25</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = <span class="number">200</span> * <span class="number">200</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">&#x27;x 的值为： &#x27;</span> + <span class="built_in">repr</span>(x) + <span class="string">&#x27;,  y 的值为：&#x27;</span> + <span class="built_in">repr</span>(y) + <span class="string">&#x27;...&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(s)</span><br><span class="line">x 的值为： <span class="number">32.5</span>,  y 的值为：<span class="number">40000.</span>..</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment">#  repr() 函数可以转义字符串中的特殊字符</span></span><br><span class="line"><span class="meta">... </span>hello = <span class="string">&#x27;hello, runoob\n&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hellos = <span class="built_in">repr</span>(hello)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(hellos)</span><br><span class="line"><span class="string">&#x27;hello, runoob\n&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># repr() 的参数可以是 Python 的任何对象</span></span><br><span class="line"><span class="meta">... </span><span class="built_in">repr</span>((x, y, (<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Runoob&#x27;</span>)))</span><br><span class="line"><span class="string">&quot;(32.5, 40000, (&#x27;Google&#x27;, &#x27;Runoob&#x27;))&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>两种方式输出一个平方与立方的表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">repr</span>(x).rjust(<span class="number">2</span>), <span class="built_in">repr</span>(x * x).rjust(<span class="number">3</span>), end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    <span class="comment"># 注意前一行&#x27;end&#x27;的使用</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">repr</span>(x * x * x).rjust(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">11</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;&#123;0:2d&#125; &#123;1:3d&#125; &#123;2:4d&#125;&#x27;</span>.<span class="built_in">format</span>(x, x * x, x * x * x))</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> 1   1    1</span><br><span class="line"> 2   4    8</span><br><span class="line"> 3   9   27</span><br><span class="line"> 4  16   64</span><br><span class="line"> 5  25  125</span><br><span class="line"> 6  36  216</span><br><span class="line"> 7  49  343</span><br><span class="line"> 8  64  512</span><br><span class="line"> 9  81  729</span><br><span class="line">10 100 1000</span><br><span class="line"> 1   1    1</span><br><span class="line"> 2   4    8</span><br><span class="line"> 3   9   27</span><br><span class="line"> 4  16   64</span><br><span class="line"> 5  25  125</span><br><span class="line"> 6  36  216</span><br><span class="line"> 7  49  343</span><br><span class="line"> 8  64  512</span><br><span class="line"> 9  81  729</span><br><span class="line">10 100 1000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong><code>rjust()</code></strong> 方法, 它可以将字符串靠右, 并在左边填充空格。</p>
+<p>还有类似的方法, 如 <strong><code>ljust()</code></strong> 和 <strong><code>center()</code></strong>。 这些方法并不会写任何东西, 它们仅仅返回新的字符串。</p>
+<p>另一个方法 <strong><code>zfill()</code></strong>, 它会在数字的左边填充 0，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;12&#x27;</span>.zfill(<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;00012&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;-3.14&#x27;</span>.zfill(<span class="number">7</span>)</span><br><span class="line"><span class="string">&#x27;-003.14&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">&#x27;3.14159265359&#x27;</span>.zfill(<span class="number">5</span>)</span><br><span class="line"><span class="string">&#x27;3.14159265359&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="对齐方式"><a href="#对齐方式" class="headerlink" title="对齐方式"></a>对齐方式</h3><ul>
+<li><code>&lt;：</code>左对齐</li>
+<li><code>&gt;：</code>右对齐</li>
+<li><code>^：</code>居中</li>
+<li><code>=：</code>在正负号（如果有的话）和数字之间填充，该对齐选项仅对数字类型有效。它可以输出类似 +0000120 这样的字符串。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;|&quot;</span>,<span class="built_in">format</span>(<span class="string">&quot;hibiscidai&quot;</span>,<span class="string">&quot;*&gt;30&quot;</span>),<span class="string">&quot;|&quot;</span>)    <span class="comment">#左对齐</span></span><br><span class="line">| ************************hibiscidai |</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;|&quot;</span>,<span class="built_in">format</span>(<span class="string">&quot;hibiscidai&quot;</span>,<span class="string">&quot;*^30&quot;</span>),<span class="string">&quot;|&quot;</span>)    <span class="comment">#居中对齐</span></span><br><span class="line">| ************hibiscidai************ |</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;|&quot;</span>,<span class="built_in">format</span>(<span class="string">&quot;RUNOOB&quot;</span>,<span class="string">&quot;*&lt;30&quot;</span>),<span class="string">&quot;|&quot;</span>)    <span class="comment">#右对齐</span></span><br><span class="line">| hibiscidai************************ |</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br></pre></td></tr></table></figure>
+<h2 id="str-format-的基本使用"><a href="#str-format-的基本使用" class="headerlink" title="str.format() 的基本使用"></a>str.format() 的基本使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;&#125;网址： &quot;&#123;&#125;!&quot;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;hibiscidai&#x27;</span>, <span class="string">&#x27;www.hibiscidai.com&#x27;</span>))</span><br><span class="line">hibiscidai网址： <span class="string">&quot;www.hibiscidai.com!&quot;</span></span><br></pre></td></tr></table></figure>
+<p>括号及其里面的字符 (称作格式化字段) 将会被 <code>format()</code> 中的参数替换。</p>
+<p>在括号中的数字用于指向传入对象在 <code>format()</code> 中的位置，如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; 和 &#123;1&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Hibiscidai&#x27;</span>))</span><br><span class="line">Google 和 Hibiscidai</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;1&#125; 和 &#123;0&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Hibiscidai&#x27;</span>))</span><br><span class="line">Hibiscidai 和 Google</span><br></pre></td></tr></table></figure>
+<p>如果在 format() 中使用了关键字参数, 那么它们的值会指向使用该名字的参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;&#123;name&#125;网址： &#123;site&#125;&#x27;</span>.<span class="built_in">format</span>(name=<span class="string">&#x27;Hibiscidai&#x27;</span>, site=<span class="string">&#x27;www.hibiscidai.com&#x27;</span>))</span><br><span class="line">Hibiscidai网址： www.hibiscidai.com</span><br></pre></td></tr></table></figure>
+<p>位置及关键字参数可以任意的结合:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;站点列表 &#123;0&#125;, &#123;1&#125;, 和 &#123;other&#125;。&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27;Google&#x27;</span>, <span class="string">&#x27;Hibiscidai&#x27;</span>, other=<span class="string">&#x27;Taobao&#x27;</span>))</span><br><span class="line">站点列表 Google, Hibiscidai, 和 Taobao。</span><br></pre></td></tr></table></figure>
+<p><strong><code>!a</code></strong> (使用 <code>ascii()</code>), <strong><code>!s</code></strong> (使用 <code>str()</code>) 和 <strong><code>!r</code></strong> (使用 <code>repr()</code>) 可以用于在格式化某个值之前对其进行转化:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> math</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;常量 PI 的值近似为： &#123;&#125;。&#x27;</span>.<span class="built_in">format</span>(math.pi))</span><br><span class="line">常量 PI 的值近似为： <span class="number">3.141592653589793</span>。</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;常量 PI 的值近似为： &#123;!r&#125;。&#x27;</span>.<span class="built_in">format</span>(math.pi))</span><br><span class="line">常量 PI 的值近似为： <span class="number">3.141592653589793</span>。</span><br></pre></td></tr></table></figure>
+<p>可选项<strong><code>：</code></strong>和格式标识符可以跟着字段名。这就允许对值进行更好的格式化。<br>下面的例子将 Pi 保留到小数点后三位：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> math</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;常量 PI 的值近似为 &#123;0:.3f&#125;。&#x27;</span>.<span class="built_in">format</span>(math.pi))</span><br><span class="line">常量 PI 的值近似为 <span class="number">3.142</span>。</span><br></pre></td></tr></table></figure>
+<p>在 <strong><code>:</code></strong> 后传入一个整数, 可以保证该域至少有这么多的宽度。 用于美化表格时很有用。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>table = &#123;<span class="string">&#x27;Google&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Hibiscidai&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> name, number <span class="keyword">in</span> table.items():</span><br><span class="line"><span class="meta">... </span>    <span class="built_in">print</span>(<span class="string">&#x27;&#123;0:10&#125; ==&gt; &#123;1:10d&#125;&#x27;</span>.<span class="built_in">format</span>(name, number))</span><br><span class="line">...</span><br><span class="line">Google     ==&gt;          <span class="number">1</span></span><br><span class="line">Hibiscidai     ==&gt;          <span class="number">2</span></span><br><span class="line">Taobao     ==&gt;          <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>如果你有一个很长的格式化字符串, 而你不想将它们分开, 那么在格式化时通过变量名而非位置会是很好的事情。</p>
+<p>最简单的就是传入一个字典, 然后使用方括号 <strong><code>[]</code></strong> 来访问键值 :</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>table = &#123;<span class="string">&#x27;Google&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Hibiscidai&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;Hibiscidai: &#123;0[Hibiscidai]:d&#125;; Google: &#123;0[Google]:d&#125;; Taobao: &#123;0[Taobao]:d&#125;&#x27;</span>.<span class="built_in">format</span>(table))</span><br><span class="line">Hibiscidai: <span class="number">2</span>; Google: <span class="number">1</span>; Taobao: <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>也可以通过在 table 变量前使用 <strong> `</strong>` ** 来实现相同的功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>table = &#123;<span class="string">&#x27;Google&#x27;</span>: <span class="number">1</span>, <span class="string">&#x27;Hibiscidai&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;Taobao&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;Hibiscidai: &#123;Hibiscidai:d&#125;; Google: &#123;Google:d&#125;; Taobao: &#123;Taobao:d&#125;&#x27;</span>.<span class="built_in">format</span>(**table))</span><br><span class="line">Hibiscidai: <span class="number">2</span>; Google: <span class="number">1</span>; Taobao: <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="旧式字符串格式化"><a href="#旧式字符串格式化" class="headerlink" title="旧式字符串格式化"></a>旧式字符串格式化</h2><p><strong><code>%</code></strong> 操作符也可以实现字符串格式化。 它将左边的参数作为类似 <strong><code>sprintf()</code></strong> 式的格式化字符串, 而将右边的代入, 然后返回格式化后的字符串。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> math</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&#x27;常量 PI 的值近似为：%5.3f。&#x27;</span> % math.pi)</span><br><span class="line">常量 PI 的值近似为：<span class="number">3.142</span>。</span><br></pre></td></tr></table></figure>
+<p>因为 <code>str.format()</code> 是比较新的函数， 大多数的 Python 代码仍然使用 % 操作符。但是因为这种旧式的格式化最终会从该语言中移除, 应该更多的使用 <code>str.format()</code>。</p>
+<h2 id="读取键盘输入"><a href="#读取键盘输入" class="headerlink" title="读取键盘输入"></a>读取键盘输入</h2><p> Python提供了 <code>input()</code> 内置函数从标准输入读入一行文本，默认的标准输入是键盘。</p>
+<p>input 可以接收一个Python表达式作为输入，并将运算结果返回。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="built_in">input</span>(<span class="string">&quot;请输入：&quot;</span>);</span><br><span class="line"><span class="built_in">print</span> (<span class="string">&quot;你输入的内容是: &quot;</span>, <span class="built_in">str</span>)</span><br></pre></td></tr></table></figure>
+<p>这会产生如下的对应着输入的结果： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">请输入：hibiscidai</span><br><span class="line">你输入的内容是:  hibiscidai</span><br></pre></td></tr></table></figure>
+<h1 id="读和写文件"><a href="#读和写文件" class="headerlink" title="读和写文件"></a>读和写文件</h1><p>open() 将会返回一个 file 对象，基本语法格式如下: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(filename, mode)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>filename</code>：包含了你要访问的文件名称的字符串值。</li>
+<li><code>mode</code>：决定了打开文件的模式：只读，写入，追加等。所有可取值见如下的完全列表。这个参数是非强制的，默认文件访问模式为只读(r)。</li>
+</ul>
+<p>不同模式打开文件的完全列表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td style="text-align:center">rb</td>
+<td style="text-align:center">以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td style="text-align:center">r+</td>
+<td style="text-align:center">打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td style="text-align:center">rb+</td>
+<td style="text-align:center">以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">wb</td>
+<td style="text-align:center">以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">w+</td>
+<td style="text-align:center">打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">wb+</td>
+<td style="text-align:center">以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td style="text-align:center">ab</td>
+<td style="text-align:center">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td style="text-align:center">a+</td>
+<td style="text-align:center">打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td style="text-align:center">ab+</td>
+<td style="text-align:center">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:center">r</th>
+<th style="text-align:center">r+</th>
+<th style="text-align:center">w</th>
+<th style="text-align:center">w+</th>
+<th style="text-align:center">a</th>
+<th style="text-align:center">a+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">读</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">写</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">创建</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td style="text-align:center">覆盖</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">指针在开始</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">指针在结尾</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以下实例将字符串写入到文件 foo.txt 中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line"></span><br><span class="line">f.write( <span class="string">&quot;Python 是一个非常好的语言。\n是的，的确非常好!!\n&quot;</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一个参数为要打开的文件名。</li>
+<li>第二个参数描述文件如何使用的字符。 mode 可以是 ‘r’ 如果文件只读, ‘w’ 只用于写 (如果存在同名文件则将被删除), 和 ‘a’ 用于追加文件内容; 所写的任何数据都会被自动增加到末尾. ‘r+’ 同时用于读写。 mode 参数是可选的; ‘r’ 将是默认值。</li>
+</ul>
+<p>此时打开文件 foo.txt,显示如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /tmp/foo.txt</span> </span><br><span class="line">Python 是一个非常好的语言。</span><br><span class="line">是的，的确非常好!!</span><br></pre></td></tr></table></figure>
+<h2 id="File（文件）方法"><a href="#File（文件）方法" class="headerlink" title="File（文件）方法"></a>File（文件）方法</h2><h3 id="open-方法"><a href="#open-方法" class="headerlink" title="open()方法"></a>open()方法</h3><p>Python open() 方法用于打开一个文件，并返回文件对象，在对文件进行处理过程都需要使用到这个函数，如果该文件无法被打开，会抛出 OSError。</p>
+<blockquote>
+<p>使用 open() 方法一定要保证关闭文件对象，即调用 close() 方法。<br>open() 函数常用形式是接收两个参数：文件名(file)和模式(mode)。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>完整的语法格式为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">open</span>(file, mode=<span class="string">&#x27;r&#x27;</span>, buffering=-<span class="number">1</span>, encoding=<span class="literal">None</span>, errors=<span class="literal">None</span>, newline=<span class="literal">None</span>, closefd=<span class="literal">True</span>, opener=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
+<li>file: 必需，文件路径（相对或者绝对路径）。</li>
+<li>mode: 可选，文件打开模式</li>
+<li>buffering: 设置缓冲</li>
+<li>encoding: 一般使用utf8</li>
+<li>errors: 报错级别</li>
+<li>newline: 区分换行符</li>
+<li>closefd: 传入的file参数类型</li>
+<li>opener:</li>
+</ul>
+<h4 id="mode参数"><a href="#mode参数" class="headerlink" title="mode参数"></a>mode参数</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">模式</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:center">文本模式 (默认)。</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">写模式，新建一个文件，如果该文件已存在则会报错。</td>
+</tr>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:center">二进制模式。</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">打开一个文件进行更新(可读可写)。</td>
+</tr>
+<tr>
+<td style="text-align:center">U</td>
+<td style="text-align:center">通用换行模式（<strong>Python 3 不支持</strong>）。</td>
+</tr>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td style="text-align:center">rb</td>
+<td style="text-align:center">以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。一般用于非文本文件如图片等。</td>
+</tr>
+<tr>
+<td style="text-align:center">r+</td>
+<td style="text-align:center">打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td style="text-align:center">rb+</td>
+<td style="text-align:center">以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。一般用于非文本文件如图片等。</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">wb</td>
+<td style="text-align:center">以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。</td>
+</tr>
+<tr>
+<td style="text-align:center">w+</td>
+<td style="text-align:center">打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">wb+</td>
+<td style="text-align:center">以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。一般用于非文本文件如图片等。</td>
+</tr>
+<tr>
+<td style="text-align:center">a</td>
+<td style="text-align:center">打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td style="text-align:center">ab</td>
+<td style="text-align:center">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td style="text-align:center">a+</td>
+<td style="text-align:center">打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td style="text-align:center">ab+</td>
+<td style="text-align:center">以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>默认为文本模式，如果要以二进制模式打开，加上 <code>b</code> 。</p>
+<h3 id="file对象"><a href="#file对象" class="headerlink" title="file对象"></a>file对象</h3><p>file 对象使用 open 函数来创建，下表列出了 file 对象常用的函数</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">方法及描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"><code>file.close()</code>关闭文件。关闭后文件不能再进行读写操作。</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"><code>file.flush()</code>刷新文件内部缓冲，直接把内部缓冲区的数据立刻写入文件, 而不是被动的等待输出缓冲区写入。</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"><code>file.fileno()</code>返回一个整型的文件描述符(file descriptor FD 整型), 可以用在如os模块的read方法等一些底层操作上。</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"><code>file.isatty()</code>如果文件连接到一个终端设备返回 True，否则返回 False。</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"><code>file.next()</code><strong>Python 3 中的 File 对象不支持 next() 方法。</strong>返回文件下一行。</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"><code>file.read([size])</code>从文件读取指定的字节数，如果未给定或为负则读取所有。</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"><code>file.readline([size])</code>读取整行，包括 “\n” 字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"><code>file.readlines([sizeint])</code>读取所有行并返回列表，若给定sizeint&gt;0，返回总和大约为sizeint字节的行, 实际读取值可能比 sizeint 较大, 因为需要填充缓冲区。</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"><code>file.seek(offset[, whence])</code>移动文件读取指针到指定位置</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><code>file.tell()</code>返回文件当前位置。</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center"><code>file.truncate([size\])</code>从文件的首行首字符开始截断，截断文件为 size 个字符，无 size 表示从当前位置截断；截断之后后面的所有字符被删除，其中 Widnows 系统下的换行代表2个字符大小。</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center"><code>file.write(str)</code>将字符串写入文件，返回的是写入的字符长度。</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center"><code>file.writelines(sequence)</code>向文件写入一个序列字符串列表，如果需要换行则要自己加入每行的换行符。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="文件对象的方法"><a href="#文件对象的方法" class="headerlink" title="文件对象的方法"></a>文件对象的方法</h2><p>剩下的例子假设已经创建了一个称为 f 的文件对象。</p>
+<h2 id="f-read"><a href="#f-read" class="headerlink" title="f.read()"></a>f.read()</h2><p>为了读取一个文件的内容，调用 <code>f.read(size)</code>, 这将读取一定数目的数据, 然后作为字符串或字节对象返回。</p>
+<p><code>size</code> 是一个可选的数字类型的参数。 当 size 被忽略了或者为负, 那么该文件的所有内容都将被读取并且返回。</p>
+<p>以下实例假定文件 foo.txt 已存在（上面实例中已创建）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 是一个非常好的语言。</span><br><span class="line">是的，的确非常好!!</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = f.read()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h3 id="f-readline"><a href="#f-readline" class="headerlink" title="f.readline()"></a>f.readline()</h3><p><code>f.readline()</code> 会从文件中读取单独的一行。换行符为 ‘\n’。f.readline() 如果返回一个空字符串, 说明已经已经读取到最后一行。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = f.readline()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python 是一个非常好的语言。</span><br></pre></td></tr></table></figure>
+<h3 id="f-readlines"><a href="#f-readlines" class="headerlink" title="f.readlines()"></a>f.readlines()</h3><p>f.readlines() 将返回该文件中包含的所有行。</p>
+<p>如果设置可选参数 sizehint, 则读取指定长度的字节, 并且将这些字节按行分割。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = f.readlines()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>执行以上程序，输出结果为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;Python 是一个非常好的语言。\n&#x27;, &#x27;是的，的确非常好!!\n&#x27;]</span><br></pre></td></tr></table></figure>
+<p>迭代一个文件对象然后读取每行: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>, <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">    <span class="built_in">print</span>(line, end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 是一个非常好的语言。</span><br><span class="line">是的，的确非常好!!</span><br></pre></td></tr></table></figure>
+<h3 id="f-write"><a href="#f-write" class="headerlink" title="f.write()"></a>f.write()</h3><p>f.write(string) 将 string 写入到文件中, 然后返回写入的字符数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line"></span><br><span class="line">num = f.write( <span class="string">&quot;Python 是一个非常好的语言。\n是的，的确非常好!!\n&quot;</span> )</span><br><span class="line"><span class="built_in">print</span>(num)</span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">29</span><br></pre></td></tr></table></figure>
+<p>如果要写入一些不是字符串的东西, 那么将需要先进行转换: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打开一个文件</span></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;/tmp/foo1.txt&quot;</span>, <span class="string">&quot;w&quot;</span>)</span><br><span class="line"></span><br><span class="line">value = (<span class="string">&#x27;www.hibiscidai.com&#x27;</span>, <span class="number">14</span>)</span><br><span class="line">s = <span class="built_in">str</span>(value)</span><br><span class="line">f.write(s)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭打开的文件</span></span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<p>执行以上程序，打开 foo1.txt 文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /tmp/foo1.txt</span> </span><br><span class="line">(&#x27;www.hibiscidai.com&#x27;, 14)</span><br></pre></td></tr></table></figure>
+<h3 id="f-tell"><a href="#f-tell" class="headerlink" title="f.tell()"></a>f.tell()</h3><p>f.tell() 返回文件对象当前所处的位置, 它是从文件开头开始算起的字节数。</p>
+<h3 id="f-seek"><a href="#f-seek" class="headerlink" title="f.seek()"></a>f.seek()</h3><p>如果要改变文件当前的位置, 可以使用 <code>f.seek(offset, from_what)</code> 函数。</p>
+<p><code>from_what</code> 的值, 如果是 0 表示开头, 如果是 1 表示当前位置, 2 表示文件的结尾，例如：</p>
+<ul>
+<li>seek(x,0) ： 从起始位置即文件首行首字符开始移动 x 个字符</li>
+<li>seek(x,1) ： 表示从当前位置往后移动x个字符</li>
+<li>seek(-x,2)：表示从文件的结尾往前移动x个字符 </li>
+</ul>
+<p><code>from_what</code> 值为默认为0，即文件开头。下面给出一个完整的例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = <span class="built_in">open</span>(<span class="string">&#x27;/tmp/foo.txt&#x27;</span>, <span class="string">&#x27;rb+&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.write(<span class="string">b&#x27;0123456789abcdef&#x27;</span>)</span><br><span class="line"><span class="number">16</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.seek(<span class="number">5</span>)     <span class="comment"># 移动到文件的第六个字节</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read(<span class="number">1</span>)</span><br><span class="line"><span class="string">b&#x27;5&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.seek(-<span class="number">3</span>, <span class="number">2</span>) <span class="comment"># 移动到文件的倒数第三字节</span></span><br><span class="line"><span class="number">13</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read(<span class="number">1</span>)</span><br><span class="line"><span class="string">b&#x27;d&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="f-close"><a href="#f-close" class="headerlink" title="f.close()"></a>f.close()</h3><p>在文本文件中 (那些打开文件的模式下没有 b 的), 只会相对于文件起始位置进行定位。</p>
+<p>当你处理完一个文件后, 调用 f.close() 来关闭文件并释放系统的资源，如果尝试再调用该文件，则会抛出异常。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.read()</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>, <span class="keyword">in</span> ?</span><br><span class="line">ValueError: I/O operation on closed file</span><br></pre></td></tr></table></figure>
+<p>当处理一个文件对象时, 使用 with 关键字是非常好的方式。在结束后, 它会帮你正确的关闭文件。 而且写起来也比 try - finally 语句块要简短:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;/tmp/foo.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="meta">... </span>    read_data = f.read()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.closed</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>文件对象还有其他方法, 如 isatty() 和 trucate(), 但这些通常比较少用。</p>
+<h2 id="pickle模块"><a href="#pickle模块" class="headerlink" title="pickle模块"></a>pickle模块</h2><p>python的pickle模块实现了基本的数据序列和反序列化。</p>
+<p>通过pickle模块的序列化操作我们能够将程序中运行的对象信息保存到文件中去，永久存储。</p>
+<p>通过pickle模块的反序列化操作，我们能够从文件中创建上一次程序保存的对象。</p>
+<p>基本接口： </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pickle.dump(obj, file, [,protocol])</span><br></pre></td></tr></table></figure>
+<p>有了 pickle 这个对象, 就能对 file 以读取的形式打开: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = pickle.load(file)</span><br></pre></td></tr></table></figure>
+<p><strong>注解</strong>：从 file 中读取一个字符串，并将它重构为原来的python对象。</p>
+<p><strong>file</strong>: 类文件对象，有read()和readline()接口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用pickle模块将数据对象保存到文件</span></span><br><span class="line">data1 = &#123;<span class="string">&#x27;a&#x27;</span>: [<span class="number">1</span>, <span class="number">2.0</span>, <span class="number">3</span>, <span class="number">4</span>+<span class="number">6j</span>],</span><br><span class="line">         <span class="string">&#x27;b&#x27;</span>: (<span class="string">&#x27;string&#x27;</span>, <span class="string">u&#x27;Unicode string&#x27;</span>),</span><br><span class="line">         <span class="string">&#x27;c&#x27;</span>: <span class="literal">None</span>&#125;</span><br><span class="line"></span><br><span class="line">selfref_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">selfref_list.append(selfref_list)</span><br><span class="line"></span><br><span class="line">output = <span class="built_in">open</span>(<span class="string">&#x27;data.pkl&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pickle dictionary using protocol 0.</span></span><br><span class="line">pickle.dump(data1, output)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pickle the list using the highest protocol available.</span></span><br><span class="line">pickle.dump(selfref_list, output, -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">output.close()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> pprint, pickle</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用pickle模块从文件中重构python对象</span></span><br><span class="line">pkl_file = <span class="built_in">open</span>(<span class="string">&#x27;data.pkl&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line"></span><br><span class="line">data1 = pickle.load(pkl_file)</span><br><span class="line">pprint.pprint(data1)</span><br><span class="line"></span><br><span class="line">data2 = pickle.load(pkl_file)</span><br><span class="line">pprint.pprint(data2)</span><br><span class="line"></span><br><span class="line">pkl_file.close()</span><br></pre></td></tr></table></figure>
+<h1 id="OS文件-目录方法"><a href="#OS文件-目录方法" class="headerlink" title="OS文件/目录方法"></a>OS文件/目录方法</h1><p>os 模块提供了非常丰富的方法用来处理文件和目录。常用的方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">方法及描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center"><code>os.access(path, mode)</code> 检验权限模式</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center"><code>os.chdir(path)</code> 改变当前工作目录</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center"><code>os.chflags(path, flags)</code> 设置路径的标记为数字标记。</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center"><code>os.chmod(path, mode)</code> 更改权限</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center"><code>os.chown(path, uid, gid)</code> 更改文件所有者</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center"><code>os.chroot(path)</code> 改变当前进程的根目录</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center"><code>os.close(fd)</code> 关闭文件描述符 fd</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center"><code>os.closerange(fd_low, fd_high)</code> 关闭所有文件描述符，从 fd_low (包含) 到 fd_high (不包含), 错误会忽略</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center"><code>os.dup(fd)</code> 复制文件描述符 fd</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center"><code>os.dup2(fd, fd2)</code> 将一个文件描述符 fd 复制到另一个 fd2</td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center"><code>os.fchdir(fd)</code> 通过文件描述符改变当前工作目录</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center"><code>os.fchmod(fd, mode)</code> 改变一个文件的访问权限，该文件由参数fd指定，参数mode是Unix下的文件访问权限。</td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center"><code>os.fchown(fd, uid, gid)</code> 修改一个文件的所有权，这个函数修改一个文件的用户ID和用户组ID，该文件由文件描述符fd指定。</td>
+</tr>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center"><code>os.fdatasync(fd)</code> 强制将文件写入磁盘，该文件由文件描述符fd指定，但是不强制更新文件的状态信息。</td>
+</tr>
+<tr>
+<td style="text-align:center">15</td>
+<td style="text-align:center"><code>os.fdopen(fd[, mode[, bufsize]])</code> 通过文件描述符 fd 创建一个文件对象，并返回这个文件对象</td>
+</tr>
+<tr>
+<td style="text-align:center">16</td>
+<td style="text-align:center"><code>os.fpathconf(fd, name)</code> 返回一个打开的文件的系统配置信息。name为检索的系统配置的值，它也许是一个定义系统值的字符串，这些名字在很多标准中指定（POSIX.1, Unix 95, Unix 98, 和其它）。</td>
+</tr>
+<tr>
+<td style="text-align:center">17</td>
+<td style="text-align:center"><code>os.fstat(fd)</code> 返回文件描述符fd的状态，像stat()。</td>
+</tr>
+<tr>
+<td style="text-align:center">18</td>
+<td style="text-align:center"><code>os.fstatvfs(fd)</code> 返回包含文件描述符fd的文件的文件系统的信息，Python 3.3 相等于 statvfs()。</td>
+</tr>
+<tr>
+<td style="text-align:center">19</td>
+<td style="text-align:center"><code>os.fsync(fd)</code> 强制将文件描述符为fd的文件写入硬盘。</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center"><code>os.ftruncate(fd, length)</code> 裁剪文件描述符fd对应的文件, 所以它最大不能超过文件大小。</td>
+</tr>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center"><code>os.getcwd()</code> 返回当前工作目录</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center"><code>os.getcwdu()</code> 返回一个当前工作目录的Unicode对象</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td style="text-align:center"><code>os.isatty(fd)</code> 如果文件描述符fd是打开的，同时与tty(-like)设备相连，则返回true, 否则False。</td>
+</tr>
+<tr>
+<td style="text-align:center">24</td>
+<td style="text-align:center"><code>os.lchflags(path, flags)</code> 设置路径的标记为数字标记，类似 chflags()，但是没有软链接</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td style="text-align:center"><code>os.lchmod(path, mode)</code> 修改连接文件权限</td>
+</tr>
+<tr>
+<td style="text-align:center">26</td>
+<td style="text-align:center"><code>os.lchown(path, uid, gid)</code> 更改文件所有者，类似 chown，但是不追踪链接。</td>
+</tr>
+<tr>
+<td style="text-align:center">27</td>
+<td style="text-align:center"><code>os.link(src, dst)</code> 创建硬链接，名为参数 dst，指向参数 src</td>
+</tr>
+<tr>
+<td style="text-align:center">28</td>
+<td style="text-align:center"><code>os.listdir(path)</code> 返回path指定的文件夹包含的文件或文件夹的名字的列表。</td>
+</tr>
+<tr>
+<td style="text-align:center">29</td>
+<td style="text-align:center"><code>os.lseek(fd, pos, how)</code> 设置文件描述符 fd当前位置为pos, how方式修改: SEEK_SET 或者 0 设置从文件开始的计算的pos; SEEK_CUR或者 1 则从当前位置计算; os.SEEK_END或者2则从文件尾部开始. 在unix，Windows中有效</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center"><code>os.lstat(path)</code> 像stat(),但是没有软链接</td>
+</tr>
+<tr>
+<td style="text-align:center">31</td>
+<td style="text-align:center"><code>os.major(device)</code> 从原始的设备号中提取设备major号码 (使用stat中的st_dev或者st_rdev field)。</td>
+</tr>
+<tr>
+<td style="text-align:center">32</td>
+<td style="text-align:center"><code>os.makedev(major, minor)</code> 以major和minor设备号组成一个原始设备号</td>
+</tr>
+<tr>
+<td style="text-align:center">33</td>
+<td style="text-align:center"><code>os.makedirs(path[, mode])</code> 递归文件夹创建函数。像mkdir(), 但创建的所有intermediate-level文件夹需要包含子文件夹。</td>
+</tr>
+<tr>
+<td style="text-align:center">34</td>
+<td style="text-align:center"><code>os.minor(device)</code> 从原始的设备号中提取设备minor号码 (使用stat中的st_dev或者st_rdev field )。</td>
+</tr>
+<tr>
+<td style="text-align:center">35</td>
+<td style="text-align:center"><code>os.mkdir(path[, mode])</code> 以数字mode的mode创建一个名为path的文件夹.默认的 mode 是 0777 (八进制)。</td>
+</tr>
+<tr>
+<td style="text-align:center">36</td>
+<td style="text-align:center"><code>os.mkfifo(path[, mode])</code> 创建命名管道，mode 为数字，默认为 0666 (八进制)</td>
+</tr>
+<tr>
+<td style="text-align:center">37</td>
+<td style="text-align:center"><code>os.mknod(filename[, mode=0600, device])</code> 创建一个名为filename文件系统节点（文件，设备特别文件或者命名pipe）。</td>
+</tr>
+<tr>
+<td style="text-align:center">38</td>
+<td style="text-align:center"><code>os.open(file, flags[, mode\])]</code> 打开一个文件，并且设置需要的打开选项，mode参数是可选的</td>
+</tr>
+<tr>
+<td style="text-align:center">39</td>
+<td style="text-align:center"><code>os.openpty()</code> 打开一个新的伪终端对。返回 pty 和 tty的文件描述符。</td>
+</tr>
+<tr>
+<td style="text-align:center">40</td>
+<td style="text-align:center"><code>os.pathconf(path, name)</code>  返回相关文件的系统配置信息。</td>
+</tr>
+<tr>
+<td style="text-align:center">41</td>
+<td style="text-align:center"><code>os.pipe()</code> 创建一个管道. 返回一对文件描述符(r, w) 分别为读和写</td>
+</tr>
+<tr>
+<td style="text-align:center">42</td>
+<td style="text-align:center"><code>os.popen(command[, mode[, bufsize]])</code> 从一个 command 打开一个管道</td>
+</tr>
+<tr>
+<td style="text-align:center">43</td>
+<td style="text-align:center"><code>os.read(fd, n)]</code> 从文件描述符 fd 中读取最多 n 个字节，返回包含读取字节的字符串，文件描述符 fd对应文件已达到结尾, 返回一个空字符串。</td>
+</tr>
+<tr>
+<td style="text-align:center">44</td>
+<td style="text-align:center"><code>os.readlink(path)</code> 返回软链接所指向的文件</td>
+</tr>
+<tr>
+<td style="text-align:center">45</td>
+<td style="text-align:center"><code>os.remove(path)</code> 删除路径为path的文件。如果path 是一个文件夹，将抛出OSError; 查看下面的rmdir()删除一个 directory。</td>
+</tr>
+<tr>
+<td style="text-align:center">46</td>
+<td style="text-align:center"><code>os.removedirs(path)</code> 递归删除目录。</td>
+</tr>
+<tr>
+<td style="text-align:center">47</td>
+<td style="text-align:center"><code>os.rename(src, dst)</code> 重命名文件或目录，从 src 到 dst</td>
+</tr>
+<tr>
+<td style="text-align:center">48</td>
+<td style="text-align:center"><code>os.renames(old, new)</code> 递归地对目录进行更名，也可以对文件进行更名。</td>
+</tr>
+<tr>
+<td style="text-align:center">49</td>
+<td style="text-align:center"><code>os.rmdir(path)</code> 删除path指定的空目录，如果目录非空，则抛出一个OSError异常。</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td style="text-align:center"><code>os.stat(path)</code> 获取path指定的路径的信息，功能等同于C API中的stat()系统调用。</td>
+</tr>
+<tr>
+<td style="text-align:center">51</td>
+<td style="text-align:center"><code>os.stat_float_times([newvalue])</code> 决定stat_result是否以float对象显示时间戳</td>
+</tr>
+<tr>
+<td style="text-align:center">52</td>
+<td style="text-align:center"><code>os.statvfs(path)</code> 获取指定路径的文件系统统计信息</td>
+</tr>
+<tr>
+<td style="text-align:center">53</td>
+<td style="text-align:center"><code>os.symlink(src, dst)</code> 创建一个软链接</td>
+</tr>
+<tr>
+<td style="text-align:center">54</td>
+<td style="text-align:center"><code>os.tcgetpgrp(fd)</code> 返回与终端fd（一个由os.open()返回的打开的文件描述符）关联的进程组</td>
+</tr>
+<tr>
+<td style="text-align:center">55</td>
+<td style="text-align:center"><code>os.tcsetpgrp(fd, pg)</code> 设置与终端fd（一个由os.open()返回的打开的文件描述符）关联的进程组为pg。</td>
+</tr>
+<tr>
+<td style="text-align:center">56</td>
+<td style="text-align:center"><code>os.tempnam([dir[, prefix]])</code> <strong>Python3 中已删除。</strong>返回唯一的路径名用于创建临时文件。</td>
+</tr>
+<tr>
+<td style="text-align:center">57</td>
+<td style="text-align:center"><code>os.tmpfile()</code> <strong>Python3 中已删除。</strong>返回一个打开的模式为(w+b)的文件对象 .这文件对象没有文件夹入口，没有文件描述符，将会自动删除。</td>
+</tr>
+<tr>
+<td style="text-align:center">58</td>
+<td style="text-align:center"><code>os.tmpnam()</code> <strong>Python3 中已删除。</strong>为创建一个临时文件返回一个唯一的路径</td>
+</tr>
+<tr>
+<td style="text-align:center">59</td>
+<td style="text-align:center"><code>os.ttyname(fd)</code> 返回一个字符串，它表示与文件描述符fd 关联的终端设备。如果fd 没有与终端设备关联，则引发一个异常。</td>
+</tr>
+<tr>
+<td style="text-align:center">60</td>
+<td style="text-align:center"><code>os.unlink(path)</code> 删除文件路径</td>
+</tr>
+<tr>
+<td style="text-align:center">61</td>
+<td style="text-align:center"><code>os.utime(path, times)</code> 返回指定的path文件的访问和修改的时间。</td>
+</tr>
+<tr>
+<td style="text-align:center">62</td>
+<td style="text-align:center"><code>os.walk(top[, topdown=True[, onerror=None[, followlinks=False]]])</code> 输出在文件夹中的文件名通过在树中游走，向上或者向下。</td>
+</tr>
+<tr>
+<td style="text-align:center">63</td>
+<td style="text-align:center"><code>os.write(fd, str)</code> 写入字符串到文件描述符 fd中. 返回实际写入的字符串长度</td>
+</tr>
+<tr>
+<td style="text-align:center">64</td>
+<td style="text-align:center"><code>os.path 模块</code> 获取文件的属性信息。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2020/02/28/Python输入输出/">http://hibiscidai.com/2020/02/28/Python输入输出/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/03/02/Python%E9%94%99%E8%AF%AF%E5%92%8C%E5%BC%82%E5%B8%B8/"><i class="fa fa-chevron-left">  </i><span>Python错误和异常</span></a></div><div class="next-post pull-right"><a href="/2020/02/27/Python%E6%A8%A1%E5%9D%97/"><span>Python模块</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

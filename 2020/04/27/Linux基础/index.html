@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Linux基础"><meta name="keywords" content="学习笔记,大数据,Linux"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>Linux基础 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">Linux基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-Linux%E5%85%A5%E9%97%A8"><span class="toc-number">2.</span> <span class="toc-text">第一章 Linux入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%89%E7%A5%A5%E7%89%A9"><span class="toc-number">2.1.</span> <span class="toc-text">吉祥物</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%A7%8B%E4%BA%BA"><span class="toc-number">2.2.</span> <span class="toc-text">创始人</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-number">2.3.</span> <span class="toc-text">主要发行版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E5%92%8C-Unix-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">2.4.</span> <span class="toc-text">Linux 和 Unix 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1970s"><span class="toc-number">2.5.</span> <span class="toc-text">1970s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1980s"><span class="toc-number">2.6.</span> <span class="toc-text">1980s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GNU%E8%AE%A1%E5%88%92"><span class="toc-number">2.7.</span> <span class="toc-text">GNU计划</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85VM%E5%92%8CCentos-7-0"><span class="toc-number">3.</span> <span class="toc-text">安装VM和Centos 7.0</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85centos%E8%BF%87%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">虚拟机安装centos过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">3.1.1.</span> <span class="toc-text">新建虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%89%A9%E7%90%86%E7%A1%AC%E7%9B%98"><span class="toc-number">3.1.2.</span> <span class="toc-text">配置物理硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="toc-number">3.1.3.</span> <span class="toc-text">分配内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%85%8D%E5%A4%84%E7%90%86%E5%99%A8"><span class="toc-number">3.1.4.</span> <span class="toc-text">分配处理器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%87%AA%E5%B7%B1%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AA%E6%95%B0"><span class="toc-number">3.1.4.1.</span> <span class="toc-text">查看自己处理器个数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BDcentos%E9%95%9C%E5%83%8F"><span class="toc-number">3.1.5.</span> <span class="toc-text">挂载centos镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="toc-number">3.1.6.</span> <span class="toc-text">配置网络</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.6.1.</span> <span class="toc-text">虚拟机网络连接的三种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.6.1.1.</span> <span class="toc-text">桥接模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#NAT%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.6.1.2.</span> <span class="toc-text">NAT模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%85%E4%B8%BB%E6%9C%BA%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.6.1.3.</span> <span class="toc-text">仅主机模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85centos%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.1.7.</span> <span class="toc-text">安装centos系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.1.8.</span> <span class="toc-text">登录系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VM%E5%AE%89%E8%A3%85Centos-6-8"><span class="toc-number">4.</span> <span class="toc-text">VM安装Centos 6.8</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vmware%E5%8D%A1%E6%AD%BB%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">4.1.</span> <span class="toc-text">vmware卡死解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vm%E9%BB%91%E5%B1%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">vm黑屏解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Vmware-Tool"><span class="toc-number">4.3.</span> <span class="toc-text">安装Vmware Tool</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Centos%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8%E5%92%8C%E8%81%94%E7%BD%91"><span class="toc-number">5.</span> <span class="toc-text">Centos终端使用和联网</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E4%BD%BF%E7%94%A8"><span class="toc-number">5.1.</span> <span class="toc-text">终端使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%94%E7%BD%91"><span class="toc-number">5.2.</span> <span class="toc-text">联网</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">6.</span> <span class="toc-text">Linux目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">6.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E7%9B%AE%E5%BD%95"><span class="toc-number">6.2.</span> <span class="toc-text">具体目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bin-%E2%80%BB"><span class="toc-number">6.2.1.</span> <span class="toc-text">&#x2F;bin ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sbin"><span class="toc-number">6.2.2.</span> <span class="toc-text">&#x2F;sbin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#home-%E2%80%BB"><span class="toc-number">6.2.3.</span> <span class="toc-text">&#x2F;home ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#root-%E2%80%BB"><span class="toc-number">6.2.4.</span> <span class="toc-text">&#x2F;root ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lib"><span class="toc-number">6.2.5.</span> <span class="toc-text">&#x2F;lib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lost-found"><span class="toc-number">6.2.6.</span> <span class="toc-text">&#x2F;lost+found</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etc-%E2%80%BB"><span class="toc-number">6.2.7.</span> <span class="toc-text">&#x2F;etc ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usr-%E2%80%BB"><span class="toc-number">6.2.8.</span> <span class="toc-text">&#x2F;usr  ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boot-%E2%80%BB"><span class="toc-number">6.2.9.</span> <span class="toc-text">&#x2F;boot ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proc"><span class="toc-number">6.2.10.</span> <span class="toc-text">&#x2F;proc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srv"><span class="toc-number">6.2.11.</span> <span class="toc-text">&#x2F;srv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sys"><span class="toc-number">6.2.12.</span> <span class="toc-text">&#x2F;sys</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tmp"><span class="toc-number">6.2.13.</span> <span class="toc-text">&#x2F;tmp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dev"><span class="toc-number">6.2.14.</span> <span class="toc-text">&#x2F;dev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#media-%E2%80%BB"><span class="toc-number">6.2.15.</span> <span class="toc-text">&#x2F;media ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mnt-%E2%80%BB"><span class="toc-number">6.2.16.</span> <span class="toc-text">&#x2F;mnt ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#opt"><span class="toc-number">6.2.17.</span> <span class="toc-text">&#x2F;opt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usr-local-%E2%80%BB"><span class="toc-number">6.2.18.</span> <span class="toc-text">&#x2F;usr&#x2F;local ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#var-%E2%80%BB"><span class="toc-number">6.2.19.</span> <span class="toc-text">&#x2F;var ※</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#selinux"><span class="toc-number">6.2.20.</span> <span class="toc-text">&#x2F;selinux</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95linux%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">远程登录linux系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">7.1.</span> <span class="toc-text">远程登录的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xshell%E7%AE%80%E4%BB%8B"><span class="toc-number">7.2.</span> <span class="toc-text">Xshell简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xftp%E7%AE%80%E4%BB%8B"><span class="toc-number">7.3.</span> <span class="toc-text">Xftp简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Xshell6%E5%92%8CXftp6"><span class="toc-number">7.4.</span> <span class="toc-text">安装Xshell6和Xftp6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%BC%80%E5%90%AFSSD%E6%9C%8D%E5%8A%A1"><span class="toc-number">7.5.</span> <span class="toc-text">检查开启SSD服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E8%BF%9E%E6%8E%A5"><span class="toc-number">7.6.</span> <span class="toc-text">新建连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD"><span class="toc-number">7.7.</span> <span class="toc-text">远程上传下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E9%80%81%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="toc-number">7.7.1.</span> <span class="toc-text">传送一个文件进行测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SecureCRT%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">7.8.</span> <span class="toc-text">SecureCRT的安装和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">7.8.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">7.8.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">7.8.3.</span> <span class="toc-text">连接过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vi-%E5%92%8C-Vim-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">8.</span> <span class="toc-text">Vi 和 Vim 编辑器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-2"><span class="toc-number">8.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi-%E5%92%8C-vim-%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.2.</span> <span class="toc-text">vi 和 vim 常用的三种模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%B8%B8%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.2.1.</span> <span class="toc-text">正常模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.2.2.</span> <span class="toc-text">插入模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.2.3.</span> <span class="toc-text">命令行模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B-%E4%BD%BF%E7%94%A8vim%E5%BC%80%E5%8F%91%E4%B8%80%E4%B8%AAhello-java"><span class="toc-number">8.3.</span> <span class="toc-text">入门案例-使用vim开发一个hello.java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi%E5%92%8Cvim%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2-%E2%80%BB"><span class="toc-number">8.4.</span> <span class="toc-text">vi和vim三种模式的相互转换 ※</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vi%E5%92%8Cvim%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">8.5.</span> <span class="toc-text">vi和vim的快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">8.5.1.</span> <span class="toc-text">快捷键使用案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D%E5%BD%93%E5%89%8D%E8%A1%8C%EF%BC%8C%E6%8B%B7%E8%B4%9D%E5%BD%93%E5%89%8D%E8%A1%8C%E5%90%91%E4%B8%8B%E7%9A%84n%E8%A1%8C%EF%BC%8C-%E5%B9%B6%E7%B2%98%E8%B4%B4%E3%80%82yy-5yy-p"><span class="toc-number">8.5.1.1.</span> <span class="toc-text">拷贝当前行，拷贝当前行向下的n行， 并粘贴。yy&#x2F;5yy&#x2F;p</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%BD%93%E5%89%8D%E8%A1%8C-%E5%88%A0%E9%99%A4%E5%BD%93%E5%89%8D%E8%A1%8C%E5%90%91%E4%B8%8B%E7%9A%84n%E8%A1%8C%E3%80%82dd-5dd"><span class="toc-number">8.5.1.2.</span> <span class="toc-text">删除当前行 , 删除当前行向下的n行。dd&#x2F;5dd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E5%8D%95%E8%AF%8D%E3%80%82-%E5%85%B3%E9%94%AE%E5%AD%97-%E5%9B%9E%E8%BD%A6-n"><span class="toc-number">8.5.1.3.</span> <span class="toc-text">在文件中查找某个单词。&#x2F;关键字 回车&#x2F;n</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%8C%E5%8F%B7%EF%BC%8C%E5%8F%96%E6%B6%88%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%8C%E5%8F%B7%E3%80%82-set-nu-set-nonu"><span class="toc-number">8.5.1.4.</span> <span class="toc-text">设置文件的行号，取消文件的行号。:set nu&#x2F;:set  nonu</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%88%B0%E5%BA%95%E6%96%87%E6%A1%A3%E7%9A%84%E6%9C%80%E6%9C%AB%E8%A1%8C%E5%92%8C%E6%9C%80%E9%A6%96%E8%A1%8C%E3%80%82-G-gg"><span class="toc-number">8.5.1.5.</span> <span class="toc-text">编辑文件，使用快捷键到底文档的最末行和最首行。[G]&#x2F;[gg]</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%AD%E8%BE%93%E5%85%A5%E5%86%85%E5%AE%B9%EF%BC%8C%E7%84%B6%E5%90%8E%E5%8F%88%E6%92%A4%E9%94%80%E8%BF%99%E4%B8%AA%E5%8A%A8%E4%BD%9C%E3%80%82u"><span class="toc-number">8.5.1.6.</span> <span class="toc-text">在一个文件中输入内容，然后又撤销这个动作。u</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E8%A1%8C%E3%80%82shift-g"><span class="toc-number">8.5.1.7.</span> <span class="toc-text">编辑文件，并将光标移动到指定行。shift+g</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi-vim%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%9B%98"><span class="toc-number">8.5.2.</span> <span class="toc-text">vi&#x2F;vim快捷键盘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E7%89%88"><span class="toc-number">8.5.2.1.</span> <span class="toc-text">经典版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87"><span class="toc-number">8.5.2.2.</span> <span class="toc-text">对应简体中文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E9%94%AE%E4%BD%8D%E5%9B%BE"><span class="toc-number">8.5.2.3.</span> <span class="toc-text">不同编辑模式下的键位图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E7%89%88"><span class="toc-number">8.5.2.4.</span> <span class="toc-text">入门版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E7%89%88"><span class="toc-number">8.5.2.5.</span> <span class="toc-text">进阶版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E5%BC%BA%E7%89%88"><span class="toc-number">8.5.2.6.</span> <span class="toc-text">增强版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E5%AD%97%E7%89%88"><span class="toc-number">8.5.2.7.</span> <span class="toc-text">文字版</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E6%9C%BA-%E9%87%8D%E5%90%AF-%E7%94%A8%E6%88%B7%E6%B3%A8%E9%94%80"><span class="toc-number">9.</span> <span class="toc-text">开机&#x2F;重启&#x2F;用户注销</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-3"><span class="toc-number">9.1.</span> <span class="toc-text">基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shutdown"><span class="toc-number">9.1.1.</span> <span class="toc-text">shutdown</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#halt"><span class="toc-number">9.1.2.</span> <span class="toc-text">halt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reboot"><span class="toc-number">9.1.3.</span> <span class="toc-text">reboot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sync"><span class="toc-number">9.1.4.</span> <span class="toc-text">sync</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E5%92%8C%E6%B3%A8%E9%94%80"><span class="toc-number">9.2.</span> <span class="toc-text">用户登录和注销</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Linux基础</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-04-27</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Linux/">Linux</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">4.2k</span><span class="post-meta__separator">|</span><span>阅读时长: 14 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80.png" class="" title="Linux基础">
+<p>Linux基础</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h1><h1 id="第一章-Linux入门"><a href="#第一章-Linux入门" class="headerlink" title="第一章 Linux入门"></a>第一章 Linux入门</h1><p>开源、免费的操作系统，稳定、安全、处理多并发。</p>
+<h2 id="吉祥物"><a href="#吉祥物" class="headerlink" title="吉祥物"></a>吉祥物</h2><p>Tux，小企鹅</p>
+<h2 id="创始人"><a href="#创始人" class="headerlink" title="创始人"></a>创始人</h2><p>Linus Torvalds</p>
+<h2 id="主要发行版"><a href="#主要发行版" class="headerlink" title="主要发行版"></a>主要发行版</h2><p>Ubuntu乌班图<br>RedHat红毛<br>CentOs<br>Debain<br>Fedora<br>SuSE<br>OpenSUSE</p>
+<p>linux是一个内核，发行版本进行包装。</p>
+<blockquote>
+<p>大数据主要用CentOS，python主要用Ubuntu，基本相同。</p>
+</blockquote>
+<h2 id="Linux-和-Unix-的关系"><a href="#Linux-和-Unix-的关系" class="headerlink" title="Linux 和 Unix 的关系"></a>Linux 和 Unix 的关系</h2><h2 id="1970s"><a href="#1970s" class="headerlink" title="1970s"></a>1970s</h2><p>贝尔实验室</p>
+<p>unix分时操作系统，最终失败</p>
+<p>Ken tompson最初的需求是文件操作系统</p>
+<p>Dennis richres用C语言重写</p>
+<h2 id="1980s"><a href="#1980s" class="headerlink" title="1980s"></a>1980s</h2><p>IBM、Sun、HP三家公司</p>
+<p>改革之后成本较高，收费版本，使用高性能才可以跑起来</p>
+<p>Richard Stallman<br>提倡免费源代码开源分享，解除封锁</p>
+<h2 id="GNU计划"><a href="#GNU计划" class="headerlink" title="GNU计划"></a>GNU计划</h2><p>GNU的开发始于1983年，它是自由的类Unix操作系统，这使得计算机用户拥有了分享和改进其所用软件的自由。</p>
+<p>Hard ware &gt; Kernal &gt; GNU Shell &gt; Desktop/explorer/DBMS/FTP/Editor</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">   subgraph unix时代</span><br><span class="line">   A[Unix] --&gt; B[BSD]</span><br><span class="line">   A[Unix] --&gt; C[Sun Solaris]</span><br><span class="line">   A[Unix] --&gt; D[IBM AIX]</span><br><span class="line">   A[Unix] --&gt; E[AT&amp;T System V]</span><br><span class="line">   B[BSD] --&gt; F[FreeBSD]</span><br><span class="line">   end</span><br><span class="line">   E[AT&amp;T System V] -- 开源,大学教研用 --&gt; G[Minix]</span><br><span class="line">   G[Minix] -- 适用于x86的个人计算机 --&gt; H[GNU/Linux内核]</span><br><span class="line">   H[GNU/Linux内核] --&gt; I1[Ubuntu]</span><br><span class="line">   H[GNU/Linux内核] --&gt; I2[Redhat]</span><br><span class="line">   subgraph redhat系列</span><br><span class="line">   I2[Redhat] --&gt; G1[redhat enterpise 5]</span><br><span class="line">   I2[Redhat] --&gt; G2[CentOS]</span><br><span class="line">   end</span><br><span class="line">   H[GNU/Linux内核] --&gt; I3[SUSE]</span><br><span class="line">   H[GNU/Linux内核] --&gt; I4[Fedora]</span><br><span class="line">   H[GNU/Linux内核] --&gt; I5[aliyun linux]</span><br></pre></td></tr></table></figure>
+<h1 id="安装VM和Centos-7-0"><a href="#安装VM和Centos-7-0" class="headerlink" title="安装VM和Centos 7.0"></a>安装VM和Centos 7.0</h1><p>使用Vmware虚拟机运行系统，系统以文件指令存储，可以方便移动存储。</p>
+<blockquote>
+<p>虚拟机安装需要BISO修改开启虚拟化设备支持（intel核心）</p>
+</blockquote>
+<h2 id="虚拟机安装centos过程"><a href="#虚拟机安装centos过程" class="headerlink" title="虚拟机安装centos过程"></a>虚拟机安装centos过程</h2><p>VMware Workstation Pro 12</p>
+<h3 id="新建虚拟机"><a href="#新建虚拟机" class="headerlink" title="新建虚拟机"></a>新建虚拟机</h3><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-1.jpg" class="" title="Linux基础-1">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-2.png" class="" title="Linux基础-2">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-3.png" class="" title="Linux基础-3">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-4.png" class="" title="Linux基础-4">
+<h3 id="配置物理硬盘"><a href="#配置物理硬盘" class="headerlink" title="配置物理硬盘"></a>配置物理硬盘</h3><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-5.png" class="" title="Linux基础-5">
+<p>物理分区可以日后挂载</p>
+<p>点击完成</p>
+<h3 id="分配内存"><a href="#分配内存" class="headerlink" title="分配内存"></a>分配内存</h3><p>设置为2G</p>
+<h3 id="分配处理器"><a href="#分配处理器" class="headerlink" title="分配处理器"></a>分配处理器</h3><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-6.png" class="" title="Linux基础-6">
+<h4 id="查看自己处理器个数"><a href="#查看自己处理器个数" class="headerlink" title="查看自己处理器个数"></a>查看自己处理器个数</h4><p>任务管理器—&gt;性能—&gt;打开资源监视器—&gt;CPU<br>可以看到自己本机硬件cpu个数</p>
+<h3 id="挂载centos镜像"><a href="#挂载centos镜像" class="headerlink" title="挂载centos镜像"></a>挂载centos镜像</h3><p><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7/isos/x86_64/">阿里云站点</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CentOS-7-x86_64-DVD-1810.iso 标准安装版（推荐）</span><br><span class="line">CentOS-7-x86_64-Everything-1810.iso 完整版，集成所有软件（以用来补充系统的软件或者填充本地镜像）</span><br><span class="line">CentOS-7-x86_64-LiveGNOME-1810.iso GNOME桌面版</span><br><span class="line">CentOS-7-x86_64-LiveKDE-1810.iso KDE桌面版</span><br><span class="line">CentOS-7-x86_64-Minimal-1810.iso 精简版，自带的软件最少</span><br><span class="line">CentOS-7-x86_64-NetInstall-1810.iso 网络安装版（从网络安装或者救援系统）</span><br></pre></td></tr></table></figure>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-7.png" class="" title="Linux基础-7">
+<h3 id="配置网络"><a href="#配置网络" class="headerlink" title="配置网络"></a>配置网络</h3><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-8.png" class="" title="Linux基础-8">
+<h4 id="虚拟机网络连接的三种方式"><a href="#虚拟机网络连接的三种方式" class="headerlink" title="虚拟机网络连接的三种方式"></a>虚拟机网络连接的三种方式</h4><h5 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">   A[教室网络环境] ==&gt; B1[主机A,IP:192.168.14.100]</span><br><span class="line">   A[教室网络环境] ==&gt; B2[主机B,IP:192.168.14.110]</span><br><span class="line">   B1[主机A,IP:192.168.14.100] --&gt; C1&gt;虚拟机1,IP:192.168.14.120]</span><br><span class="line">   B2[主机B,IP:192.168.14.110] -. 直接通信 .- C1&gt;虚拟机1,IP:192.168.14.120]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>优点：相同网段，可以直接访问</li>
+<li>缺点：网段地址有限，ip冲突（192.168.14.0~192.168.14.255[256-3]）</li>
+</ul>
+<h5 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">   subgraph 教室的主机</span><br><span class="line">   A[教室网络环境] == 桥接 ==&gt; B1[主机A,IP:192.168.14.100]</span><br><span class="line">   A[教室网络环境] == 桥接 ==&gt; B2[主机B,IP:192.168.14.110]</span><br><span class="line">   A[教室网络环境] -- NAT --&gt; B3[主机C,IP:192.168.14.130]</span><br><span class="line">   </span><br><span class="line">   B1[主机A,IP:192.168.14.100] --&gt; C1&gt;虚拟机A,IP:192.168.14.120]</span><br><span class="line">   B2[主机B,IP:192.168.14.110] -. 直接通信 .- C1&gt;虚拟机A,IP:192.168.14.120]</span><br><span class="line">   B3[主机C,IP:192.168.14.130] --&gt; D[WINDOWS新IP:192.168.20.33]</span><br><span class="line">   subgraph 主机C的内部网络环境</span><br><span class="line">   D[WINDOWS新IP:192.168.20.33] --&gt; C2&gt;虚拟机C,IP:192.168.20.55]</span><br><span class="line">   end</span><br><span class="line">   end</span><br><span class="line">   B2[主机B,IP:192.168.14.110] -. XXXXXXXXXXXXXXXXXXX .-&gt; C2&gt;虚拟机C,IP:192.168.20.55]</span><br><span class="line">   C2&gt;虚拟机C,IP:192.168.20.55] -. 正常通信 .-&gt; B2[主机B,IP:192.168.14.110]</span><br></pre></td></tr></table></figure>
+<p>主机C产生新的IP:192.168.20.33<br>主机C给虚拟机C分配IP:192.168.20.55<br>主机C的虚拟机C可以找到主机B<br>主机B不能找到虚拟机C</p>
+<p>产生新的ip地址实际上是虚拟网卡<code>VMware Network Adapter VMnet8</code></p>
+<p>虚拟机中终端输入<code>ifconfig</code>的网卡<code>eth0</code>，激活之后才可以正常上网。</p>
+<p>只要主机可以上网，本机的虚拟机就可以上网</p>
+<ul>
+<li>优点：虚拟机不占用其他人的ip，所以不会ip冲突</li>
+<li>缺点：内网其他人不能和虚拟机联系</li>
+</ul>
+<h5 id="仅主机模式"><a href="#仅主机模式" class="headerlink" title="仅主机模式"></a>仅主机模式</h5><p>单独的一台电脑</p>
+<h3 id="安装centos系统"><a href="#安装centos系统" class="headerlink" title="安装centos系统"></a>安装centos系统</h3><ul>
+<li>启动虚拟机</li>
+</ul>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-9.png" class="" title="Linux基础-9">
+<ul>
+<li>进入安装</li>
+</ul>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-10.png" class="" title="Linux基础-10">
+<ul>
+<li><p>选择语言</p>
+</li>
+<li><p>设置时间</p>
+</li>
+<li><p>选择软件安装</p>
+</li>
+</ul>
+<p>为centos安装那些软件，尽量少用</p>
+<p>后边可以选择安装</p>
+<p>真实的开发环境是不用装桌面，远程控制安装</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-11.png" class="" title="Linux基础-11">
+<p>选择带GUI的服务器安装</p>
+<ul>
+<li>配置分区</li>
+</ul>
+<p>选择 系统-&gt;安装源</p>
+<p><code>/boot</code>系统分区，一般给200M<br><code>/swap</code>交换分区，类似windows虚拟内存，等于物理内存。内存不够充当虚拟内存<br><code>/</code>根目录分区，其他的全给硬盘分区。</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-12.png" class="" title="Linux基础-12">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-13.png" class="" title="Linux基础-13">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-14.png" class="" title="Linux基础-14">
+<ul>
+<li>配置网卡</li>
+</ul>
+<p>选择 系统-&gt;网络和主机名</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-15.png" class="" title="Linux基础-15">
+<p>localhost.localdomain</p>
+<ul>
+<li><p>开始安装</p>
+</li>
+<li><p>设置root密码</p>
+</li>
+</ul>
+<p>最高用户是root，密码一定要用复杂密码，随时更改。</p>
+<blockquote>
+<p>复杂密码生成器，一定注意密码复杂度</p>
+</blockquote>
+<p>Hibiscidai521.</p>
+<ul>
+<li>创建用户</li>
+</ul>
+<p>创建非管理员用户</p>
+<p>hibiscidai:Hibiscidai521.</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-16.png" class="" title="Linux基础-16">
+<ul>
+<li>完成重启</li>
+</ul>
+<p>等待进度条加载完成后重启系统即可</p>
+<ul>
+<li>kdump设置</li>
+</ul>
+<p>系统崩溃时候保存错误信息，开发时候打开，一般耗费128内存</p>
+<ul>
+<li>安装VMTOOLS</li>
+</ul>
+<h3 id="登录系统"><a href="#登录系统" class="headerlink" title="登录系统"></a>登录系统</h3><p>使用root用户登录，开发中不使用root登录</p>
+<ul>
+<li>终端配色</li>
+</ul>
+<h1 id="VM安装Centos-6-8"><a href="#VM安装Centos-6-8" class="headerlink" title="VM安装Centos 6.8"></a>VM安装Centos 6.8</h1><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-17.png" class="" title="Linux基础-17">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-18.png" class="" title="Linux基础-18">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-19.png" class="" title="Linux基础-19">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-20.png" class="" title="Linux基础-20">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-21.png" class="" title="Linux基础-21">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-22.png" class="" title="Linux基础-22">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-23.png" class="" title="Linux基础-23">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-24.png" class="" title="Linux基础-24">
+<p>选择skip，ok会检查安装文件完整性</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-25.png" class="" title="Linux基础-25">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-26.png" class="" title="Linux基础-26">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-27.png" class="" title="Linux基础-27">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-28.png" class="" title="Linux基础-28">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-29.png" class="" title="Linux基础-29">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-30.png" class="" title="Linux基础-30">
+<p>@Hibiscidai.521.$</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-31.png" class="" title="Linux基础-31">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-32.png" class="" title="Linux基础-32">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-33.png" class="" title="Linux基础-33">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-34.png" class="" title="Linux基础-34">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-35.png" class="" title="Linux基础-35">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-36.png" class="" title="Linux基础-36">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-37.png" class="" title="Linux基础-37">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-38.png" class="" title="Linux基础-38">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-39.png" class="" title="Linux基础-39">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-40.png" class="" title="Linux基础-40">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-41.png" class="" title="Linux基础-41">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-42.png" class="" title="Linux基础-42">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-43.png" class="" title="Linux基础-43">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-44.png" class="" title="Linux基础-44">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-45.png" class="" title="Linux基础-45">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-46.png" class="" title="Linux基础-46">
+<p>设置时间</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-47.png" class="" title="Linux基础-47">
+<p>开发中打开</p>
+<p>使用root登录查看</p>
+<h2 id="vmware卡死解决方案"><a href="#vmware卡死解决方案" class="headerlink" title="vmware卡死解决方案"></a>vmware卡死解决方案</h2><p>删除虚拟机锁在文件夹乱码</p>
+<p><code>win+R</code>输入<code>msconfig</code></p>
+<p>选择服务，禁用vm系列服务，然后开机就可以解除虚拟机占用问题。</p>
+<h2 id="vm黑屏解决方法"><a href="#vm黑屏解决方法" class="headerlink" title="vm黑屏解决方法"></a>vm黑屏解决方法</h2><ul>
+<li>右键点击虚拟机-&gt;设置-&gt;显示器-&gt;加速3D图形(把他的勾勾打掉)</li>
+<li>关掉所有VM开头的进程，cmd按管理员身份运行，输入<code>netsh winsock reset</code>，重启计算机</li>
+<li>删除虚拟机文件下的.lck文件夹</li>
+<li>将虚拟机文件下的<code>XXX.vmx</code>以记事本方式打开，查找<code>vmci0.present=“TRUE”</code>这个，将<code>TRUE</code>改为<code>FALSE</code>, 保存<br>然后运行虚拟机即可</li>
+<li>关闭防火墙</li>
+</ul>
+<p>重新启动</p>
+<h2 id="安装Vmware-Tool"><a href="#安装Vmware-Tool" class="headerlink" title="安装Vmware Tool"></a>安装Vmware Tool</h2><p>打开桌面的VMware Tools</p>
+<p>拖拽<code>.tar.gz</code>到桌面</p>
+<p>右键解压缩</p>
+<p>进入文件夹</p>
+<p>右键，在终端中打开</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
+<p>默认<code>enter</code></p>
+<p>安装成功重启</p>
+<h1 id="Centos终端使用和联网"><a href="#Centos终端使用和联网" class="headerlink" title="Centos终端使用和联网"></a>Centos终端使用和联网</h1><h2 id="终端使用"><a href="#终端使用" class="headerlink" title="终端使用"></a>终端使用</h2><p>右键桌面打开终端</p>
+<p>打开终端，编辑-侧写选项</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-48.png" class="" title="Linux基础-48">
+<h2 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h2><p>动态分配ip，学习固定分配ip</p>
+<p>点击网络连接，即可连接</p>
+<p>在本机的cmd查看vmware的虚拟网卡ip（NAT）</p>
+<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>文件系统采用级层式的树状目录结构，此结构最上层式根目录”/“，然后在此目录下再创建其他目录。</p>
+<p>深刻理解linux树状文件目录十分重要。</p>
+<p>在linux世界里，一而且皆文件。</p>
+<p>|——<code>/</code>根目录<br>|————<code>/root</code><br>|————————<code>/root/Desktop</code><br>|————————<code>/root/maildir</code><br>|————————<code>......</code><br>|————<code>bin</code>(常用指令)<br>|————<code>boot</code><br>|————<code>dev</code>（管理设备，硬件映射为文件）<br>|————<code>etc</code>（存放配置文件）<br>|————<code>home</code>（家目录，创建用户时候会使用）<br>|————<code>var</code><br>|————<code>lib</code>（静态库，<code>.so</code>文件）<br>|————<code>usr</code>（用户的应用程序）<br>|————————<code>/usr/bin</code><br>|————————<code>/usr/lib</code><br>|————————<code>......</code><br>|————<code>media</code>（挂载文件夹，u盘、光驱、dvd）<br>|————<code>opt</code>（安装的软件放入）<br>|————<code>proc</code>（内存的东西）<br>|————<code>root</code><br>|————<code>sbin</code>（超级用户使用）<br>|————<code>selinux</code>（安全目录）<br>|————<code>sys</code>（系统）<br>|————<code>tmp</code>（临时文件夹）<br>|————<code>var</code>（变量）</p>
+<h2 id="具体目录"><a href="#具体目录" class="headerlink" title="具体目录"></a>具体目录</h2><h3 id="bin-※"><a href="#bin-※" class="headerlink" title="/bin ※"></a>/bin ※</h3><p><code>/usr/bin</code><br><code>/usr/local/bin</code></p>
+<p>Binary的缩写，目录存放最经常使用的命令</p>
+<h3 id="sbin"><a href="#sbin" class="headerlink" title="/sbin"></a>/sbin</h3><p><code>/usr/sbin</code><br><code>/usr/local/sbin</code></p>
+<p>s就是Super User的意思，存放的是系统管理员使用过的系统管理程序</p>
+<h3 id="home-※"><a href="#home-※" class="headerlink" title="/home ※"></a>/home ※</h3><p>存放普通用户的主目录，在Linux中每个用户都有一个自己的目录，一般该目录名是以用户的账号命名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd tom</span><br><span class="line">userdel -r tom</span><br></pre></td></tr></table></figure>
+<h3 id="root-※"><a href="#root-※" class="headerlink" title="/root ※"></a>/root ※</h3><p>系统管理员，也称为超级权限者的用户主目录。</p>
+<h3 id="lib"><a href="#lib" class="headerlink" title="/lib"></a>/lib</h3><p>系统开机锁需要最基本的动态连接共享库，作用类似于Windows里的DLL文件。几乎所有应用程序都需要用到这些共享库。</p>
+<h3 id="lost-found"><a href="#lost-found" class="headerlink" title="/lost+found"></a>/lost+found</h3><p>这个目录一般情况下是空的，当系统非法关机后，就存放了一些文件。</p>
+<h3 id="etc-※"><a href="#etc-※" class="headerlink" title="/etc ※"></a>/etc ※</h3><p>所有的系统管理所需要的配置文件和子目录，如<code>my.config</code>。</p>
+<h3 id="usr-※"><a href="#usr-※" class="headerlink" title="/usr  ※"></a>/usr  ※</h3><p>非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似与Windows下的program files目录。</p>
+<h3 id="boot-※"><a href="#boot-※" class="headerlink" title="/boot ※"></a>/boot ※</h3><p>存放的是启动Linux时使用的一些核心文件，包括一些链接文件以及镜像文件。</p>
+<h3 id="proc"><a href="#proc" class="headerlink" title="/proc"></a>/proc</h3><p>虚拟的目录，系统内存的映射，访问这个目录来获取系统信息。<br>（进阶，别动）</p>
+<h3 id="srv"><a href="#srv" class="headerlink" title="/srv"></a>/srv</h3><p>service缩写，存放一些服务启动之后需要提取的数据。<br>（进阶，别动）</p>
+<h3 id="sys"><a href="#sys" class="headerlink" title="/sys"></a>/sys</h3><p>linux2.6内核的一个很大变化，<br>（进阶，别动）</p>
+<h3 id="tmp"><a href="#tmp" class="headerlink" title="/tmp"></a>/tmp</h3><p>临时目录</p>
+<h3 id="dev"><a href="#dev" class="headerlink" title="/dev"></a>/dev</h3><p>类似windows的设备管理器，把所有的硬件用文件的形式存储。</p>
+<h3 id="media-※"><a href="#media-※" class="headerlink" title="/media ※"></a>/media ※</h3><p>Linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，Linux会把识别的设备挂载到这个目录下。</p>
+<h3 id="mnt-※"><a href="#mnt-※" class="headerlink" title="/mnt ※"></a>/mnt ※</h3><p>系统提供该目录是为了让用户临时挂载别的文件系统的，可以将外部的存储挂载在<code>/mnt/</code>上，然后进入该目录就可以查看里边内容。</p>
+<h3 id="opt"><a href="#opt" class="headerlink" title="/opt"></a>/opt</h3><p>给主机额外安装软件时候所摆放的目录，如安装ORACLE数据库就可以放到该目录下，默认为空。（安装包文件）</p>
+<h3 id="usr-local-※"><a href="#usr-local-※" class="headerlink" title="/usr/local ※"></a>/usr/local ※</h3><p>给另一个主机额外安装软件所安装的目录。一般是通过编译源码方式安装的程序。（安装文件释放目录）</p>
+<p><code>/usr/local/mysql</code></p>
+<h3 id="var-※"><a href="#var-※" class="headerlink" title="/var ※"></a>/var ※</h3><p>这个目录中存放着不断扩充着的东西，习惯将经常被修改的目录放在这个目录下，包括各种日志文件。</p>
+<h3 id="selinux"><a href="#selinux" class="headerlink" title="/selinux"></a>/selinux</h3><p>一种安全子系统，他能控制程序只能访问特定文件。黑客入侵时候出发。</p>
+<p>security-enhanced linux</p>
+<h1 id="远程登录linux系统"><a href="#远程登录linux系统" class="headerlink" title="远程登录linux系统"></a>远程登录linux系统</h1><h2 id="远程登录的原因"><a href="#远程登录的原因" class="headerlink" title="远程登录的原因"></a>远程登录的原因</h2><p>真正运行的linux物理设备在远程，都是用命令行。</p>
+<p>常用<code>Xshell</code>/<code>Putty</code>远程登录，进行shell命令操作。</p>
+<p>常用<code>Xftp</code>/<code>Winscp</code>进行远程文件管理上传。</p>
+<h2 id="Xshell简介"><a href="#Xshell简介" class="headerlink" title="Xshell简介"></a>Xshell简介</h2><p>流畅解决中文乱码问题，首选软件。</p>
+<p>强大安全终端模拟软件，支持SSH1，SSH2，Microsoft Windows的TELENT。</p>
+<p>用来访问远程不同系统下的服务器，较好达到控制远程端的目的。</p>
+<h2 id="Xftp简介"><a href="#Xftp简介" class="headerlink" title="Xftp简介"></a>Xftp简介</h2><p>基于windows平台的强大的SFTP、FTP文件传输软件。使用了Xftp之后，windows用户可以安全地在UNIX/Linux和Windows PC之间传输文件。</p>
+<h2 id="安装Xshell6和Xftp6"><a href="#安装Xshell6和Xftp6" class="headerlink" title="安装Xshell6和Xftp6"></a>安装Xshell6和Xftp6</h2><p><a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/free-for-home-school/">Xshell官网-学生免费版</a></p>
+<p>输入邮箱发送下载连接，可以一同下载Xshell6和Xftp6。</p>
+<h2 id="检查开启SSD服务"><a href="#检查开启SSD服务" class="headerlink" title="检查开启SSD服务"></a>检查开启SSD服务</h2><p>22端口，默认打开</p>
+<p>打开终端，<code>setup</code>，系统服务，星号代表开启，<code>sshd</code>，让别的机器访问。</p>
+<p><a target="_blank" rel="noopener" href="https://www.yougetsignal.com/tools/open-ports/">检查22端口是否打开</a></p>
+<h2 id="新建连接"><a href="#新建连接" class="headerlink" title="新建连接"></a>新建连接</h2><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-49.png" class="" title="Linux基础-49">
+<p>输入用户名和密码，即可连接。</p>
+<p>可以更改配色方案，设置字体大小。</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-50.png" class="" title="Linux基础-50">
+<ul>
+<li>使用Xshell6连接后可能会提示“WARNING! The remote SSH server rejected X11 forwarding request.”，运行命令：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install xorg-x11-xauth -y</span><br></pre></td></tr></table></figure>
+<h2 id="远程上传下载"><a href="#远程上传下载" class="headerlink" title="远程上传下载"></a>远程上传下载</h2><p>新建连接类似Xshell。</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-51.png" class="" title="Linux基础-51">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-52.png" class="" title="Linux基础-52">
+<ul>
+<li>显示中文乱码问题</li>
+</ul>
+<p>修改字符编码格式为UTF-8</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-53.png" class="" title="Linux基础-53">
+<h3 id="传送一个文件进行测试"><a href="#传送一个文件进行测试" class="headerlink" title="传送一个文件进行测试"></a>传送一个文件进行测试</h3><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-54.png" class="" title="Linux基础-54">
+<p>相反，选择服务器上的文件，点击”向右传输”，就可以从服务器下载。</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-55.png" class="" title="Linux基础-55">
+<h2 id="SecureCRT的安装和使用"><a href="#SecureCRT的安装和使用" class="headerlink" title="SecureCRT的安装和使用"></a>SecureCRT的安装和使用</h2><h3 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>用于远程登录Linux 的软件，在大数据开发中使用较多。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>拷贝版本，不用安装。拷贝到指定目录即可。</p>
+<p>或者采用安装版本</p>
+<h3 id="连接过程"><a href="#连接过程" class="headerlink" title="连接过程"></a>连接过程</h3><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-56.png" class="" title="Linux基础-56">
+<p>输入主机名，用户名</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-57.png" class="" title="Linux基础-57">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-58.png" class="" title="Linux基础-58">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-59.png" class="" title="Linux基础-59">
+<p>配置完成后，点击连接，输入密码就可以。</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-60.png" class="" title="Linux基础-60">
+<p>连接成功</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-61.png" class="" title="Linux基础-61">
+<ul>
+<li>解决中文乱码问题</li>
+</ul>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-62.png" class="" title="Linux基础-62">
+<h1 id="Vi-和-Vim-编辑器"><a href="#Vi-和-Vim-编辑器" class="headerlink" title="Vi 和 Vim 编辑器"></a>Vi 和 Vim 编辑器</h1><h2 id="基本介绍-2"><a href="#基本介绍-2" class="headerlink" title="基本介绍"></a>基本介绍</h2><p>所有的Linux系统都回内建<code>vi文本编辑器</code></p>
+<p>Vim具有程序编辑的能力，可以看做是<code>Vi的增强版本</code>，可以主动的以字体颜色辨别语法的正确性，方便程序设计。</p>
+<p>代码补充、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。</p>
+<h2 id="vi-和-vim-常用的三种模式"><a href="#vi-和-vim-常用的三种模式" class="headerlink" title="vi 和 vim 常用的三种模式"></a>vi 和 vim 常用的三种模式</h2><h3 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h3><p>默认的模式，以vim打开一个档案就直接进入一般模式。在这个模式中，你可以使用<code>↑↓←→</code>按键来移动光标，你可以使用<code>del</code>或<code>backspace</code>来处理档案内容，也可以使用<code>复制、粘贴</code>来处理你的文件数据。</p>
+<p>正常模式可以使用快捷键。</p>
+<h3 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h3><p>按下<code>i</code>，<code>I</code>，<code>o</code>，<code>O</code>，<code>a</code>，<code>A</code>，<code>r</code>，<code>R</code>等任何一个字母之后才会进入编辑模式，一般来说按<code>i</code>即可。</p>
+<h3 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h3><p>提供先关指令，完成读取、存盘、替换、离开vim、显示行号等的动作则是在此模式中达成的。</p>
+<h2 id="入门案例-使用vim开发一个hello-java"><a href="#入门案例-使用vim开发一个hello-java" class="headerlink" title="入门案例-使用vim开发一个hello.java"></a>入门案例-使用vim开发一个hello.java</h2><blockquote>
+<p>安装vim<br>如果没有vim，输入<code>yum -y install vim*</code></p>
+</blockquote>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-63.png" class="" title="Linux基础-63">
+<p>使用远程连接到服务器，然后输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim hello.java</span><br></pre></td></tr></table></figure>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-64.png" class="" title="Linux基础-64">
+<p>进入<strong>正常模式</strong></p>
+<p>输入<code>i</code>之后进入<strong>插入模式</strong></p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-65.png" class="" title="Linux基础-65">
+<p>按下<code>ESC</code>退出插入模式，进入<strong>命令行模式</strong>，可以接着输入linux命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-66.png" class="" title="Linux基础-66">
+<p>保存写入成功</p>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-67.png" class="" title="Linux基础-67">
+<p>再次输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim hello.java</span><br></pre></td></tr></table></figure>
+<p><code>:wq</code>打开，有修改，想保存<br><code>:q</code>打开，没有任何修改<br><code>:q!</code>打开，有修改，不想保存</p>
+<h2 id="vi和vim三种模式的相互转换-※"><a href="#vi和vim三种模式的相互转换-※" class="headerlink" title="vi和vim三种模式的相互转换 ※"></a>vi和vim三种模式的相互转换 ※</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">   A[在命令行下] == #vim xxx ==&gt; B[正常模式]</span><br><span class="line">   B[正常模式] == i或者a ==&gt; C[编辑模式]</span><br><span class="line">   C[编辑模式] == ESC ==&gt; B[正常模式]</span><br><span class="line">   B[正常模式] == :或者/ ==&gt; D[命令模式]</span><br><span class="line">   D[命令模式] == ESC ==&gt; B[正常模式]</span><br><span class="line">   D[命令模式] == 在命令行下 ==&gt; E[:wq :q :q!]</span><br></pre></td></tr></table></figure>
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/Linux%E5%9F%BA%E7%A1%80-68.png" class="" title="Linux基础-68">
+<h2 id="vi和vim的快捷键"><a href="#vi和vim的快捷键" class="headerlink" title="vi和vim的快捷键"></a>vi和vim的快捷键</h2><h3 id="快捷键使用案例"><a href="#快捷键使用案例" class="headerlink" title="快捷键使用案例"></a>快捷键使用案例</h3><h4 id="拷贝当前行，拷贝当前行向下的n行，-并粘贴。yy-5yy-p"><a href="#拷贝当前行，拷贝当前行向下的n行，-并粘贴。yy-5yy-p" class="headerlink" title="拷贝当前行，拷贝当前行向下的n行， 并粘贴。yy/5yy/p"></a>拷贝当前行，拷贝当前行向下的n行， 并粘贴。<code>yy</code>/<code>5yy</code>/<code>p</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim ok.java</span><br><span class="line">ok100</span><br><span class="line">ok200</span><br><span class="line">ok300</span><br><span class="line">ok400</span><br></pre></td></tr></table></figure>
+<p>光标放在<code>ok400</code>处</p>
+<p>退出<code>ESC</code></p>
+<ul>
+<li>拷贝当前行</li>
+</ul>
+<p>输入<code>yy</code>，复制光标所在行</p>
+<p>输入<code>p</code>，在光标后粘贴行</p>
+<ul>
+<li>拷贝当前行向下的5行</li>
+</ul>
+<p>输入<code>5yy</code>，复制光标下五行<br>输入<code>p</code>，粘贴到光标下五行</p>
+<h4 id="删除当前行-删除当前行向下的n行。dd-5dd"><a href="#删除当前行-删除当前行向下的n行。dd-5dd" class="headerlink" title="删除当前行 , 删除当前行向下的n行。dd/5dd"></a>删除当前行 , 删除当前行向下的n行。<code>dd</code>/<code>5dd</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim ok.java</span><br><span class="line">ok100</span><br><span class="line">ok200</span><br><span class="line">ok300</span><br><span class="line">ok400</span><br></pre></td></tr></table></figure>
+<p>光标放在<code>ok400</code>处</p>
+<p>退出<code>ESC</code></p>
+<ul>
+<li>删除当前行</li>
+</ul>
+<p>输入<code>dd</code>，删除光标所在行</p>
+<ul>
+<li>删除5行</li>
+</ul>
+<p>输入<code>5dd</code>，删除光标下边5行</p>
+<h4 id="在文件中查找某个单词。-关键字-回车-n"><a href="#在文件中查找某个单词。-关键字-回车-n" class="headerlink" title="在文件中查找某个单词。/关键字 回车/n"></a>在文件中查找某个单词。<code>/关键字 回车</code>/<code>n</code></h4><p><code>[命令行下/关键字，回车查找,输入n就是查找下一个]</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vim ok.java</span><br><span class="line">ok100</span><br><span class="line">ok200</span><br><span class="line">hello</span><br><span class="line">uuuu</span><br><span class="line">oooo</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<p>退出<code>ESC</code></p>
+<p>光标位置随意</p>
+<p>输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/hello</span><br></pre></td></tr></table></figure>
+<p><code>enter</code>回车</p>
+<p>绿色光标跳到第一个</p>
+<p>输入<code>n</code>绿色光标在下一个</p>
+<h4 id="设置文件的行号，取消文件的行号。-set-nu-set-nonu"><a href="#设置文件的行号，取消文件的行号。-set-nu-set-nonu" class="headerlink" title="设置文件的行号，取消文件的行号。:set nu/:set  nonu"></a>设置文件的行号，取消文件的行号。<code>:set nu</code>/<code>:set  nonu</code></h4><p>命令行模式下输入</p>
+<p>设置行号<code>:set nu</code></p>
+<p>取消行号<code>:set  nonu</code></p>
+<h4 id="编辑文件，使用快捷键到底文档的最末行和最首行。-G-gg"><a href="#编辑文件，使用快捷键到底文档的最末行和最首行。-G-gg" class="headerlink" title="编辑文件，使用快捷键到底文档的最末行和最首行。[G]/[gg]"></a>编辑文件，使用快捷键到底文档的最末行和最首行。<code>[G]</code>/<code>[gg]</code></h4><p>在正常模式下进行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<p>马上移动到最后一行，直接输入<code>G</code></p>
+<p>马上移动到第一行，直接输入<code>gg</code></p>
+<h4 id="在一个文件中输入内容，然后又撤销这个动作。u"><a href="#在一个文件中输入内容，然后又撤销这个动作。u" class="headerlink" title="在一个文件中输入内容，然后又撤销这个动作。u"></a>在一个文件中输入内容，然后又撤销这个动作。<code>u</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ok.java</span><br><span class="line">ok100</span><br><span class="line">ok200</span><br><span class="line">ok300</span><br><span class="line">ok400</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<p>按<code>ESC</code>回到正常模式，输入<code>u</code>，撤销刚才的输入</p>
+<h4 id="编辑文件，并将光标移动到指定行。shift-g"><a href="#编辑文件，并将光标移动到指定行。shift-g" class="headerlink" title="编辑文件，并将光标移动到指定行。shift+g"></a>编辑文件，并将光标移动到指定行。<code>shift+g</code></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置行号<code>:set nu</code></li>
+<li>输入20</li>
+<li>输入<code>shift+g</code></li>
+</ul>
+<p>光标移动到第二十行</p>
+<h3 id="vi-vim快捷键盘"><a href="#vi-vim快捷键盘" class="headerlink" title="vi/vim快捷键盘"></a>vi/vim快捷键盘</h3><h4 id="经典版"><a href="#经典版" class="headerlink" title="经典版"></a>经典版</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vivim%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%9B%98%E7%BB%8F%E5%85%B8%E7%89%88.gif" class="" title="vivim快捷键盘经典版">
+<h4 id="对应简体中文"><a href="#对应简体中文" class="headerlink" title="对应简体中文"></a>对应简体中文</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vivim%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%9B%98%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E7%89%88.gif" class="" title="vivim快捷键盘简体中文版">
+<h4 id="不同编辑模式下的键位图"><a href="#不同编辑模式下的键位图" class="headerlink" title="不同编辑模式下的键位图"></a>不同编辑模式下的键位图</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-1.gif" class="" title="basci editiing">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-2.gif" class="" title="operators &amp; repetition">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-3.gif" class="" title="yank &amp; paste">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-4.gif" class="" title="searching">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-5.gif" class="" title="mark &amp; macros">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-6.gif" class="" title="various motions">
+<img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/vi-vim-tutorial-7.gif" class="" title="various commands">
+<h4 id="入门版"><a href="#入门版" class="headerlink" title="入门版"></a>入门版</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/entry1.png" class="" title="入门版">
+<h4 id="进阶版"><a href="#进阶版" class="headerlink" title="进阶版"></a>进阶版</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/advanced1.png" class="" title="进阶版">
+<h4 id="增强版"><a href="#增强版" class="headerlink" title="增强版"></a>增强版</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/morden1.png" class="" title="增强版">
+<h4 id="文字版"><a href="#文字版" class="headerlink" title="文字版"></a>文字版</h4><img src="/2020/04/27/Linux%E5%9F%BA%E7%A1%80/text1.png" class="" title="文字版">
+<h1 id="开机-重启-用户注销"><a href="#开机-重启-用户注销" class="headerlink" title="开机/重启/用户注销"></a>开机/重启/用户注销</h1><h2 id="基本介绍-3"><a href="#基本介绍-3" class="headerlink" title="基本介绍"></a>基本介绍</h2><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h3><ul>
+<li>立刻进行关机</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1分钟之后关机</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h 1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>现在重新启动计算机</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
+<h3 id="halt"><a href="#halt" class="headerlink" title="halt"></a>halt</h3><p>直接使用，效果等价</p>
+<ul>
+<li>关机</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">halt</span><br></pre></td></tr></table></figure>
+<h3 id="reboot"><a href="#reboot" class="headerlink" title="reboot"></a>reboot</h3><ul>
+<li>现在重新启动计算机</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h3 id="sync"><a href="#sync" class="headerlink" title="sync"></a>sync</h3><ul>
+<li>把内存数据同步到磁盘</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sync</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>不管是重启系统还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中。</p>
+</blockquote>
+<h2 id="用户登录和注销"><a href="#用户登录和注销" class="headerlink" title="用户登录和注销"></a>用户登录和注销</h2><p>少使用<code>root</code>账号，最大的权限，避免操作失误。</p>
+<p>以普通用户登录然后<code>su -用户名</code>命令来切换成系统管理员身份。</p>
+<p>提示符下输入<code>logout</code>即可注销用户</p>
+<blockquote>
+<p>logout注销指令在图形运行级别无效，在桌面终端运行无效。在运行级别3有效。</p>
+</blockquote>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2020/04/27/Linux基础/">http://hibiscidai.com/2020/04/27/Linux基础/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/05/07/CUDA%E5%9F%BA%E7%A1%80/"><i class="fa fa-chevron-left">  </i><span>CUDA基础</span></a></div><div class="next-post pull-right"><a href="/2020/04/18/RSA%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95-JAVA%E5%AE%9E%E7%8E%B0/"><span>RSA加密算法-JAVA实现</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

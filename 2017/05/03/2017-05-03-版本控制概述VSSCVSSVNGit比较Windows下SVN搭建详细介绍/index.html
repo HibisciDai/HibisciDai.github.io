@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="版本控制概述|VSS/CVS/SVN/Git比较|Windows下SVN搭建详细介绍"><meta name="keywords" content="框架"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>版本控制概述|VSS/CVS/SVN/Git比较|Windows下SVN搭建详细介绍 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">版本控制介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text">常用版本控制技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vss-Visual-SourceSafe"><span class="toc-number">2.1.</span> <span class="toc-text">vss(Visual SourceSafe)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cvs-Concurrent-Versions-System"><span class="toc-number">2.2.</span> <span class="toc-text">cvs(Concurrent Versions System)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svn-Subversion"><span class="toc-number">2.3.</span> <span class="toc-text">svn(Subversion)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git"><span class="toc-number">2.4.</span> <span class="toc-text">git</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB-%E8%BD%AC%E8%87%AA%E7%BD%91%E7%BB%9C"><span class="toc-number">3.</span> <span class="toc-text">区别(转自网络)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SVN%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B"><span class="toc-number">4.</span> <span class="toc-text">SVN使用简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BASVN%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.1.</span> <span class="toc-text">搭建SVN服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TortoiseSVN%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%90%AD%E5%BB%BA"><span class="toc-number">4.2.</span> <span class="toc-text">TortoiseSVN客户端搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#win7%E5%8F%B3%E9%94%AE%E6%97%A0%E6%B3%95%E5%87%BA%E7%8E%B0SVN%E9%80%89%E9%A1%B9"><span class="toc-number">4.2.1.</span> <span class="toc-text">win7右键无法出现SVN选项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text">导出到服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%A3%80%E5%87%BA%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text">客户端检出文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E5%87%BA%E5%AE%8C%E6%88%90%E5%90%8E%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BAsvn%E6%96%87%E4%BB%B6%E5%A4%B9%E5%9B%BE%E6%A0%87"><span class="toc-number">4.4.1.</span> <span class="toc-text">检出完成后无法显示svn文件夹图标</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Eclipse%E9%9B%86%E6%88%90SVN"><span class="toc-number">5.</span> <span class="toc-text">Eclipse集成SVN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Eclipse%E4%B8%8B%E4%BD%BF%E7%94%A8svn"><span class="toc-number">6.</span> <span class="toc-text">Eclipse下使用svn</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">版本控制概述|VSS/CVS/SVN/Git比较|Windows下SVN搭建详细介绍</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2017-05-03</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%90%8E%E5%8F%B0/">后台</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.8k</span><span class="post-meta__separator">|</span><span>阅读时长: 5 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>[TOC]</p>
+<h1 id="版本控制介绍"><a href="#版本控制介绍" class="headerlink" title="版本控制介绍"></a>版本控制介绍</h1><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/yanghongliang/p/5750306.html">版本控制——总结</a><br>里边有关于文字性质定义</p>
+<span id="more"></span>
+<h1 id="常用版本控制技术"><a href="#常用版本控制技术" class="headerlink" title="常用版本控制技术"></a>常用版本控制技术</h1><h2 id="vss-Visual-SourceSafe"><a href="#vss-Visual-SourceSafe" class="headerlink" title="vss(Visual SourceSafe)"></a>vss(Visual SourceSafe)</h2><p>作为Microsoft Visual Studio 的一名成员，它主要任务就是负责项目文件的管理，几乎可以适用任何软件项目。<br>仅适用于团队开发，不适用于企业级开发。</p>
+<h2 id="cvs-Concurrent-Versions-System"><a href="#cvs-Concurrent-Versions-System" class="headerlink" title="cvs(Concurrent Versions System)"></a>cvs(Concurrent Versions System)</h2><p>一个典型的服务器/客户端软件，有Unix版本的CVS 、Linux版本的CVS和Windows版本的CVS。<br>功能相对单一，适用于几人的小团队。<br>代表协作版本系统或者并发版本系统，是一种版本控制系统，方便软件的开发和使用者协同工作。</p>
+<h2 id="svn-Subversion"><a href="#svn-Subversion" class="headerlink" title="svn(Subversion)"></a>svn(Subversion)</h2><p>是一个开放源代码的版本控制系统，相对于的RCS、CVS，采用了分支管理系统，它的设计目标就是取代CVS。互联网上越来越多的控制服务从CVS转移到Subversion。</p>
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>Git本身关心档案的整体性是否有改变，但多数的CVS，或Subversion系统则在乎档案内容的差异。因此Git更像一个档案系统，直接在本机上取得资料，不必连线到host端取资料回来。</p>
+<h1 id="区别-转自网络"><a href="#区别-转自网络" class="headerlink" title="区别(转自网络)"></a>区别(转自网络)</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特征</th>
+<th style="text-align:left">CVS</th>
+<th style="text-align:left">Git</th>
+<th style="text-align:center">Mercurial</th>
+<th style="text-align:left">Subversion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">是否原子提交</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">文件和目录是否可以移动或重命名</td>
+<td style="text-align:left">否 强制手动进行, 可能会损坏历史记录</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">在移动或重命名之后智能合并</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">否</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">否</td>
+</tr>
+<tr>
+<td style="text-align:left">文件和目录拷贝是否支持</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">否</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">远程存储仓库的备份</td>
+<td style="text-align:left">间接的. 可以使用John Polstra写的CVSup</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">间接的. 可以使用Chia-liang Kao的SVN::Mirror插件(好像是台湾人)或Shlomi Fish的SVN-Pusher工具</td>
+</tr>
+<tr>
+<td style="text-align:left">是否传递变更到父仓库</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是的, 使用要么是Chia-Ling Kao的SVN::Mirror脚本或者Shlomi Fish的svn-push工具</td>
+</tr>
+<tr>
+<td style="text-align:left">仓库权限</td>
+<td style="text-align:left">有限“pre-commit hook scripts“能够被用来实现各种权限控制系统</td>
+<td style="text-align:left"></td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是的. 基于HTTP权限的WebDAV-based模块能够支持基于目录级的仓库</td>
+</tr>
+<tr>
+<td style="text-align:left">变更集</td>
+<td style="text-align:left">否</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">部分支持，对于一次提交会隐式创建一个变更集</td>
+</tr>
+<tr>
+<td style="text-align:left">跟踪线性的文件历史</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">能够只在仓库的单目录下作用</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">否</td>
+<td style="text-align:center">是的. 基于HTTP权限的WebDAV-based模块能够支持基于目录级的仓库</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">跟踪未提交的变化</td>
+<td style="text-align:left">是</td>
+<td style="text-align:left">是</td>
+<td style="text-align:center">是</td>
+<td style="text-align:left">是</td>
+</tr>
+<tr>
+<td style="text-align:left">基于单个文件的提交信息</td>
+<td style="text-align:left">否，基于单次变化</td>
+<td style="text-align:left">否，基于变更集</td>
+<td style="text-align:center">否</td>
+<td style="text-align:left">否，无特征</td>
+</tr>
+<tr>
+<td style="text-align:left">文档</td>
+<td style="text-align:left">非常棒. 有很多在线的tutorials和资源, 在线的书籍. 命令行客户端也支持一个在线的帮助系统</td>
+<td style="text-align:left">良好. 短的帮助比较简洁难懂. man页很有分量, 但容易误解. 有很多tutorial</td>
+<td style="text-align:center">很好. 有基于公司的书籍和wiki. 每个命令都集成了帮助</td>
+<td style="text-align:left">很好. 有一些在线的书籍和一些在线的tutorials和资源. 并且书籍是以docbook/xml写的所以很容易变换成其他格式. 命令行同样提供了在线的帮助系统</td>
+</tr>
+<tr>
+<td style="text-align:left">配置是否轻松</td>
+<td style="text-align:left">好. 是个事实上的标准. 基于每个系统都有并且很容易配置</td>
+<td style="text-align:left">好. 在现有平台上二进制可用. 需要C编译器和Perl. 在windows上需要cygwin. 并有一些Unix特征</td>
+<td style="text-align:center">非常好. 几乎所有平台都有二进制包. 从源码编译需要python2.3以上, 并且需要C编译器</td>
+<td style="text-align:left">Subversion服务器需要安装在apache2模块里(如果有人希望HTTP作为底层协议的话)或使用它自身的服务器. 客户端需要Subversion特征的逻辑还有WebDAV库(针对HTTP). 安装组件很直接, 但是需要一些额外的工作(假定subversion在某些平台没有二进制包可用)</td>
+</tr>
+<tr>
+<td style="text-align:left">命令集</td>
+<td style="text-align:left">包含了3个经常用到的命令的简单的命令集(cvs commit, cvs update和cvs checkout)和其它一些</td>
+<td style="text-align:left">命令集很丰富, 并且和CVS不兼容</td>
+<td style="text-align:center">尝试模仿CVS交互方式, 但是偏离了基于不同的设计的意图</td>
+<td style="text-align:left">类CVS的命令集, 能够很容易被CVS用户使用</td>
+</tr>
+<tr>
+<td style="text-align:left">网络支持</td>
+<td style="text-align:left">好. cvs在不同的场合使用不同的协议. 协议能够通过ssh链接的加密隧道进行</td>
+<td style="text-align:left">非常棒. 能够使用本地的git协议, 但也能在rsync, ssh, HTTP和HTTPS上使用</td>
+<td style="text-align:center">非常棒. 使用HTTP或ssh. 远程访问会非常安全, 在只读网络里不需要上锁</td>
+<td style="text-align:left">非常好. Subversion服务器支持WebDAV+DeltaV(基于HTTP或HTTPS)作为底层协议, 或者它自身的协议同样能在ssh链接通道里使用.</td>
+</tr>
+<tr>
+<td style="text-align:left">可移植性</td>
+<td style="text-align:left">好. 客户端能在UNIX, Windows和Mac OS上使用. 服务器端能在UNIX, 附有UNIX模拟层的Windows上使用</td>
+<td style="text-align:left">客户端运行在大多数的UNIX系统上, 但没有MS-Windows本地程序. 基于cygwin的系统看起来也能使用</td>
+<td style="text-align:center">非常棒. 运行在基于所有能运行python的平台.仓库是兼容性的基于CPU结构和字节序的</td>
+<td style="text-align:left">非常好. 客户端和服务器端都能在UNIX, Windows和Mac OS X上运行</td>
+</tr>
+<tr>
+<td style="text-align:left">web接口</td>
+<td style="text-align:left">是的. CVSweb, ViewVC, Chora和wwCVS</td>
+<td style="text-align:left">是的. Gitweb包含在发布包中</td>
+<td style="text-align:center">是的. Web接口是内置组件</td>
+<td style="text-align:left">是的. ViewVC, SVN::Web, WebSVN, ViewSVN, mod_svn_view, Chora, Trac, SVN::RaWeb::Light, SVN Browser, Insurrection和perl_svn.另外, Subversion的apache服务也提供了一个基础的web接口</td>
+</tr>
+<tr>
+<td style="text-align:left">图形用户界面</td>
+<td style="text-align:left">非常好. 有很多图形界面可以用: WinCVS, Cervisia(对于KDE), TortoiseCVS(Windows浏览器插件)</td>
+<td style="text-align:left">Gitk包含在发行版中. Qqit和Git-gui工具也可使用</td>
+<td style="text-align:center">通过hgit扩展查看历史; 检入扩展(hgct)使得提交很容易. 一些第三方的IDEs和GUI工具(如eric3, meld)有一些集成的Mercurial支持</td>
+<td style="text-align:left">非常好. 有很多GUIs可用: RapidSVN(跨平台), TortoiseSVN(Windows浏览器插件), Jsvn(java), 等. 大多数都还在开发中</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="SVN使用简介"><a href="#SVN使用简介" class="headerlink" title="SVN使用简介"></a>SVN使用简介</h1><p>详细流程请参考以下博文，具体细节注意的已经写出。<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaobaihome/archive/2012/03/20/2407610.html">SVN服务器搭建和使用（一）|软件下载安装</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaobaihome/archive/2012/03/20/2407979.html">SVN服务器搭建和使用（二）|服务器搭建使用</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/xiaobaihome/archive/2012/03/20/2408089.html">SVN服务器搭建和使用（三）|SVN具体操作</a><br><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/86112f137d522d2736978765.html">Windows下搭建SVN服务器</a></p>
+<h2 id="搭建SVN服务器"><a href="#搭建SVN服务器" class="headerlink" title="搭建SVN服务器"></a>搭建SVN服务器</h2><p><a target="_blank" rel="noopener" href="http://subversion.apache.org/packages.html">Apache Subversion Binary Packages</a><br>从官网下载windows版本的Apache Subversion Binary Packages<br>选择VisualSVN版本服务器下载安装VisualSVN Server</p>
+<h2 id="TortoiseSVN客户端搭建"><a href="#TortoiseSVN客户端搭建" class="headerlink" title="TortoiseSVN客户端搭建"></a>TortoiseSVN客户端搭建</h2><p><a target="_blank" rel="noopener" href="https://tortoisesvn.net/downloads.html">TortoiseSVN</a><br>对应版本的TortoiseSVN客户端及汉化包</p>
+<h3 id="win7右键无法出现SVN选项"><a href="#win7右键无法出现SVN选项" class="headerlink" title="win7右键无法出现SVN选项"></a>win7右键无法出现SVN选项</h3><p>安装TortoiseSVN记着勾选第二个选项<em>command line client tools</em>，如果忘记请重新点击安装文件<em>modify</em>中进行重新安装。</p>
+<h2 id="导出到服务器"><a href="#导出到服务器" class="headerlink" title="导出到服务器"></a>导出到服务器</h2><p>主要用于将项目部署到服务器</p>
+<h2 id="客户端检出文件"><a href="#客户端检出文件" class="headerlink" title="客户端检出文件"></a>客户端检出文件</h2><p>鼠标右键点击<em>check out</em></p>
+<h3 id="检出完成后无法显示svn文件夹图标"><a href="#检出完成后无法显示svn文件夹图标" class="headerlink" title="检出完成后无法显示svn文件夹图标"></a>检出完成后无法显示svn文件夹图标</h3><p><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/0a52e3f43f3f6bbf63ed7259.html">SVN绿色对号消失，.svn目录在，怎么重新连接</a></p>
+<h1 id="Eclipse集成SVN"><a href="#Eclipse集成SVN" class="headerlink" title="Eclipse集成SVN"></a>Eclipse集成SVN</h1><p><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/63f236280a37680208ab3db7.html">Eclipse安装SVN教程</a><br><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/eae07827a977b61fed548572.html">MyEclipse安装SVN教程</a><br>注意网址<code>http://subclipse.tigris.org/update_1.8.x</code></p>
+<h1 id="Eclipse下使用svn"><a href="#Eclipse下使用svn" class="headerlink" title="Eclipse下使用svn"></a>Eclipse下使用svn</h1><p><a target="_blank" rel="noopener" href="http://blog.csdn.net/v123411739/article/details/22512133"> Eclipse中使用SVN</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/keyi/p/5949370.html">MyEclipse中SVN的常见的使用方法</a><br>新建资源库<br>新建项目<br>project —&gt; team</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2017/05/03/2017-05-03-版本控制概述VSSCVSSVNGit比较Windows下SVN搭建详细介绍/">http://hibiscidai.com/2017/05/03/2017-05-03-版本控制概述VSSCVSSVNGit比较Windows下SVN搭建详细介绍/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2017/05/19/2017-5-19-%E6%88%91%E5%A7%93%E9%BD%90%E5%A4%A9%E5%90%8D%E5%A4%A7%E5%9C%A3/"><i class="fa fa-chevron-left">  </i><span>我姓齐天，名大圣。</span></a></div><div class="next-post pull-right"><a href="/2017/04/08/2017-04-08-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%A3%8E%E6%A0%BC%E7%94%BB-Neural-Style-Art/"><span>神经网络风格画 Neural Style Art</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

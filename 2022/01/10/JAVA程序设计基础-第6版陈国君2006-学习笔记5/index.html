@@ -1,0 +1,1466 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="JAVA程序设计基础-第6版陈国君2006-学习笔记5"><meta name="keywords" content="JAVA,JAVA基础,学习笔记"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>JAVA程序设计基础-第6版陈国君2006-学习笔记5 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80-%E7%AC%AC6%E7%89%88%E9%99%88%E5%9B%BD%E5%90%9B2006-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05"><span class="toc-number">1.</span> <span class="toc-text">JAVA程序设计基础-第6版陈国君2006-学习笔记5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-Java%E6%95%B0%E6%8D%AE%E5%BA%93%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">第十七章 Java数据库程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.</span> <span class="toc-text">关系数据库系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">数据库与数据库表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.1.2.</span> <span class="toc-text">完整性约束</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%9F%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.1.2.1.</span> <span class="toc-text">域约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E7%A0%81%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.1.2.2.</span> <span class="toc-text">主码约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%96%E7%A0%81%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.1.2.3.</span> <span class="toc-text">外码约束</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL"><span class="toc-number">2.2.</span> <span class="toc-text">SQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.1.</span> <span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.2.</span> <span class="toc-text">表操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">创建表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%A1%A8"><span class="toc-number">2.2.2.2.</span> <span class="toc-text">删除表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.2.3.</span> <span class="toc-text">修改表结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">2.2.3.</span> <span class="toc-text">表数据操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE-INSERT"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">插入数据-INSERT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE-UPDATE"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">修改数据-UPDATE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE-DELETE"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">删除数据-DELETE</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2-SELECT"><span class="toc-number">2.2.4.</span> <span class="toc-text">数据查询-SELECT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.2.4.1.</span> <span class="toc-text">简单查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.2.4.2.</span> <span class="toc-text">条件查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.2.4.3.</span> <span class="toc-text">多重条件查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.2.4.4.</span> <span class="toc-text">模糊查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0%E5%8F%8A%E7%BB%9F%E8%AE%A1%E6%B1%87%E6%80%BB%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.2.4.5.</span> <span class="toc-text">常用的统计函数及统计汇总查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ORDER-BY-%E5%AD%97%E5%8F%A5"><span class="toc-number">2.2.4.6.</span> <span class="toc-text">ORDER BY 字句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="toc-number">2.2.4.7.</span> <span class="toc-text">分组数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC"><span class="toc-number">2.3.</span> <span class="toc-text">JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDBC%E6%A6%82%E8%BF%B0"><span class="toc-number">2.3.0.1.</span> <span class="toc-text">JDBC概述</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JDBC%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.1.</span> <span class="toc-text">JDBC类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B1-JDBC-ODBC%E6%A1%A5%E5%8A%A0ODBC%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.3.1.1.</span> <span class="toc-text">类型1:JDBC-ODBC桥加ODBC驱动程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B2-%E6%9C%AC%E5%9C%B0API%E9%83%A8%E5%88%86%E7%94%A8Java%E7%BC%96%E5%86%99%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.3.1.2.</span> <span class="toc-text">类型2:本地API部分用Java编写的驱动程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B3-JDBC%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E7%BA%AFJava%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E2%88%9A"><span class="toc-number">2.3.1.3.</span> <span class="toc-text">类型3:JDBC网络协议纯Java驱动程序√</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B4-%E6%9C%AC%E5%9C%B0%E5%8D%8F%E8%AE%AE%E7%BA%AFJava%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%E2%88%9A"><span class="toc-number">2.3.1.4.</span> <span class="toc-text">类型4:本地协议纯Java驱动程序√</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8JDBC%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">使用JDBC开发数据库应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">建立与数据库的链接</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BDJDBC%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.3.2.1.1.</span> <span class="toc-text">加载JDBC驱动程序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.3.2.1.2.</span> <span class="toc-text">创建数据库连接</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8CSQL%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">执行SQL语句</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAStatement%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.3.2.2.1.</span> <span class="toc-text">创建Statement对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B0%83%E7%94%A8Statement%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%9B%B8%E5%BA%94%E6%96%B9%E6%B3%95%E5%B0%86SQL%E8%AF%AD%E5%8F%A5%E5%8F%91%E9%80%81%E5%88%B0%E6%89%80%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.3.2.2.2.</span> <span class="toc-text">调用Statement对象的相应方法将SQL语句发送到所连接的数据库</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">处理返回结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%97%AD%E5%88%9B%E5%BB%BA%E7%9A%84%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.3.2.4.</span> <span class="toc-text">关闭创建的各种对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.3.</span> <span class="toc-text">数据库的进一步操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Statement%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">Statement接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PreparedStatement%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">PreparedStatement接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CallableStatement-%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.3.3.3.</span> <span class="toc-text">CallableStatement 接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">2.3.4.</span> <span class="toc-text">获取元数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DatabasedMetaData%E6%8E%A5%E5%8F%A3-%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="toc-number">2.3.4.1.</span> <span class="toc-text">DatabasedMetaData接口-获取数据库信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ResultSetMetaData%E6%8E%A5%E5%8F%A3-%E8%8E%B7%E5%8F%96%E7%BB%93%E6%9E%9C%E9%9B%86%E4%BF%A1%E6%81%AF"><span class="toc-number">2.3.4.2.</span> <span class="toc-text">ResultSetMetaData接口-获取结果集信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E7%89%A9%E6%93%8D%E4%BD%9C"><span class="toc-number">2.3.5.</span> <span class="toc-text">事物操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#setAutoCommit"><span class="toc-number">2.3.5.1.</span> <span class="toc-text">setAutoCommit()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#commit"><span class="toc-number">2.3.5.2.</span> <span class="toc-text">commit()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rollback"><span class="toc-number">2.3.5.3.</span> <span class="toc-text">rollback()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%AA%97%E5%8F%A3%E4%B8%AD%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.3.6.</span> <span class="toc-text">在窗口中访问数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93"><span class="toc-number">2.4.</span> <span class="toc-text">本章小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98"><span class="toc-number">2.5.</span> <span class="toc-text">课后习题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0-Java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">第十八章 Java网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80"><span class="toc-number">3.1.</span> <span class="toc-text">网络基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP"><span class="toc-number">3.1.1.</span> <span class="toc-text">TCP&#x2F;IP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-number">3.1.1.1.</span> <span class="toc-text">链路层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-number">3.1.1.2.</span> <span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-number">3.1.1.3.</span> <span class="toc-text">传输层</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-number">3.1.1.4.</span> <span class="toc-text">应用层</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%AB%AF%E5%8F%A3"><span class="toc-number">3.1.2.</span> <span class="toc-text">通信端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#URL%E6%A6%82%E5%BF%B5"><span class="toc-number">3.1.3.</span> <span class="toc-text">URL概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">3.1.4.</span> <span class="toc-text">Java语言的网络编程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL%E7%BC%96%E7%A8%8B"><span class="toc-number">3.2.</span> <span class="toc-text">URL编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAURL%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.2.1.</span> <span class="toc-text">创建URL对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8URL%E7%B1%BB%E8%AE%BF%E9%97%AE%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90"><span class="toc-number">3.2.2.</span> <span class="toc-text">使用URL类访问网络资源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8Java%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E5%BA%95%E5%B1%82%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1"><span class="toc-number">3.3.</span> <span class="toc-text">用Java语言实现底层网络通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InetAdress%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.1.</span> <span class="toc-text">InetAdress程序设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E8%BF%9E%E6%8E%A5%E7%9A%84Socket%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.2.</span> <span class="toc-text">基于连接的Socket通信程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Socket%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">3.3.2.1.</span> <span class="toc-text">Socket通信机制的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Socket%E7%B1%BB"><span class="toc-number">3.3.2.2.</span> <span class="toc-text">Socket类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ServerSocket%E7%B1%BB"><span class="toc-number">3.3.2.3.</span> <span class="toc-text">ServerSocket类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Socket%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.3.2.4.</span> <span class="toc-text">Socket通信模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8A%A5%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.3.</span> <span class="toc-text">无连接的数据报通信程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DatagramPacket%E7%B1%BB"><span class="toc-number">3.3.3.1.</span> <span class="toc-text">DatagramPacket类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DatagramSocket%E7%B1%BB"><span class="toc-number">3.3.3.2.</span> <span class="toc-text">DatagramSocket类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%8A%A5%E9%80%9A%E4%BF%A1%E7%9A%84%E5%8F%91%E9%80%81%E4%B8%8E%E6%8E%A5%E6%94%B6%E8%BF%87%E7%A8%8B"><span class="toc-number">3.3.3.3.</span> <span class="toc-text">数据报通信的发送与接收过程</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93-1"><span class="toc-number">3.4.</span> <span class="toc-text">本章小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E4%B9%A0%E9%A2%98-1"><span class="toc-number">3.5.</span> <span class="toc-text">课后习题</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">JAVA程序设计基础-第6版陈国君2006-学习笔记5</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-01-10</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">15.4k</span><span class="post-meta__separator">|</span><span>阅读时长: 52 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2022/01/10/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80-%E7%AC%AC6%E7%89%88%E9%99%88%E5%9B%BD%E5%90%9B2006-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80-%E7%AC%AC6%E7%89%88%E9%99%88%E5%9B%BD%E5%90%9B2006-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05.png" class="" title="JAVA程序设计基础-第6版陈国君2006-学习笔记5">
+<p>JAVA程序设计基础-第6版陈国君2006-学习笔记5</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="JAVA程序设计基础-第6版陈国君2006-学习笔记5"><a href="#JAVA程序设计基础-第6版陈国君2006-学习笔记5" class="headerlink" title="JAVA程序设计基础-第6版陈国君2006-学习笔记5"></a>JAVA程序设计基础-第6版陈国君2006-学习笔记5</h1><h1 id="第十七章-Java数据库程序设计"><a href="#第十七章-Java数据库程序设计" class="headerlink" title="第十七章 Java数据库程序设计"></a>第十七章 Java数据库程序设计</h1><h2 id="关系数据库系统"><a href="#关系数据库系统" class="headerlink" title="关系数据库系统"></a>关系数据库系统</h2><p><code>数据库</code>是按照一定的数据结构来组织、存储和管理数据的仓库；<br><code>数据库管理系统</code>（Data BaseManagement System, DBMS）是一种操纵和管理数据库的大型软件，用于建立、使用和维护数据库；<br><code>数据库系统</code>（database system）由数据库、数据库管理系统以及应用程序组成。</p>
+<p>应用程序视为用户与数据库之间的接口。</p>
+<img src="/2022/01/10/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80-%E7%AC%AC6%E7%89%88%E9%99%88%E5%9B%BD%E5%90%9B2006-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB.png" class="" title="应用程序与数据库之间的关系">
+<p>大多数数据库系统都是关系数据库系统。它们都是基于关系数据模型的，这种模型有三个要素：<code>结构</code>、<code>完整性</code>和<code>语言</code>。</p>
+<p><code>结构</code>定义了数据的表示；<br><code>完整性</code>是一些对数据的约束，所谓约束就是当向数据库中输入数据时所必须遵守的规则，所以约束也称为限制条件；<br><code>语言</code>则提供了访问和操纵数据的手段。</p>
+<h3 id="数据库与数据库表"><a href="#数据库与数据库表" class="headerlink" title="数据库与数据库表"></a>数据库与数据库表</h3><p>一个关系型数据库通常是由一个或多个二维数据库表组成，数据库中的二维数据库表简称表。</p>
+<p>数据库中的所有数据和信息都被保存在这些表中。</p>
+<p>数据库中的每个表都具有唯一的表名称，表中的行称为<code>记录</code>，列称为<code>字段</code>。</p>
+<h3 id="完整性约束"><a href="#完整性约束" class="headerlink" title="完整性约束"></a>完整性约束</h3><p>完整性约束是对表强加了一个限制条件，表中的所有合法值都必须满足该条件。</p>
+<p>完整性约束有三种类型：域约束、主码约束和外码约束。<br>域约束和主码约束只涉及一个表，而外码约束则涉及多个表。</p>
+<h4 id="域约束"><a href="#域约束" class="headerlink" title="域约束"></a>域约束</h4><p>域就是字段的取值范围，域约束就是规定一个表的字段的允许取值。</p>
+<h4 id="主码约束"><a href="#主码约束" class="headerlink" title="主码约束"></a>主码约束</h4><p>主码也称为主键，是表中用于唯一确定一条记录的一个字段或最小的字段组。<br>主码可以由一个字段组成，也可以是由多个字段共同组成，由多个字段共同组成的主码称为复合主码。<br>若一个表中存在多个可以作为主码的字段，则称这些字段为候选码或候选键。</p>
+<h4 id="外码约束"><a href="#外码约束" class="headerlink" title="外码约束"></a>外码约束</h4><p>若一个表的某个字段（或字段组合）不是该表的主码，却是另一个表的主码，则称这样的字段为该表的外码或外键。外码是表与表之间的纽带。</p>
+<blockquote>
+<p>所有关系数据库系统都支持主码约束和外码约束。但不是所有数据库系统都支持域约束。</p>
+</blockquote>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p><code>结构化查询语言</code>（Structured Query Language, SQL）是用来定义表和完整性约束以及访问和操纵数据库的语言，它是访问关系数据库的通用语言。</p>
+<p><code>[]</code>：表示可选项，即方括号中的内容可以根据需要进行选择；不选用时，则使用系统的默认值。方括号本身不是SQL语句的一部分，所以输入时不要输入方括号本身。<br><code>&#123;&#125;</code>：表示必选项，即大括号中的内容必须要提供。在实际操作时也不要输入大括号本身。<br><code>&lt; &gt;</code>：表示尖括号中的内容是用户必须提供的参数。输入时不要输入尖括号本身。<br><code>|</code>：表示只能选一项，竖线分隔多个选择项，用户必须选择其中之一。<br><code>[，...n]</code>：表示前面的项可重复n次，相互之间以逗号隔开。</p>
+<blockquote>
+<p>SQL的关键字不区分大小写。<br>SQL中不区分字符型和字符串型量，而统一定义为字符串型量，字符串型常量的定界符既可使用单引号也可使用双引号。</p>
+</blockquote>
+<h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE StudentScore;</span><br></pre></td></tr></table></figure>
+<h3 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h3><h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>(<span class="operator">&lt;</span>字段名<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[<span class="operator">&lt;</span>字段级完整性约束<span class="operator">&gt;</span>][,<span class="operator">&lt;</span>字段名<span class="operator">&gt;</span><span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>[<span class="operator">&lt;</span>字段级完整性约束<span class="operator">&gt;</span>]]...[,<span class="operator">&lt;</span>表级完整性约束<span class="operator">&gt;</span>]);</span><br></pre></td></tr></table></figure>
+<p><code>&lt;表名&gt;</code>：要创建的表的名字，表名在同一数据库中不允许重名。<br><code>&lt;字段名&gt;</code>：字段名字。<br><code>&lt;数据类型&gt;</code>：指定字段的数据类型，对有些数据类型还需同时给出其长度、小数位数。<br><code>&lt;字段级完整性约束&gt;</code>：字段完整性约束条件，主要有如下几种：NULL和NOT NULL：限制字段可以为NULL（空），或者不能为NULL；PRIMARY KEY：设置字段为主码；UNIQUE：设置字段值具有唯一性。<br><code>&lt;表级完整性约束&gt;</code>：表级完整性约束条件所使用的关键字与字段级完整性约束相似。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE <span class="title function_">Student</span><span class="params">(sNo CHAR(<span class="number">9</span>)</span> NOT NULL PRIMARY KEY, sName <span class="title function_">CHAR</span><span class="params">(<span class="number">12</span>)</span> NOT NULL, sex <span class="title function_">CHAR</span><span class="params">(<span class="number">2</span>)</span>, age INT, dept <span class="title function_">CHAR</span><span class="params">(<span class="number">50</span>)</span>); <span class="comment">//创建表Student, sNo为主码</span></span><br><span class="line"></span><br><span class="line">CREATE TABLE <span class="title function_">Course</span><span class="params">(cNo CHAR(<span class="number">9</span>)</span> NOT NULL PRIMARY KEY, cName <span class="title function_">CHAR</span><span class="params">(<span class="number">30</span>)</span></span><br><span class="line">NOT NULL, credit INT);<span class="comment">//创建表Course, cNo为主码</span></span><br><span class="line"></span><br><span class="line">CREATE TABLE <span class="title function_">Score</span><span class="params">(sNo CHAR(<span class="number">9</span>)</span> NOT NULL, cNo <span class="title function_">CHAR</span><span class="params">(<span class="number">6</span>)</span> NOT NULL, grade FLOAT, PRIMARY <span class="title function_">KEY</span><span class="params">(sNo, cNo)</span>);<span class="comment">//创建表Score,字段组sNo和cNo为复合主码</span></span><br></pre></td></tr></table></figure>
+<h4 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student;</span><br></pre></td></tr></table></figure>
+<h4 id="修改表结构"><a href="#修改表结构" class="headerlink" title="修改表结构"></a>修改表结构</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span></span><br><span class="line">[<span class="keyword">ALTER</span> COLUDMN <span class="operator">&lt;</span>字段名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span>]<span class="operator">|</span></span><br><span class="line">[<span class="keyword">ADD</span> <span class="keyword">COLUMN</span> <span class="operator">&lt;</span>字段名<span class="operator">&gt;</span> <span class="operator">&lt;</span>数据类型<span class="operator">&gt;</span> [<span class="operator">&lt;</span>字段级完整性约束<span class="operator">&gt;</span>]<span class="operator">|</span></span><br><span class="line">[<span class="keyword">DROP</span> <span class="keyword">COLUMN</span> <span class="operator">&lt;</span>字段名<span class="operator">&gt;</span>]<span class="operator">|</span></span><br><span class="line">[<span class="keyword">DROP</span> <span class="keyword">CONSTRAINT</span> <span class="operator">&lt;</span>完整性约束<span class="operator">&gt;</span>];</span><br></pre></td></tr></table></figure>
+<p><code>ALTER COLUMN子句</code>：修改表中已有字段的定义。<br><code>ADD COLUMN子句</code>：增加新字段及相应的完整性约束条件。<br><code>DROP COLUMN子句</code>：在该表中删除该子句中给出的字段。<br><code>DROP CONSTRAINT子句</code>：删除指定的完整性约束条件。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>利用<span class="keyword">SQL</span>语句给Student表添加一个字符型的电话字段phone,长度为<span class="number">11</span>个字符。</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> Student <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> phone <span class="type">CHAR</span>(<span class="number">11</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="表数据操作"><a href="#表数据操作" class="headerlink" title="表数据操作"></a>表数据操作</h3><p>SQL的数据操作语言（Data Manipulation Language, DML）的功能，包括向表中插入数据、修改数据、删除数据和查询数据等，对应操作所使用的命令为INSERT（ 插入） 、UPDATE（修改）、DELETE（删除）和SELECT（查询）等。</p>
+<h4 id="插入数据-INSERT"><a href="#插入数据-INSERT" class="headerlink" title="插入数据-INSERT"></a>插入数据-INSERT</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>[(<span class="operator">&lt;</span>字段名[,<span class="operator">&lt;</span>字段名<span class="operator">&gt;</span>]...<span class="operator">&gt;</span>)]<span class="keyword">VALUES</span>(<span class="operator">&lt;</span>值<span class="operator">&gt;</span>[,<span class="operator">&lt;</span>值<span class="operator">&gt;</span>]...);</span><br></pre></td></tr></table></figure>
+<p><code>&lt;表名&gt;</code>：要添加新记录的表。<br><code>&lt;字段名&gt;</code>：可选项，指定待添加数据的字段。<br><code>VALUES子句</code>：指定待添加数据的具体值。当指定字段名时，VALUES子句中值的排列顺序必须和字段名的排列顺序一致；若不指定字段，则VALUES子句中值的排列顺序必须与创建表字段时的排列顺序一致。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在学生表Student中插入一条学生记录，学号：<span class="number">201201009</span>，姓名：王毅，性别：男，年龄：<span class="number">18</span>，系别：外语。</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Student(sNo, sName, sex, age, dept)<span class="keyword">VALUES</span>(<span class="string">&#x27;201201009&#x27;</span>, <span class="string">&#x27;王&#x27;</span>, <span class="string">&#x27;男&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;外语&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="修改数据-UPDATE"><a href="#修改数据-UPDATE" class="headerlink" title="修改数据-UPDATE"></a>修改数据-UPDATE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span><span class="keyword">SET</span> <span class="operator">&lt;</span>字段名<span class="operator">&gt;=</span><span class="operator">&lt;</span>表达式<span class="operator">&gt;</span>[, <span class="operator">&lt;</span>字段名<span class="operator">&gt;=</span><span class="operator">&lt;</span>表达式<span class="operator">&gt;</span>[<span class="keyword">WHERE</span> <span class="operator">&lt;</span>条件<span class="operator">&gt;</span>];</span><br></pre></td></tr></table></figure>
+<p><code>SET子句</code>：给出要修改的字段及其修改后的值。<br><code>WHERE子句</code>：指定待修改的记录应当满足的条件。WHERE子句省略时，则修改表中所有记录。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> Student <span class="keyword">SET</span> dept<span class="operator">=</span><span class="string">&#x27;金融&#x27;</span> <span class="keyword">WHERE</span> sNo<span class="operator">=</span><span class="string">&#x27;201201009&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据-DELETE"><a href="#删除数据-DELETE" class="headerlink" title="删除数据-DELETE"></a>删除数据-DELETE</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span><span class="operator">&lt;</span>表名<span class="operator">&gt;</span>[<span class="keyword">WHERE</span> <span class="operator">&lt;</span>条件<span class="operator">&gt;</span>];</span><br></pre></td></tr></table></figure>
+<p><code>WHERE子句</code>：指定待删除的记录应当满足的条件。WHERE子句省略时，则删除表中所有记录。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在学生表Student中删除学号为<span class="number">201201009</span>的学生记录。</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> sNo<span class="operator">=</span><span class="string">&#x27;201201009&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="数据查询-SELECT"><a href="#数据查询-SELECT" class="headerlink" title="数据查询-SELECT"></a>数据查询-SELECT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> [<span class="keyword">ALL</span><span class="operator">|</span><span class="keyword">DISTINCT</span>][TOP n [<span class="keyword">PERCENT</span>]]&#123; <span class="operator">*</span> <span class="operator">|</span>&#123;<span class="operator">&lt;</span>字段名<span class="operator">&gt;</span><span class="operator">|</span><span class="operator">&lt;</span>表达式<span class="operator">&gt;</span><span class="operator">|</span>&#125;</span><br><span class="line">[[<span class="keyword">AS</span>]<span class="operator">&lt;</span>别名<span class="operator">&gt;</span>]<span class="operator">|</span><span class="operator">&lt;</span>字段名<span class="operator">&gt;</span>[[<span class="keyword">AS</span>]<span class="operator">&lt;</span>别名<span class="operator">&gt;</span>]&#125;[...n]&#125;</span><br><span class="line"><span class="keyword">FROM</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>[<span class="keyword">WHERE</span> <span class="operator">&lt;</span>查询条件表达式<span class="operator">&gt;</span>]</span><br><span class="line">[<span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>字段名表<span class="operator">&gt;</span>[<span class="keyword">HAVING</span> <span class="operator">&lt;</span>分组条件<span class="operator">&gt;</span>]]</span><br><span class="line">[ <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="operator">&lt;</span>次序表达式<span class="operator">&gt;</span>[ASCI <span class="keyword">DESC</span>]];</span><br></pre></td></tr></table></figure>
+<p><code>ALL</code>：指定在结果集中显示所有记录，包括重复行。ALL是默认设置。<br><code>DISTINCT</code>：指定在结果集中显示所有记录，但不包括重复行。<br><code>TOP n[PERCENT]</code>：指定从结果集中输出前n行，如果指定了PERCENT，表示从结果集中输出<br>前百分之n行。<br><code>∗</code>：指定返回查询表中的所有字段。<br><code>&lt;字段名&gt;</code>：指定要返回的字段。<br><code>&lt;表达式&gt;</code>：返回由字段名、常量、函数以及运算符连接起来的表达式的值。<br><code>&lt;别名&gt;</code>：指定在结果集中用”别名”来替换字段名或表达式进行显示。<br><code>FROM子句</code>：用于指定查询的表或视图。<br><code>WHERE子句</code>：用于设置查询条件。<br><code>GROUP BY子句</code>：指明按照<code>&lt;字段名表&gt;</code>中的值进行分组，该字段的值相同的记录为一个组。分组后每个组只返回一行结果。如果GROUP子句带HAVING子句，则只有满足HAVING指定条件的组才予以输出。如果GROUP BY后有多个字段名，则先按第一个字段分组，再按第二个字段分组，依次类推。<br><code>HAVING子句</code>：用来指定每一个分组内应该满足的条件，即对每个分组内的记录进行再筛选，它通常与GROUP BY子句一起使用。HAVING子句中的分组条件格式与WHERE子句中的条件格式类似。<br><code>ORDER BY子句</code>：将查询结果按指定的次序表达式的值升序或降序排列。次序表达式可以是字段名、字段的别名或表达式。ASC指定升序排列，DESC指定降序排列，默认排序方式为ASC。</p>
+<blockquote>
+<p>WHERE子句是对整个表中的数据筛选出满足条件的记录；<br>HAVING子句是对GROUP BY分组查询后产生的组设置的条件，所以是筛选出满足条件的组。<br>在HAVING子句中可以使用统计函数，而在WHERE子句则不能。<br>ORDER BY子句需放在SQL命令中的最后。</p>
+</blockquote>
+<h4 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在学生表Student中只查询学生的学号sNo和姓名sName两个字段，并且字段名分别以别名“学号”和“姓名”进行显示。</span><br><span class="line"><span class="keyword">SELECT</span> sNo <span class="keyword">AS</span> 学号, sName <span class="keyword">AS</span> 姓名 <span class="keyword">FROM</span> Student; <span class="operator">/</span><span class="operator">/</span>＂学号＂和＂姓名＂为别名</span><br></pre></td></tr></table></figure>
+<h4 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h4><ul>
+<li>WHERE常用的运算符及功能</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">= 、&gt; 、&lt; 、&gt;=、 &lt;=、 !=、 &lt; &gt;</td>
+<td style="text-align:center">比较大小</td>
+</tr>
+<tr>
+<td style="text-align:center">BETWEEN AND、NOT BETWEEN AND</td>
+<td style="text-align:center">确定范围</td>
+</tr>
+<tr>
+<td style="text-align:center">IN、NOT IN</td>
+<td style="text-align:center">确定集合</td>
+</tr>
+<tr>
+<td style="text-align:center">LIKE、NOT LIKE</td>
+<td style="text-align:center">字符匹配</td>
+</tr>
+<tr>
+<td style="text-align:center">IS NULL、IS NOT NULL</td>
+<td style="text-align:center">判断空值</td>
+</tr>
+<tr>
+<td style="text-align:center">AND、OR、NOT</td>
+<td style="text-align:center">逻辑运算(多重条件查询)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>确定范围运算符使用格式</span><br><span class="line">v <span class="keyword">BETWEEN</span> v1 <span class="keyword">AND</span> v2	<span class="operator">/</span><span class="operator">/</span>v<span class="operator">&gt;=</span>v1 <span class="keyword">AND</span> v<span class="operator">&lt;=</span>v2</span><br><span class="line">v <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> v1 <span class="keyword">AND</span> v2	<span class="operator">/</span><span class="operator">/</span>v<span class="operator">&lt;</span>v1 <span class="keyword">OR</span> v<span class="operator">&gt;</span>v2</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在学生表Student中查找计算机系的所有同学</span><br><span class="line"><span class="keyword">SELECT</span> ∗ <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> dept<span class="operator">=</span><span class="string">&#x27;计算机&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="多重条件查询"><a href="#多重条件查询" class="headerlink" title="多重条件查询"></a>多重条件查询</h4><p>逻辑运算符的优先级由高到低为：NOT，AND，OR，可以使用括号改变其优先级。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在学生表Student中查找计算机系所有男同学。</span><br><span class="line"><span class="keyword">SELECT</span> ∗ <span class="keyword">FROM</span> Student <span class="keyword">WHERE</span> dept<span class="operator">=</span><span class="string">&#x27;计算机&#x27;</span> <span class="keyword">AND</span> sex<span class="operator">=</span><span class="string">&#x27;男&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p>当查询条件不知道完全精确的值时，还可以使用LIKE或NOT LIKE进行模糊查询，模糊查询也称为部分匹配查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>字段名<span class="operator">&gt;</span>[<span class="keyword">NOT</span>]<span class="keyword">LIKE</span> <span class="operator">&lt;</span>匹配串<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>&lt;字段名&gt;</code>必须是字符型的字段；<br><code>&lt;匹配串&gt;</code>可以是一个完整的字符串，也可以是包含通配符的字符串。</p>
+<ul>
+<li>模糊查询时字符串中的通配符及其功能</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">通配符</th>
+<th style="text-align:center">功能说明</th>
+<th style="text-align:center">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">代表0个或多个字符</td>
+<td style="text-align:center">‘ab%表示’ab’后可接任意字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">_ (下画线)</td>
+<td style="text-align:center">代表一个字符</td>
+<td style="text-align:center">‘a _ b’表示’a’与’b’之间可为任意单个字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[]</td>
+<td style="text-align:center">表示在某一范围内的字符</td>
+<td style="text-align:center">[0-9]表示0~9的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[ ^ ]</td>
+<td style="text-align:center">表示不在某一范围内的字符</td>
+<td style="text-align:center">[ ^ 0-9]表示不在0~9的字符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT ∗ FROM Student WHERE sName LIKE <span class="string">&#x27;李%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="常用的统计函数及统计汇总查询"><a href="#常用的统计函数及统计汇总查询" class="headerlink" title="常用的统计函数及统计汇总查询"></a>常用的统计函数及统计汇总查询</h4><p>在SQL中除了可以使用算术运算符+（加法）、—（减法）、∗（乘法）和 / （除法）外，SQL还提供了一系列统计函数。</p>
+<ul>
+<li>常用的统计函数及功能</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名称</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">AVG(&lt;字段名&gt;)</td>
+<td style="text-align:center">求字段名所在列的平均值(必须是数值型列)</td>
+</tr>
+<tr>
+<td style="text-align:center">SUM(&lt;字段名&gt;)</td>
+<td style="text-align:center">求字段名所在列的总和(必领是数值型列)</td>
+</tr>
+<tr>
+<td style="text-align:center">MAX(&lt;字段名&gt;)</td>
+<td style="text-align:center">求字段名所在列的最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">MIN(&lt;字段名&gt;)</td>
+<td style="text-align:center">求字段名所在列的最小值</td>
+</tr>
+<tr>
+<td style="text-align:center">COUNT(+)</td>
+<td style="text-align:center">统计表中记录的个数</td>
+</tr>
+<tr>
+<td style="text-align:center">COUNT([DISTINCT] &lt;字段名&gt;)</td>
+<td style="text-align:center">统计字段名所在列非空值的个数,DISTINCT表示不包括字段的重复值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>上述函数中除COUNT(*)外，其他函数在计算过程中均忽略NULL值。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在成绩表Score中统计所有成绩grade的平均值。</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(grade) <span class="keyword">AS</span>平均成绩 <span class="keyword">FROM</span> Score; <span class="operator">/</span><span class="operator">/</span>＂平均成绩＂是表达式<span class="built_in">AVG</span>(grade)的别名</span><br></pre></td></tr></table></figure>
+<h4 id="ORDER-BY-字句"><a href="#ORDER-BY-字句" class="headerlink" title="ORDER BY 字句"></a>ORDER BY 字句</h4><p>ORDER BY是一个可选的子句，它允许根据指定字段的值按照升序或者降序的顺序显示查询结<br>果。其中默认为升序排列，用<code>ASC</code>表示，降序排列用<code>DESC</code>表示。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在成绩表Score中查询课程号cNo为c001的学生的学号sNo和成绩grade，并按成绩降序排列。</span><br><span class="line"><span class="keyword">SELECT</span> sNo, grade <span class="keyword">FROM</span> Score <span class="keyword">WHERE</span> cNo<span class="operator">=</span><span class="string">&#x27;c001&#x27;</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> grade <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<h4 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h4><p>统计函数只能产生单一的汇总数据，使用GROUP BY子句，则可以生成分组的汇总数据。</p>
+<p>GROUP BY子句可以按关键字段的值来组织数据，关键字段值相同的为一组。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>在成绩表Score中查询每门课程的课程号cNo和学生人数。</span><br><span class="line"><span class="keyword">SELECT</span> cNo, <span class="built_in">COUNT</span>(∗) <span class="keyword">AS</span> 人数 <span class="keyword">FROM</span> Score <span class="keyword">GROUP</span> <span class="keyword">BY</span> cNo; <span class="operator">/</span><span class="operator">/</span>&quot;人数&quot;是别名</span><br></pre></td></tr></table></figure>
+<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><p>JDBC是为在Java程序中访问数据库而设计的一组Java API，是Java数据库应用程序开发中的一项核心技术。</p>
+<h4 id="JDBC概述"><a href="#JDBC概述" class="headerlink" title="JDBC概述"></a>JDBC概述</h4><p>JDBC的含义是Java Database Connectivity，它是Java程序中访问数据库的标准API。</p>
+<p>一般来说，JDBC做三件事：与数据库建立连接；发送SQL语句；处理SQL语句执行的结果。</p>
+
+<h3 id="JDBC类型"><a href="#JDBC类型" class="headerlink" title="JDBC类型"></a>JDBC类型</h3><p>JDBC不能直接访问数据库，必须依赖于数据库厂商或第三方提供的JDBC驱动程序。</p>
+<h4 id="类型1-JDBC-ODBC桥加ODBC驱动程序"><a href="#类型1-JDBC-ODBC桥加ODBC驱动程序" class="headerlink" title="类型1:JDBC-ODBC桥加ODBC驱动程序"></a>类型1:JDBC-ODBC桥加ODBC驱动程序</h4><p>JDBC-ODBC桥由Sun公司开发，是JDK提供的标准API。</p>
+<p>于JDBC-ODBC桥先调用ODBC再由ODBC去调用本地数据库接口访问数据库，所以执行效率比较低。</p>
+<p>需要客户端预装对应的ODBC驱动程序，所以不适合Internet/Intranet应用。</p>
+<h4 id="类型2-本地API部分用Java编写的驱动程序"><a href="#类型2-本地API部分用Java编写的驱动程序" class="headerlink" title="类型2:本地API部分用Java编写的驱动程序"></a>类型2:本地API部分用Java编写的驱动程序</h4><p>是部分使用Java语言编写和部分使用本机代码编写的驱动程序，它将JDBC的调用直接翻译成对特定DBMS（如MySQL、SQL Server、Oracle等）客户端API的调用后再去访问数据库。</p>
+<p>是用特定的DBMS客户端取代JDBC-ODBC桥和ODBC，因此也具有与JDBC-ODBC桥相类似的局限性。</p>
+<h4 id="类型3-JDBC网络协议纯Java驱动程序√"><a href="#类型3-JDBC网络协议纯Java驱动程序√" class="headerlink" title="类型3:JDBC网络协议纯Java驱动程序√"></a>类型3:JDBC网络协议纯Java驱动程序√</h4><p>用纯Java语言编写。</p>
+<p>它将JDBC的调用转换成与DBMS无关的网络协议命令，之后发送给一个网络服务器中的数据库中间件，该中间件进一步将网络协议命令转换成某种DBMS所能理解的操作命令。</p>
+<p>网络协议是平台无关的。</p>
+<p>种驱动程序不调用任何本地代码。</p>
+<p>在服务器上配置有数据库驱动程序，并且由于多了一个中间件传递数据，它的执行效率还不是最好。</p>
+<h4 id="类型4-本地协议纯Java驱动程序√"><a href="#类型4-本地协议纯Java驱动程序√" class="headerlink" title="类型4:本地协议纯Java驱动程序√"></a>类型4:本地协议纯Java驱动程序√</h4><p>将JDBC调用直接转换成特定DBMS所使用的网络协议，这将允许从客户机上直接调用DBMS服务器，访问速度快。</p>
+<p>完全由Java语言实现，实现了平台的独立性。</p>
+<p>但对于不同的数据库需要下载不同的驱动程序。</p>
+<h3 id="使用JDBC开发数据库应用程序"><a href="#使用JDBC开发数据库应用程序" class="headerlink" title="使用JDBC开发数据库应用程序"></a>使用JDBC开发数据库应用程序</h3><p>JDBC API主要位于Java的<code>java.sql</code>包与<code>javax.sql</code></p>
+<ul>
+<li>JDBC中主要的类与接口</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类与接口</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">DriverManager</td>
+<td style="text-align:center">负责加载各种不同驱动程序(driver)并根据不同的请求。向调用者返回相应的数据库连接(conneetion)</td>
+</tr>
+<tr>
+<td style="text-align:center">Connection</td>
+<td style="text-align:center">数据库连接,负责与数据库间进行通信,SQL执行以及事务处理都是在某个特定连接环境中进行的,并可以产生用以执行SQL的Statement对象</td>
+</tr>
+<tr>
+<td style="text-align:center">Statement</td>
+<td style="text-align:center">用以执行不含参数的静态SQL查询和更新,并返回执行结果</td>
+</tr>
+<tr>
+<td style="text-align:center">PreparedStatement</td>
+<td style="text-align:center">用以执行包含参数的动态SQL查询和更新(在服务器端编译,允许重复执行以提高效率</td>
+</tr>
+<tr>
+<td style="text-align:center">CallableStatement</td>
+<td style="text-align:center">用以调用数据库中的存储过程</td>
+</tr>
+<tr>
+<td style="text-align:center">ResultSet</td>
+<td style="text-align:center">用以获得SQL查询结果</td>
+</tr>
+<tr>
+<td style="text-align:center">SQLException</td>
+<td style="text-align:center">代表在数据库连接的建立。关闭或SQL语句的执行过程中发生了异常</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>JDBC驱动程序开发商已提供了对这些接口的实现类，所以在使用时实际上是调用这些接口实现类中的方法。</p>
+</blockquote>
+<h4 id="建立与数据库的链接"><a href="#建立与数据库的链接" class="headerlink" title="建立与数据库的链接"></a>建立与数据库的链接</h4><p>数据库连接的建立包括两个步骤：<br>一是加载相应数据库的JDBC驱动程序；<br>二是创建数据库连接。</p>
+<h5 id="加载JDBC驱动程序"><a href="#加载JDBC驱动程序" class="headerlink" title="加载JDBC驱动程序"></a>加载JDBC驱动程序</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Class.forName(JDBCDriverClass);</span><br></pre></td></tr></table></figure>
+<p>该方法是Class类的静态方法，参数JDBCDriverClass是要加载的JDBC驱动程序类的名称，它是以字符串形式表达的类名。</p>
+<ul>
+<li>数据库的驱动程序类</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据库</th>
+<th style="text-align:center">驱动程序类</th>
+<th style="text-align:center">所在包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Access</td>
+<td style="text-align:center">sun.jdbc.odbe.JdbcOdbeDriver</td>
+<td style="text-align:center">捆绑JDK</td>
+</tr>
+<tr>
+<td style="text-align:center">SQL Server</td>
+<td style="text-align:center">com.microsoft.sqlserver.jdbc.SQLServerDriver</td>
+<td style="text-align:center">sqljdbc42.jar</td>
+</tr>
+<tr>
+<td style="text-align:center">MySQL</td>
+<td style="text-align:center">com.mysql.jdbc.Driver</td>
+<td style="text-align:center">mysql-connector-java-5.1.45-bin.jar</td>
+</tr>
+<tr>
+<td style="text-align:center">Oracle</td>
+<td style="text-align:center">oracle.jdbc.driver.OracleDriver</td>
+<td style="text-align:center">ojdbc6.jar</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="创建数据库连接"><a href="#创建数据库连接" class="headerlink" title="创建数据库连接"></a>创建数据库连接</h5><p>由于JDBC驱动程序与数据库的连接是以对象的形式表示的，所以创建数据库连接也称创建数据库连接对象。</p>
+<ul>
+<li>DriverManager类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public static Conection getConnection(String url, String user, String password)</td>
+<td style="text-align:center">建立JDBC驱动程序到指定数据库URL的连接。其中url提供了一种标识数据库的方法，user为用户名，password为密码</td>
+</tr>
+<tr>
+<td style="text-align:center">public static Driver getDriver(Stringurl)</td>
+<td style="text-align:center">返回url所指定的数据库连接的驱动程序</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(String url, String user, String password);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc: &lt; subprotocol &gt; : &lt; subname &gt;</span><br></pre></td></tr></table></figure>
+<p><code>&lt; subprotocol &gt;</code>是子协议，指数据库连接的方式；<br><code>&lt; subname &gt;</code>是子名称，是一种标识数据库的方法。</p>
+<ul>
+<li>数据库的URL</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">数据库</th>
+<th style="text-align:center">URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Access</td>
+<td style="text-align:center">jdbc:odbe:dataSource</td>
+</tr>
+<tr>
+<td style="text-align:center">SQL Server</td>
+<td style="text-align:center">jdbc:sqLserver://hostname:port#;DatabaseName-dbname</td>
+</tr>
+<tr>
+<td style="text-align:center">MySQL</td>
+<td style="text-align:center">jdbc:mysl://hostname/dbname</td>
+</tr>
+<tr>
+<td style="text-align:center">Oracle</td>
+<td style="text-align:center">jdbc:oracle:thin:@hostname:port#:oracleDBSID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>1）Access数据库的URL是<code>jdbc:odbc:dataSource</code>。ODBC数据源可以使用Windows下的<br>ODBC数据源管理器（data source administrator）来创建。</p>
+<p>2）SQL Server数据库的URL指定包含数据库的主机名（hostname）、数据库监听输入连接<br>请求的端口号（port#）和数据库名（dbname）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection (<span class="string">&quot;jdbc:sqlserver://1ocalhost:1433;DatabaseName=StudentScore&quot;</span>,<span class="string">&quot;sa&quot;</span>,<span class="string">&quot;123456&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>3）MySQL数据库的URL指定包含数据库的主机名（hostname）和数据库名（dbname）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConection(<span class="string">&quot;jdbe:mysql://localhost/StudentScore&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;123456&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>4）Oracle数据库的URL指定主机名（hostname）、数据库监听输入连接请求的端口号<br>（ port# ） 以及数据库名（ oracleDBSID ） 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(<span class="string">&quot;jdbc:oracle:thin:@localhost:1521:StudentScore&quot;</span>, <span class="string">&quot;root&quot;</span>, <span class="string">&quot;123456&quot;</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Connection接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public Statement createStatement()</td>
+<td style="text-align:center">创建一个Statement对象用束将SQL语句发送到数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">public Statement createStatement(int resultSetType, int resultSetConcurreney)</td>
+<td style="text-align:center">功能同上，参数resultSetType指定结果集类型，有三个取值：<br />TYPE_FORWORD_ONLY表示只可向前移动记录指针;<br />TYPE_SCROLL_INSENSITIVE表示可双向移动记录指针，但不及时更新，也就是如果数据库中的数据修改过，并不在ResultSet中反映出来；<br />TYPE_SCROLL_SENSITIVE表示可双向移动记录指针，并及时跟踪据库的更新，以便更改ResultSet中的数据。<br />参数resultSetConcurreney指定结果集的并发模式，有两个取值：<br />CONCUR_READ_ONLY表示不能用结果集更新数据库中的表；<br /> CONCUR_UPDATABLE表示能用结果集更新数据库中的表</td>
+</tr>
+<tr>
+<td style="text-align:center">public PreparedStatement prepareStatement(String sql)</td>
+<td style="text-align:center">创建一个PreparedStatement对象来将具有参数的动态SQL语句发送到数据库</td>
+</tr>
+<tr>
+<td style="text-align:center">public CallableStatement prepareCall(String sql)</td>
+<td style="text-align:center">创建一个CallableStatement对象来调用数据库的存储过程</td>
+</tr>
+<tr>
+<td style="text-align:center">public void close()</td>
+<td style="text-align:center">断开连接，释放此Conneetion对象的数据库和JDBC资源</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isClosed()</td>
+<td style="text-align:center">用于判断Connetion对象是否已经被关闭</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setAutoCommit(boolean autoCommit)</td>
+<td style="text-align:center">设置是否关闭自动提交模式</td>
+</tr>
+<tr>
+<td style="text-align:center">public void commit()</td>
+<td style="text-align:center">提交SQL语句，使从上一次提交/回滚以来进行的所有更改生效</td>
+</tr>
+<tr>
+<td style="text-align:center">public void rollback()</td>
+<td style="text-align:center">取消SQL语句的执行，撤销在当前事务中进行的所有更改</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="执行SQL语句"><a href="#执行SQL语句" class="headerlink" title="执行SQL语句"></a>执行SQL语句</h4><p>执行SQL语句包括两个步骤：<br>一是创建Statement对象；<br>二是通过调用该对象的相应方法将SQL语句发送到所连接的数据库去执行。</p>
+<h5 id="创建Statement对象"><a href="#创建Statement对象" class="headerlink" title="创建Statement对象"></a>创建Statement对象</h5><p>创建一个Statement接口对象，该对象将各种SQL语句发送到所连接的数据库中执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> conn.createStatement();</span><br></pre></td></tr></table></figure>
+<h5 id="调用Statement对象的相应方法将SQL语句发送到所连接的数据库"><a href="#调用Statement对象的相应方法将SQL语句发送到所连接的数据库" class="headerlink" title="调用Statement对象的相应方法将SQL语句发送到所连接的数据库"></a>调用Statement对象的相应方法将SQL语句发送到所连接的数据库</h5><p>如果SQL语句运行后产生结果集，Statement对象会将结果集封装成ResultSet对象并返回。</p>
+<ul>
+<li>Statement接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public ResultSet executeQuery(String sql)</td>
+<td style="text-align:center">执行给定的SQL语句，并将结果封装在结果集ResultSet对象中返回</td>
+</tr>
+<tr>
+<td style="text-align:center">public int executeUpdate(String sql)</td>
+<td style="text-align:center">执行给定的SQL语句，该语句可能是INSERT、UPDATE或DELETE或是不返回任何内容的SQL语句(如DDL语句)。该语句的返回值是一个整数，表示受影响的行数(即更新计数)</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean execute(String sql)</td>
+<td style="text-align:center">执行给定的SQL语句。如果执行的是SELECT语句，则返回true，调用getResultSet()方法获得执行SQL语句的返回结果；如果执行的是INSERT、UPDATE或DELETE，或者不返回任何内容的SQL语旬，则返回false，调用getUpdateCount()方法获得执行SQL语句的返回结果</td>
+</tr>
+<tr>
+<td style="text-align:center">public ResultSet getResultSet()</td>
+<td style="text-align:center">以ResultSet对象的形式返回当前结果。如果结果是更新计数(即执行executeUpdate()方法)或没有结果，则返回null</td>
+</tr>
+<tr>
+<td style="text-align:center">以更新计数的形式返回当前结果;如果结果为ResultSet 对象或</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getUpdateCount()</td>
+<td style="text-align:center">没有更多结果,则返回-1。每个结果只应调用一次该方法</td>
+</tr>
+<tr>
+<td style="text-align:center">public void close()</td>
+<td style="text-align:center">释放此Statement对象的数据库和JDBC资源</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>在executeQuery()与executeUpdate()方法中的字符串参数，如果超出一行将出现编译错误，所以在构造SQL参数时，需要将表达多行的字符串加上双引号并将各行用加号“+”连接起来。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">sqlStr</span> <span class="operator">=</span> <span class="string">&quot;SELECT sNo,sName,sex,age FROM Student WHERE dept=&#x27;计算机&#x27;&quot;</span>;</span><br><span class="line"><span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> stmt.executeQuery(sqlStr);<span class="comment">//执行查询操作并将查询结果存放到ResultSet对象rs中</span></span><br><span class="line"></span><br><span class="line"><span class="type">String</span> <span class="variable">sqlStr</span> <span class="operator">=</span> <span class="string">&quot;INSERT INTO Student(sNo,sName,sex,age,dept)＂+</span></span><br><span class="line"><span class="string">&quot;</span>VALUES(<span class="string">&#x27;201201009&#x27;</span>,<span class="string">&#x27;王毅&#x27;</span>,<span class="string">&#x27;男&#x27;</span>,<span class="number">18</span>,<span class="string">&#x27;外语&#x27;</span>)<span class="string">&quot;;</span></span><br><span class="line"><span class="string">stmt.executeUpdate(sqlStr);</span></span><br></pre></td></tr></table></figure>
+<h4 id="处理返回结果"><a href="#处理返回结果" class="headerlink" title="处理返回结果"></a>处理返回结果</h4><p>结果集是包含SQL的SELECT语句中符合条件的所有行，这些行的全体称为结果集，返回的结果集是一个表，而这个表就是ResultSet接口的对象。</p>
+<p>在结果集中通过记录指针（也称为游标）控制具体记录的访问，记录指针指向结果集的当前记录。在结果集中可以使用getXXX()方法从当前行获取值。</p>
+<ul>
+<li>ResultSet接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public boolean absolute(int row)</td>
+<td style="text-align:center">将记录指针移动到结果集的第row条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean relative(int row)</td>
+<td style="text-align:center">按相对行数(或正或负)移动记录指针</td>
+</tr>
+<tr>
+<td style="text-align:center">public void beforFirst()</td>
+<td style="text-align:center">将记录指针移动到结果集的头(第一条记录之前)</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean first()</td>
+<td style="text-align:center">将记录指针移动到结果集的第一条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean previous()</td>
+<td style="text-align:center">将记录指针从结果集的当前位置移动到上一条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean next()</td>
+<td style="text-align:center">将记录指针从结果集的当前位置移动到下一条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean last()</td>
+<td style="text-align:center">将记录指针移动到结果集的最后一条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public void afterLast()</td>
+<td style="text-align:center">将记录指针移动到结果集的尾(最后一条记录之后)</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isAfterlLast()</td>
+<td style="text-align:center">判断记录指针是否位于结果集的尾(最后一条记录之后)</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isBeforeFirst()</td>
+<td style="text-align:center">判断记录指针是否位于结果集的头(第一条记录之前)</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isFirst()</td>
+<td style="text-align:center">判断记录指针是否位于结果集的第一条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isLast()</td>
+<td style="text-align:center">判断记录指针是否位于结果集的最后一条记录</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getRow()</td>
+<td style="text-align:center">返回当前记录的行号</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getString(String columnLabel)</td>
+<td style="text-align:center">返回当前记录字段名为columnLabel的值</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getString(int columnIndex)</td>
+<td style="text-align:center">返回当前行第columnIndex列的值，类型为String</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getInt(int columnIndex)</td>
+<td style="text-align:center">返回当前行第columnIndex列的值，类型为int</td>
+</tr>
+<tr>
+<td style="text-align:center">public Statement getStatement()</td>
+<td style="text-align:center">返回生成结果集的Statement对象</td>
+</tr>
+<tr>
+<td style="text-align:center">public void close()</td>
+<td style="text-align:center">释放此ResultSet对象的数据库和JDBC资源</td>
+</tr>
+<tr>
+<td style="text-align:center">public ResdtSetMetaData getMetaData()</td>
+<td style="text-align:center">返回结果集的列的编号、类型和属性</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>记录指针的最初始位置位于第一条记录之前，即结果集的头。</p>
+<p>第一次调用next()方法使记录指针移到第一条记录，当记录指针移动到结果集的尾时其返回false。</p>
+<p>在使用ResultSet对象的getXXX()方法对结果集中的数据进行访问时，一定要使数据库中字段的数据类型与Java的数据类型相匹配。</p>
+<p>使用<code>Statement stmt = conn.createStatement();</code>语句，虽然可以得到Statement<br>类的对象stmt，通过语句<code>ResultSet rs = stmt.executeQuert(&quot;SELECT∗FROM Student&quot;);</code>也可以得到相应的结果集rs，但这种类型的结果集rs不能来回移动记录指针读取记录。如果需要来回移动记录指针读取结果集，创建Statement语句的时候需要使用如下带参数的方法定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Statement <span class="title function_">createStatement</span><span class="params">(<span class="type">int</span> resultSetType, <span class="type">int</span> resultSetConcurrency)</span>;</span><br><span class="line"></span><br><span class="line">conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>常用的SQL数据类型与Java数据类型之间的对应关系</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">SQL数据类型</th>
+<th style="text-align:center">Java数据类型</th>
+<th style="text-align:center">结果集中对应的方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">integer/ int</td>
+<td style="text-align:center">int</td>
+<td style="text-align:center">getInt()</td>
+</tr>
+<tr>
+<td style="text-align:center">smallint</td>
+<td style="text-align:center">short</td>
+<td style="text-align:center">getShort()</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">double</td>
+<td style="text-align:center">getDouble()</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">double</td>
+<td style="text-align:center">getDouble()</td>
+</tr>
+<tr>
+<td style="text-align:center">real</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">getFloat()</td>
+</tr>
+<tr>
+<td style="text-align:center">varchar/char/varchar2</td>
+<td style="text-align:center">java.lang.String</td>
+<td style="text-align:center">getString()</td>
+</tr>
+<tr>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">getBoolean()</td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">java.sql.Date</td>
+<td style="text-align:center">getDate()</td>
+</tr>
+<tr>
+<td style="text-align:center">time</td>
+<td style="text-align:center">java.sql.Time</td>
+<td style="text-align:center">getTime()</td>
+</tr>
+<tr>
+<td style="text-align:center">blob</td>
+<td style="text-align:center">java.sql.Blob</td>
+<td style="text-align:center">getBlob()</td>
+</tr>
+<tr>
+<td style="text-align:center">clob</td>
+<td style="text-align:center">java.sql.Clob</td>
+<td style="text-align:center">getClob()</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在使用getXXX()方法进行取值时，可以通过字段名或列号来标识要获取数据的列。</span></span><br><span class="line"><span class="comment">//下面两条语句的作用是一样的，都是读取当前行中sNo字段的内容。</span></span><br><span class="line"><span class="type">String</span> <span class="variable">no</span> <span class="operator">=</span> rs.getString(<span class="string">&quot;sNo&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//在ResultSet中，字段是从左至右编号的，并且从1开始。</span></span><br><span class="line"><span class="type">String</span> <span class="variable">no</span> <span class="operator">=</span> rs.getString(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="关闭创建的各种对象"><a href="#关闭创建的各种对象" class="headerlink" title="关闭创建的各种对象"></a>关闭创建的各种对象</h4><p>关闭的次序是：<br>①关闭结果集对象；<br>②关闭Statement对象；<br>③关闭连接对象。</p>
+<blockquote>
+<p>在任一时间内，一个给定的Statement对象只能打开一个结果集。当重新使用同一个Statement对象时，将会关闭先前生成的任何结果集。<br>在重新执行Statement对象之前，需要完成对当前ResultSet对象的处理。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(rs!=<span class="literal">null</span>) rs.close();    <span class="comment">//关闭结果集对象</span></span><br><span class="line">    <span class="keyword">if</span>(stmt!=<span class="literal">null</span>) stmt.close();    <span class="comment">//关闭Statement对象</span></span><br><span class="line">    <span class="keyword">if</span>(conn!=<span class="literal">null</span>) conn.close();    <span class="comment">//关闭JDBC与数据库的连接</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">catch</span>(Exception e)&#123; </span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="数据库的进一步操作"><a href="#数据库的进一步操作" class="headerlink" title="数据库的进一步操作"></a>数据库的进一步操作</h3><p>JDBC中执行SQL对表的查询有三种方式：<br>不含参数的静态查询（静态SQL语句）：Statement；<br>含有参数的动态查询（动态SQL语句）：PreparedStatement；<br>存储过程调用：CallableStatement。</p>
+<h4 id="Statement接口"><a href="#Statement接口" class="headerlink" title="Statement接口"></a>Statement接口</h4><p>谓静态SQL语句是指在执行executeQuery()、executeUpdate()等方法时，作为参数的SQL语句的内容固定不变，也就是SQL语句中没有参数。</p>
+<h4 id="PreparedStatement接口"><a href="#PreparedStatement接口" class="headerlink" title="PreparedStatement接口"></a>PreparedStatement接口</h4><p>就是可以在SQL语句中提供参数，这使得可以对相同的SQL语句替换参数从而多次使用。<br><code>预编译语句</code>：先让数据库管理系统在内部通过预先编译，形成带参数的内部指令，并保存在PreparedStatement接口的对象中。提高程序的执行效率。</p>
+<p>PreparedStatement对象也可用于执行不带参数的预编译的SQL语句。</p>
+<ul>
+<li>PreparedStatement接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public boolean execute()</td>
+<td style="text-align:center">执行任何种类的SQL的语句，可能会产生多个结果集</td>
+</tr>
+<tr>
+<td style="text-align:center">public ResultSet executeQuery()</td>
+<td style="text-align:center">执行SQL查询命令SELECT并返回结果集</td>
+</tr>
+<tr>
+<td style="text-align:center">public int executeUpdate()</td>
+<td style="text-align:center">执行修改的SQL指令如INSERT、DELETE、UPDATE等</td>
+</tr>
+<tr>
+<td style="text-align:center">public ResultSetMetaData getMetaData()</td>
+<td style="text-align:center">返回结果集ResultSet的有关字段的信息</td>
+</tr>
+<tr>
+<td style="text-align:center">public void clearParameters()</td>
+<td style="text-align:center">清除当前所有参数的值</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setBoolean(int parameterIndex, boolean x)</td>
+<td style="text-align:center">给第parameterIndex个参数设置boolean型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setInt(int parameterIndex, int x)</td>
+<td style="text-align:center">给第parameterIndex个参数设置int型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setDouble (int parameterIndex, double x)</td>
+<td style="text-align:center">给第parameterIndex个参数设置double型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setString (int parameterlndex, String x)</td>
+<td style="text-align:center">给第parameterIndex个参数设置String型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setDate(int parameterIndex, Date x)</td>
+<td style="text-align:center">给第parameterIndex个参数设置Date型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setObject (int parameterIndex, Object x)</td>
+<td style="text-align:center">给第parameterIndex个参数设置Object型值x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>可通过Connection的<code>prepareStatement()</code>方法创建<code>PreparedStatement</code>对象。在创建用于<code>PreparedStatement</code>对象的动态SQL语句时，可使用<code>?</code>作为动态参数的占位符。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">insertSql</span> <span class="operator">=</span> <span class="string">&quot;INSERT INTO Student(sNo,sName,sex,age,dept)VALUES(?,?,?,?,?);&quot;</span>;</span><br><span class="line"><span class="type">PreparedStatement</span> <span class="variable">ps</span> <span class="operator">=</span> conn.prepareStatement(insertSql);</span><br></pre></td></tr></table></figure>
+<p>在执行带参数的SQL语句前，必须对<code>?</code>进行赋值。这可以通过使用setXXX()方法，通过占位符的下标完成对输入参数的赋值（下标是从1开始的），XXX根据不同的数据类型进行选择。</p>
+<h4 id="CallableStatement-接口"><a href="#CallableStatement-接口" class="headerlink" title="CallableStatement 接口"></a>CallableStatement 接口</h4><p>存储过程是一组SQL语句，它们形成一个相对独立的逻辑单元，能完成特定的任务。</p>
+<p>该接口可以处理一般的SQL语句，也可以处理IN（输入）参数，同时它还定义了OUT（输出）参数及INOUT（输入输出）参数的处理方法</p>
+<p>IN（输入）：接收传递给存储过程的值；<br>OUT（输出）：用于存储过程执行结束后接收一个返回值，所以在调用存储过程时，不需要向OUT参数传递任何值；<br>INOUT（输入输出）：当存储过程被调用时，需要向该参数传递一个值，当存储过程执行完后该参数还将接收一个返回值；</p>
+<ul>
+<li>CallableStatement接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public void setInt( String parameterName,int x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为int型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setFloat(String parameterName,float x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为float 型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setDouble(String parameterName, double x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为double型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void set Boolean(String parameterName, boolean x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为boolean型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setString(String parameterName, String x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为String 型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setDate(String parameterName, Date x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为Date型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setObject (String parameterName, Object x)</td>
+<td style="text-align:center">将名为parameterName的参数设置为Object型值x</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getInt(int parameterIndex)</td>
+<td style="text-align:center">返回第parameterIndex个参数int型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getInt(String parameterName)</td>
+<td style="text-align:center">返回参数名为parameterNam的int 型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public float getFloat(int parameterIndex)</td>
+<td style="text-align:center">返回第parameterIndex个参数float型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public float getFloat(String parameterName)</td>
+<td style="text-align:center">返回参数名为parameterNam的float型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public double getDouble(int parameterIndex)</td>
+<td style="text-align:center">返回第parameterIndex个参数double型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public double getDouble(String parameterName)</td>
+<td style="text-align:center">返回参数名为parameterNam的double型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getString(int parameterIndex)</td>
+<td style="text-align:center">返回第parameterIndex个参数String 型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getString(String parameterName)</td>
+<td style="text-align:center">返回参数名为parameterNam的String 型值</td>
+</tr>
+<tr>
+<td style="text-align:center">public Object getObject(String parameterName)</td>
+<td style="text-align:center">返回参数名为parameterNam的Object型值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>创建一个CallableStatement对象可以使用Connection接口的prepareCall()方法，调用格式有三种：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不带参数的存储过程调用</span></span><br><span class="line"><span class="type">CallableStatement</span> <span class="variable">cs</span> <span class="operator">=</span> conn.prepareCall(<span class="string">&quot;&#123;call存储过程名&#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//带若干个参数的存储过程调用</span></span><br><span class="line"><span class="type">CallableStatement</span> <span class="variable">cs</span> <span class="operator">=</span> conn.prepareCall(<span class="string">&quot;&#123;call存储过程名(?,?,…)&#125;&quot;</span>); <span class="comment">//?是占位符</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//带若干个参数并且有返回值参数的存储过程调用（实际是函数调用）</span></span><br><span class="line"><span class="type">CallableStatement</span> <span class="variable">cs</span> <span class="operator">=</span> conn.prepareCall(<span class="string">&quot;&#123;?=call存储过程名(?,?,…)&#125;&quot;</span>); <span class="comment">//?是占位符</span></span><br></pre></td></tr></table></figure>
+<p>在执行带参数的SQL语句前，必须对IN和INOUT参数的占位符”?”进行赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cs.registerOutParamenter(<span class="type">int</span> index,<span class="type">int</span> sqlType);</span><br><span class="line"></span><br><span class="line">cs.registerOutParamenter(<span class="number">1</span>, java.sql.Types.INTEGER);</span><br></pre></td></tr></table></figure>
+<p>利用CallableStatement执行存储过程时，其执行结果可能是多个ResultSet、多次修改记录或两者都有的情况。所以对CallableStatement一般调用execute()方法执行SQL语句。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cs.execute();</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span>使用CallableStatement实现对数据库StudentScore中Student表的各种存储过程的调用。</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>第一个存储过程addStudent</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> addStudent(<span class="keyword">no</span> <span class="type">CHAR</span>(<span class="number">9</span>), name <span class="type">CHAR</span>(<span class="number">12</span>), sex <span class="type">CHAR</span>(<span class="number">2</span>), age <span class="type">int</span>, dept <span class="type">CHAR</span>(<span class="number">50</span>))</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">INSERT</span> <span class="keyword">INTO</span> Student(sNo, sName, sex, age, dept) <span class="keyword">VALUES</span>(<span class="keyword">no</span>, name, sex, age, dept);</span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>第二个存储过程getCount</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> getCount(<span class="keyword">OUT</span> total <span class="type">int</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">INTO</span> total <span class="keyword">FROM</span> Student;</span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span>第三个存储过程addSub</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> addSub(<span class="keyword">INOUT</span> numl <span class="type">int</span>, <span class="keyword">INOUT</span> num2 <span class="type">int</span>)</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">SET</span> numl <span class="operator">=</span> numl <span class="operator">+</span> num2;</span><br><span class="line">	<span class="keyword">SET</span> num2 <span class="operator">=</span> numl <span class="operator">-</span> num2 <span class="operator">-</span> num2;</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用CallableStatement按口,实现对存储过程的调用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">App17_18</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">driver</span> <span class="operator">=</span> <span class="string">&quot;com.myaql.jdbc.Driver&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost/StudentScore?useSSL=false&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    	<span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">CallableStatenent</span> <span class="variable">cs</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">callsql1</span> <span class="operator">=</span> <span class="string">&quot;&#123;call addStudent(?,?,?,?,?)&#125;&quot;</span>; <span class="comment">//&quot;?&quot;为存储过程IN型参数的占位符</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">callSql2</span> <span class="operator">=</span> <span class="string">&quot;&#123;call getCount(?)&#125;&quot;</span>; 	<span class="comment">//&quot;?&quot;为存储过程our型参数的占位符</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">callSql3</span> <span class="operator">=</span> <span class="string">&quot;&#123;call addSub(?, ?&#125;&quot;</span>; 	<span class="comment">//&quot;?&quot;为存储过程INOUT型参数的占位符</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class.forName(driver);</span><br><span class="line">            conn = DriverManager.getConnection(url, user, password);</span><br><span class="line">            </span><br><span class="line">            cs = conn.prepareCall(callSql1);	<span class="comment">//创建用于执行存储过程的对象cs</span></span><br><span class="line">            cs.setstring(<span class="number">1</span>, <span class="string">&quot;201201009&quot;</span>);	<span class="comment">//对第14行中的第1个IN参数赋值</span></span><br><span class="line">            es.setString(<span class="number">2</span>, <span class="string">&quot;王毅&quot;</span>);</span><br><span class="line">            cs.setString(<span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">            ca.setInt(<span class="number">4</span>, <span class="number">18</span>);</span><br><span class="line">            cs.setStrsing(<span class="number">5</span>, <span class="string">&quot;外语”);</span></span><br><span class="line"><span class="string">            cs.execute();	//执行sQL, 的存储过程adStudent</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">            ca = conn.prepareCall(callSql2);	//创建用于执行存储过程的对象ca            </span></span><br><span class="line"><span class="string">            //下面语句注册getCount存鍺过程OUT参数的类型</span></span><br><span class="line"><span class="string">            cs.registerOutParameter(1, java.sql.Types.INTEGER);</span></span><br><span class="line"><span class="string">            c8.execute();	//执行SQL的存储过程getCount</span></span><br><span class="line"><span class="string">            int total = es.getInt(1);	//返回存储过程getCount的第1个out参数</span></span><br><span class="line"><span class="string">            System.out.printIn(&quot;</span>总人数为: <span class="string">&quot; + total);</span></span><br><span class="line"><span class="string">            int a=5;</span></span><br><span class="line"><span class="string">            int b=3;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">            cs = conn. prepareCall(cal1Sq13);	//创建用于执行存储过程的对象cs</span></span><br><span class="line"><span class="string">            ca.setInt(1, a);	//对第16行中的第1个INOUT型参数赋值</span></span><br><span class="line"><span class="string">            cs. setInt(2, b);	//对第16行中的第2个INOUT型参数赋值</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">            //下面两条语句分别注册addSub第1.2个INOUT参数的类型</span></span><br><span class="line"><span class="string">            c8.regiaterOutParameter(1, java.sq1.Types.INTEGER);</span></span><br><span class="line"><span class="string">            c8.registerOutParameter(2, java.sql.Types.INTEGER);</span></span><br><span class="line"><span class="string">            c8.execute();</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">            //执行SQL的存储过程adSub</span></span><br><span class="line"><span class="string">            int sum = c8.getInt(1);</span></span><br><span class="line"><span class="string">            //返回存储过程addSub的第1个INOUT型参数的值</span></span><br><span class="line"><span class="string">            int sub = es.getInt(2);</span></span><br><span class="line"><span class="string">            //返回存储过程adSub的第2个INOUT型参数的值</span></span><br><span class="line"><span class="string">            System.out.println(a + &quot;</span>与<span class="string">&quot; + b + &quot;</span>的和: <span class="string">&quot; + sun + &quot;</span>,差: <span class="string">&quot; + sub);</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        &#125; catch(Exception e) &#123;</span></span><br><span class="line"><span class="string">        	e.printStackTrace();</span></span><br><span class="line"><span class="string">        &#125; finally &#123;</span></span><br><span class="line"><span class="string">        	try &#123;</span></span><br><span class="line"><span class="string">        		if(cs != mu11) cs.close();</span></span><br><span class="line"><span class="string">                if(conn != mul1) conn.close();</span></span><br><span class="line"><span class="string">        	&#125; catch(Exception e) &#123;</span></span><br><span class="line"><span class="string">        		e.printStackTrace();</span></span><br><span class="line"><span class="string">        	&#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="获取元数据"><a href="#获取元数据" class="headerlink" title="获取元数据"></a>获取元数据</h3><p>谓元数据（meta data）就是有关数据库和表结构的信息，如数据库中的表、表的字段、表的索引、数据类型、对SQL的支持程度等信息。</p>
+<p>JDBC提供DatabaseMetaData接口用来获取数据库范围的信息，提供ResultSetMetaData接口用来获取特定结果集ResultSet的信息，如字段名和字段个数等。</p>
+<h4 id="DatabasedMetaData接口-获取数据库信息"><a href="#DatabasedMetaData接口-获取数据库信息" class="headerlink" title="DatabasedMetaData接口-获取数据库信息"></a>DatabasedMetaData接口-获取数据库信息</h4><p>DatabaseMetaData接口主要是用来得到关于数据库的信息，如数据库中所有表名、系统函数、关键字、数据库产品名和数据库支持的JDBC 驱动程序名等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">DatabaseMetaData</span> <span class="variable">dmd</span> <span class="operator">=</span> conn.getMetaData();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>DatabaseMetaData接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法名称</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public boolean supportsOuterJoins()</td>
+<td style="text-align:center">判断数据库是否支持外部连接</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean supportsStoredProcedures()</td>
+<td style="text-align:center">判断数据库是否支持存储过程</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getURL()</td>
+<td style="text-align:center">返回用于连接数据库的URL地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getUserName()</td>
+<td style="text-align:center">返回当前用户名</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getDatabaseProductName()</td>
+<td style="text-align:center">返回使用的数据库产品名</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getDatabaseProductVersion()</td>
+<td style="text-align:center">返回使用的数据库版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getDriverName()</td>
+<td style="text-align:center">返回用以连接的驱动程序名称</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getDriverVersion()</td>
+<td style="text-align:center">返回用以连接的驱动程序版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">public ResultSet getTypeInfo()</td>
+<td style="text-align:center">返回当前数据库中支持的所有数据类型的描述</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="ResultSetMetaData接口-获取结果集信息"><a href="#ResultSetMetaData接口-获取结果集信息" class="headerlink" title="ResultSetMetaData接口-获取结果集信息"></a>ResultSetMetaData接口-获取结果集信息</h4><p>ResultSetMetaData接口主要用来获取结果集的结构。例如，结果集字段的数量、字段的名字等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ResultSetMetaData</span> <span class="variable">rsMetaData</span> <span class="operator">=</span> rs.getMetaData();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>ResultSetMetaData接口的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public int getColumnCount()</td>
+<td style="text-align:center">返回此ResultSet对象中的字段数</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getColumnName(int column)</td>
+<td style="text-align:center">返回指定列的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getColumnType(int column)</td>
+<td style="text-align:center">返回指定列的SQL类型</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getColumnDisplaySize(int column)</td>
+<td style="text-align:center">以字符为单位返回指定字段的最大宽度</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isAutoIncrement(int column)</td>
+<td style="text-align:center">判断是否自动为指定字段进行编号，判断给定字段是否可以为null,返回值是columnNoNulls</td>
+</tr>
+<tr>
+<td style="text-align:center">public int isNullable(int column)</td>
+<td style="text-align:center">columnNullable或columnNullableUnknown之一</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isSearchable(int column)</td>
+<td style="text-align:center">判断是否可以在WHERE子句中使用指定的字段</td>
+</tr>
+<tr>
+<td style="text-align:center">public boolean isReadOnly(int column)</td>
+<td style="text-align:center">判断指定的字段是否为只读</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="事物操作"><a href="#事物操作" class="headerlink" title="事物操作"></a>事物操作</h3><p>事务是保证数据库中数据完整性与一致性的重要机制。事务由一组SQL语句组成，这组语句要么都执行，要么都不执行，因此事务具有原子性。</p>
+<p>已提交事务是指成功执行完毕的事务，未能成功执行完成的事务称为中止事务，对中止事务造成的变更需要进行撤销处理，称为<code>事务回滚</code>。</p>
+<p>事物操作基于connection</p>
+<h4 id="setAutoCommit"><a href="#setAutoCommit" class="headerlink" title="setAutoCommit()"></a>setAutoCommit()</h4><p>事务操作默认是自动提交。</p>
+<p>即每一条SQL语句都被看作是一个事务，对数据库的更新操作成功后，系统将自动调用<code>commit()</code>方法提交。若把多个SQL语句作为一个事务就要关闭这种自动提交模式，这是通过调用当前连接的<code>setAutoCommit(flase)</code>方法来实现的。</p>
+<h4 id="commit"><a href="#commit" class="headerlink" title="commit()"></a>commit()</h4><p>当连接的自动提交模式被关闭后，SQL语句的执行结果将不被提交。</p>
+<h4 id="rollback"><a href="#rollback" class="headerlink" title="rollback()"></a>rollback()</h4><p>当调用<code>ommit()</code>法进行事务处理时，只要事务中的任何一条SQL语句没有生效，就会抛出SQLException异常。</p>
+<p>这个方法将取消事务，并将该事务已执行部分对数据的修改恢复到事务执行前的值。</p>
+<ul>
+<li>回滚保存点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Savepoint</span> <span class="variable">s1</span> <span class="operator">=</span> conn.setSavepoint();</span><br><span class="line">conn.rollback(s1);</span><br></pre></td></tr></table></figure>
+<h3 id="在窗口中访问数据库"><a href="#在窗口中访问数据库" class="headerlink" title="在窗口中访问数据库"></a>在窗口中访问数据库</h3><h2 id="本章小结"><a href="#本章小结" class="headerlink" title="本章小结"></a>本章小结</h2><ul>
+<li>数据库、数据库管理系统和数据库系统是三个不同的概念。</li>
+<li>一个关系型数据库是由一个或多个二维表构成的。表的列称为字段，行称为记录。</li>
+<li>数据库中的表有三种约束：域约束、主码约束和外码约束。</li>
+<li>SQL是结构化查询语言（Structured Query Language）的英文缩写，是用来定义数据库表和完<br>整性约束以及访问和操纵数据的语言。</li>
+<li>JDBC是为在Java程序中访问数据库而设计的一组Java API，包含有一组类与接口，用于与数据库的连接、把SQL语句发送到数据库、处理SQL语句的结果以及获取数据库的元数据等。</li>
+<li>使用Java开发任何数据库应用程序都需要四个接口：Driver、Connection、Statement和ResultSet。这些接口定义了使用SQL语句访问数据库的方法。JDBC驱动程序开发商或第三方已实现了这些接口中的方法。</li>
+<li>使用JDBC访问数据库的一般步骤为：加载驱动程序、建立与数据库的连接、创建执行方式语句、执行SQL语句、处理返回结果和关闭创建的各种对象。</li>
+<li>JDBC中有三种SQL查询方式：不含参数的静态查询、含有参数的动态查询和存储过程调用。这三种方式分别对应Statement、PreparedStatement和CallableStatement接口。</li>
+<li>JDBC通过Statement接口实现静态SQL查询，通过PreparedStatement接口实现动态SQL查询，通过CallableStatement接口实现存储过程的调用。</li>
+<li>JDBC通过ResultSet返回查询结果集，并提供记录指针对其记录进行定位。</li>
+<li>JDBC通过DatabaseMetaData接口获得关于数据库的信息，通过ResultSetMetaData接口获取结果集的结构。</li>
+<li>JDBC默认的事务提交方式是自动提交，可以通过setAutoCommit()方法控制事务提交方式，使用rollback()方法可实现事务回滚。</li>
+</ul>
+<h2 id="课后习题"><a href="#课后习题" class="headerlink" title="课后习题"></a>课后习题</h2><ul>
+<li>写出在数据库StudentScore的Student表中查找所有年龄大于或等于19的同学的SQL语句。</li>
+<li>写出姓名为“刘韵”的学生所学课程名称及成绩的SQL语句。</li>
+<li>描述JDBC中Driver、Connection、Statement和ResultSet接口的功能。</li>
+<li>使用Statement接口和PreparedStatement接口有什么区别？</li>
+<li>归纳一下使用JDBC进行数据库访问的完整过程。</li>
+<li>如何在结果集中返回字段的数目？如何在结果集中返回字段名？</li>
+<li>编写一个应用程序，使其可以从StudentScore数据库的某个表中查询一个字段的所有信息。</li>
+<li>创建一个名为Books的数据库，并在其中建立一个名为Book的表，字段包括书名、作者、出版社、出版时间和ISBN。编写一个应用程序，运用JDBC在该数据库中实现增加、删除和修改数据的功能。</li>
+<li>假设在StudentScore数据库的Student表中，存在多个姓氏相同的人，根据这种情况建立查询，要求提供一个合适的图形界面，用户可以滚动查看查询记录。</li>
+</ul>
+<h1 id="第十八章-Java网络编程"><a href="#第十八章-Java网络编程" class="headerlink" title="第十八章 Java网络编程"></a>第十八章 Java网络编程</h1><h2 id="网络基础"><a href="#网络基础" class="headerlink" title="网络基础"></a>网络基础</h2><h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h3><p>网络通信协议是计算机间进行通信所遵守的各种规则的集合。</p>
+<p>Internet的主要协议有：网络层的IP协议；传输层的TCP和UDP协议；应用层的FTP、HTTP、SMTP等协议。其中传输控制协议（TransportControl Protocol, TCP）和网际互联协议（Internet Protocol，IP）是Internet的主要协议。</p>
+<p>TCP/IP网络参考模型包括四个层次：应用层、传输层、网络层、链路层。</p>
+<h4 id="链路层"><a href="#链路层" class="headerlink" title="链路层"></a>链路层</h4><p>链路层也称为数据链路层或网络接口层。通常包括操作系统中的设备驱动程序和计算机中对应的网络接口卡。它们一起处理与电缆（或其他任何传输媒介）有关的物理接口细节。</p>
+<h4 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h4><p>网络层对TCP/IP网络中的硬件资源进行标识。</p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>在TCP/IP网络中，不同的机器之间进行通信时，数据的传输是由传输层控制的，这包括数据要发往的目的主机及应用程序、数据的质量控制等。</p>
+<p>用于通信的端点是由Socket来定义的，而Socket是由IP地址和端口号组成的。</p>
+<p>TCP是通过在端点与端点之间建立持续的连接而进行通信的。整个字节流到达接收端时完好无缺。</p>
+<p>UDP是一种无连接的传输协议，传输方式是无序的，也不能确保绝对安全可靠，但它非常简单，也具有比较高的效率。</p>
+<p>当对所传输的数据有时序性和可靠性等要求时，应使用TCP；<br>当传输的数据比较简单、对时序等无要求时，UDP能发挥更好的作用。</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>大多数基于Internet的应用程序。<br>FTP、HTTP、SMTP、POP3、Telnet等。</p>
+<h3 id="通信端口"><a href="#通信端口" class="headerlink" title="通信端口"></a>通信端口</h3><p>一台机器只能通过一条链路连接到网络上，网络端口号（port）就是用于区分一台主机中的不同应用程序。</p>
+<p>个标记计算机逻辑通信信道的正整数。</p>
+<p>其范围为0~65 535，其中，0~1023被系统保留，专门用于那些通用的服务（well-known service）</p>
+<p>HTTP服务的端口号为80，Telnet服务的端口号为21，FTP服务的端口号为23。</p>
+<p>IP地址和端口号组成了所谓的Socket。</p>
+<p>Socket是网络上运行的程序之间双向通信链路的最后终结点，是TCP和UDP的基础。</p>
+<h3 id="URL概念"><a href="#URL概念" class="headerlink" title="URL概念"></a>URL概念</h3><p>URL是统一资源定位器（Uniform Resource Locator）的英文缩写。</p>
+<p>URL的基本结构由五部分组成，其格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">传输协议://主机名:端口号/文件名#引用</span><br></pre></td></tr></table></figure>
+<p>（1）传输协议（protocol）：指所使用的协议名，如HTTP、FTP等。<br>（2）主机名（hostname）：指资源所在的计算机。可以是IP地址，也可以是计算机的名称或域名。<br>（3）端口号（portnumber）：一个计算机中可能有多种服务，如Web服务、FTP服务或自己建立的服务等。为了区分这些服务，就需要使用端口号，每一种服务用一个端口号。<br>（4）文件名（filename）：包括该文件的完整路径。在HTTP中，有一个默认的文件名是index.html，因此，下列两个地址是等价的。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://java.sun.com</span><br><span class="line">http://java.sun.com/index.html</span><br></pre></td></tr></table></figure><br>（ 5 ） 引用（ reference ） ： 就是资源内部的某个参考点， 如<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://java.sun.com/index.html#chapter1。</span><br></pre></td></tr></table></figure></p>
+<h3 id="Java语言的网络编程"><a href="#Java语言的网络编程" class="headerlink" title="Java语言的网络编程"></a>Java语言的网络编程</h3><p>Java语言的网络编程分为三个层次。</p>
+<ul>
+<li>从网络上下载小程序</li>
+<li>通过URL类的对象指明文件所在位置</li>
+<li>利用java.net包中提供的类直接在程序中实现网络通信</li>
+</ul>
+<p>针对不同层次的网络通信，Java语言提供的网络功能有四大类：URL、InetAddress、Socket、Datagram。</p>
+<ul>
+<li>URL：面向应用层，通过URL, Java程序可以直接输出或读取网络上的数据。</li>
+<li>InetAddress：面向的是IP层，用于标识网络上的硬件资源。</li>
+<li>Socket和Datagram：面向的是传输层。Socket使用TCP，这是传统网络程序最常用的方式，可以想象为两个不同的程序通过网络的通信信道进行通信；Datagram则使用UDP，是另一种网络传输方式，它把数据的目的地址记录在数据包中，然后直接放在网络上。</li>
+</ul>
+<p>Java语言网络编程中主要使用的java.net包中的类如下。</p>
+<ul>
+<li>面向IP层的类：InetAddress；</li>
+<li>面向应用层的类：URL、URLConnection；</li>
+<li>TCP相关类：Socket、ServerSocket；</li>
+<li>UDP 相关类： DatagramPacket 、DatagramSocket 、MulticastSocket。</li>
+</ul>
+<p>可能产生的异常包括BindExceptio 、ConnectException 、MalformedURLException 、NoRouteToHostException 、ProtocolException 、SocketException 、Unknown-HostException、UnknownServiceException。</p>
+<h2 id="URL编程"><a href="#URL编程" class="headerlink" title="URL编程"></a>URL编程</h2><h3 id="创建URL对象"><a href="#创建URL对象" class="headerlink" title="创建URL对象"></a>创建URL对象</h3><ul>
+<li>创建URL对象的构造方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构造方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public URL(String spec)</td>
+<td style="text-align:center">使用URL形式的字符串spec创建一个URL对象</td>
+</tr>
+<tr>
+<td style="text-align:center">public URL(String protocol, String host, int port, String file)</td>
+<td style="text-align:center">创建一个协议为protocol、主机名为host、端口号为port、待访问的文件名为file的URL对象.</td>
+</tr>
+<tr>
+<td style="text-align:center">public URL(String protocol, String host, String file)</td>
+<td style="text-align:center">创建一个URL对象,参数的含义同上、但使用默认端口号</td>
+</tr>
+<tr>
+<td style="text-align:center">public URL(String protocol, String host, int port, String file, URLStream Handler handler)</td>
+<td style="text-align:center">创建一个协议为protocol、主机名为host、端口号为port、待访问的文件名为file、URL流句柄为handler的URL对象</td>
+</tr>
+<tr>
+<td style="text-align:center">public URL(URL context,String spec)</td>
+<td style="text-align:center">使用已有的URL对象context和URL形式的字符串spec创建URL对象</td>
+</tr>
+<tr>
+<td style="text-align:center">public URL(URL context, String spee, URI StreamHandlerhandler)</td>
+<td style="text-align:center">参数同上，但创建的URL对象包含流句柄handler</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>在创建URL对象时，若发生错误，系统会产生MalformedURLException异常，这是非运行时异常，必须在程序中捕获处理。</p>
+</blockquote>
+<ul>
+<li>URL类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public boolean equals(Object obj)</td>
+<td style="text-align:center">判断两个URL是否相同</td>
+</tr>
+<tr>
+<td style="text-align:center">public final Object getContent()</td>
+<td style="text-align:center">获取URL连接的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getProtocol()</td>
+<td style="text-align:center">返回URL对象的协议名称</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getHost()</td>
+<td style="text-align:center">返回URL对象访问的计算机名称</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getPort()</td>
+<td style="text-align:center">返回URL对象访问的端口号</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getFile()</td>
+<td style="text-align:center">返回URL指向的文件名</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getPath()</td>
+<td style="text-align:center">返回URL对象所使用的文件路径</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getRef()</td>
+<td style="text-align:center">返回URL对象的引用字符串，即获取参考点</td>
+</tr>
+<tr>
+<td style="text-align:center">public URLConnction openConnection()</td>
+<td style="text-align:center">打开URL指向的连接</td>
+</tr>
+<tr>
+<td style="text-align:center">public final InputStream openStream()</td>
+<td style="text-align:center">打开输人流</td>
+</tr>
+<tr>
+<td style="text-align:center">protected void set(String protocol，String host, int port, String file, String ref)</td>
+<td style="text-align:center">用给定参数设置URL中各字段的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">public String toString()</td>
+<td style="text-align:center">返回整个URL字符串</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="使用URL类访问网络资源"><a href="#使用URL类访问网络资源" class="headerlink" title="使用URL类访问网络资源"></a>使用URL类访问网络资源</h3><h2 id="用Java语言实现底层网络通信"><a href="#用Java语言实现底层网络通信" class="headerlink" title="用Java语言实现底层网络通信"></a>用Java语言实现底层网络通信</h2><h3 id="InetAdress程序设计"><a href="#InetAdress程序设计" class="headerlink" title="InetAdress程序设计"></a>InetAdress程序设计</h3><p>Internet上主机的地址有两种表示方式，即域名和IP地址。</p>
+<p>在已知一个InetAddress对象时，就可以通过一定的方法从中获取Internet上主机的地址（域名或IP地址）。</p>
+<p>InetAddress类没有构造方法， 因此不能用new运算符来创建InetAddress对象，通常是用它提供的静态方法来获取。</p>
+<ul>
+<li>InetAddress类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public static InetAddress getByName(String host)</td>
+<td style="text-align:center">通过给定的主机名host, 获取InetAddress 对象的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public static InetAddress getByAddress( byte[] addr)</td>
+<td style="text-align:center">通过存放在字节数组中的IP地址,返回一个InetAddress对象</td>
+</tr>
+<tr>
+<td style="text-align:center">public static InetAddress getLocalHost()</td>
+<td style="text-align:center">获取本地主机的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public byte[] getAddress()</td>
+<td style="text-align:center">获取本对象的IP地址,并存放在字节数组中</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getHostAddress()</td>
+<td style="text-align:center">利用InetAddress对象,获取该对象的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public String getHostName()</td>
+<td style="text-align:center">利用InetAddress对象,获取该对象的主机名</td>
+</tr>
+<tr>
+<td style="text-align:center">public String toString()</td>
+<td style="text-align:center">将IP地址转换成字符串形式的域名</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>该表中给的static方法通常会产生UnknownHostException异常，应在程序中捕获处理。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">InetAddress</span> <span class="variable">myIPAddress</span> <span class="operator">=</span> InetAddress.getLocalHost();</span><br><span class="line"><span class="type">InetAddress</span> <span class="variable">myServer</span> <span class="operator">=</span> InetAddress.getByName(<span class="string">&quot;www.tom.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="基于连接的Socket通信程序设计"><a href="#基于连接的Socket通信程序设计" class="headerlink" title="基于连接的Socket通信程序设计"></a>基于连接的Socket通信程序设计</h3><p>Socket通信属于网络底层通信，它是网络上运行的两个程序间双向通信的一端，它既可以接收请求，也可以发送请求，利用它可以较方便地进行网络上的数据传输。</p>
+<p>Socket 是实现客户与服务器（Client/Server, C/S）模式的通信方式。</p>
+<h4 id="Socket通信机制的基本概念"><a href="#Socket通信机制的基本概念" class="headerlink" title="Socket通信机制的基本概念"></a>Socket通信机制的基本概念</h4><p>1）建立连接<br>2）连接地址<br>3）TCP/IP Socket通信</p>
+<p>服务器端套接字使用的是ServerSocket类对象，客户端套接字使用的是Socket类对象，由此区分服务器端和客户端。</p>
+<h4 id="Socket类"><a href="#Socket类" class="headerlink" title="Socket类"></a>Socket类</h4><p><code>java.net.Socket</code>继承自<code>java.lang.Object</code>类。</p>
+<p>Socket类用在客户端，用户通过创建一个Socket对象来建立与服务器的连接。</p>
+<p>通信开始之前先由通信双方确认身份并建立一条专用的虚拟连接通道；<br>然后它们通过这条通道传送数据信息进行通信；<br>当通信结束时再将原先所建立的连接拆除。</p>
+<ul>
+<li>Socket类的构造方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构造方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public Socket(String host ,int port)</td>
+<td style="text-align:center">在客户端以指定的服务器地址host和端口号port,创建一个Socket对象,并向服务器端发出连接请求</td>
+</tr>
+<tr>
+<td style="text-align:center">public Socket(InetAddress address,int port)</td>
+<td style="text-align:center">同上,但IP地址由address指定</td>
+</tr>
+<tr>
+<td style="text-align:center">public Socket(String host, int port, boolean stream)</td>
+<td style="text-align:center">同上,但若stream为真,则创建流Socket对象,否则创建</td>
+</tr>
+<tr>
+<td style="text-align:center">public Socket(InetAddress host, int port, boolean stream)</td>
+<td style="text-align:center">数据报Socket对象同上,但IP地址由host指定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Socket类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public InetAddress getInetAddress()</td>
+<td style="text-align:center">获取创建Socket对象时指定的服务器的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public InetAddress getLocalAddress()</td>
+<td style="text-align:center">获取创建Socket对象时客户计算机的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public InputStream getInputStream()</td>
+<td style="text-align:center">为当前的Socket 对象创建输人流</td>
+</tr>
+<tr>
+<td style="text-align:center">public OutputStream getOutputStream()</td>
+<td style="text-align:center">为当前的Socket对象创建输出流</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getPort()</td>
+<td style="text-align:center">获取创建Socket时指定远程主机的端口号</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setReceiveBufferSize(int size)</td>
+<td style="text-align:center">设置接收缓冲区的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getReceiveBufferSize()</td>
+<td style="text-align:center">返回接收缓冲区的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setSendBufferSize(int size)</td>
+<td style="text-align:center">设置发送缓冲区的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getSendBufferSize()</td>
+<td style="text-align:center">返回发送缓冲区的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">public void close()</td>
+<td style="text-align:center">关闭建立的Socket连接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="ServerSocket类"><a href="#ServerSocket类" class="headerlink" title="ServerSocket类"></a>ServerSocket类</h4><p><code>java.net.ServerSocket</code>继承自<code>java.lang.Object</code>类</p>
+<ul>
+<li>ServerSocket类的构造方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构造方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public ServerSocket(int port)</td>
+<td style="text-align:center">以指定的端口port创建ServerSocket对象,并等候客户端的连接请求。端口号必须与客户端呼叫用的端口号相同</td>
+</tr>
+<tr>
+<td style="text-align:center">public ServerSocket(intport, int backlog)</td>
+<td style="text-align:center">同上,但以backlog指定最大的连接数,即可同时连接的客户端数量</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>ServerSocket类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public Socket accept()</td>
+<td style="text-align:center">在服务器端的指定端口监听客户端发来的连接请求,并返回一个与客户端Socket对象相连接的Socket对象</td>
+</tr>
+<tr>
+<td style="text-align:center">public InetAddress getInetAddress()</td>
+<td style="text-align:center">返回服务器的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getLocalPort()</td>
+<td style="text-align:center">返回服务器的端口号</td>
+</tr>
+<tr>
+<td style="text-align:center">public void close()</td>
+<td style="text-align:center">关闭服务器端建立的套接字</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Socket通信模式"><a href="#Socket通信模式" class="headerlink" title="Socket通信模式"></a>Socket通信模式</h4><p>1）客户建立到服务器的套接字对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	Socket mySocket=<span class="keyword">new</span> <span class="title class_">Socket</span>(http:<span class="comment">//www.gduf.edu.cn,1880);</span></span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">catch</span>(IOException e)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p><code>getInputStream()</code>方法获得输入流，<code>getOutputStream()</code>方法获得输出流。</p>
+<p>2）建立接收客户套接字的服务器套接字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="type">ServerSocket</span> <span class="variable">serSocket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(<span class="number">1880</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="type">Socket</span> <span class="variable">sc</span> <span class="operator">=</span> serSocket.accept();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2022/01/10/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80-%E7%AC%AC6%E7%89%88%E9%99%88%E5%9B%BD%E5%90%9B2006-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B05/TCP-IP%E4%B8%8B%E7%9A%84Socket%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%BC%8F.jpg" class="" title="TCP-IP下的Socket网络通信模式">
+<p>Socket通信的步骤如下：<br>（1）在服务器端创建一个ServerSocket对象，并指定端口号；<br>（2）运行ServerSocket的accept（）方法，等候客户端请求；<br>（3）客户端创建一个Socket对象，指定服务器的IP地址和端口号，向服务器端发出连接请求；<br>（4）服务器端接收到客户端请求后，创建Socket对象与客户端建立连接；<br>（5）服务器端和客户端分别建立输入输出数据流，进行数据传输；<br>（6）通信结束后，服务器端和客户端分别关闭相应的Socket连接；<br>（7） 服务器端程序运行结束后， 调用ServerSocket 对象的close（）方法停止等候客户端请求。</p>
+<p>为了能实现服务器端同时对多个客户进行服务，需要用多线程，在服务器端创建客户请求的监听线程，一旦客户发起连接请求，则在服务器端创建用于服务的Socket，利用该Socket完成与客户的通信，即每个线程针对一个客户进行服务。</p>
+<h3 id="无连接的数据报通信程序设计"><a href="#无连接的数据报通信程序设计" class="headerlink" title="无连接的数据报通信程序设计"></a>无连接的数据报通信程序设计</h3><p>数据报通信是基于用户数据报协议（ User Datagram Protocol,UDP）的网络信息传输方式。数据报（datagram）是网络层数据单元在介质上传输信息的一种逻辑分组形式。<br>数据报是无连接的远程通信服务，它是一种在网络中传输的、独立的、自身包含地址信息的数据单位，不保证传送顺序和内容的准确性。数据报Socket又称为UDP套接字，它无须建立、拆除连接，直接将信息打包传向指定的目的地，使用起来比流式Socket要简单一些。但由于该种通信方式不能保证将所有数据都传送到目的地，所以一般用于传送非关键性的数据。</p>
+<p>首先将数据打包，形成数据包，这类似于将信件装入信封，然后将数据包发往目的地；其次是接收端收到别人发来的数据包，然后查看数据包中的内容，这类似于从信封中取出信件。</p>
+<p>DatagramPacket类在发送端用于将待发送的数据打包，在接收端则用于将收到的数据拆包；<br>DatagramSocket类用于实现数据报通信的过程中数据报的发送与接收。</p>
+<h4 id="DatagramPacket类"><a href="#DatagramPacket类" class="headerlink" title="DatagramPacket类"></a>DatagramPacket类</h4><p>需要传输的数据、数据报的长度、IP 地址和端口号等信息。</p>
+<ul>
+<li>DatagramPacket类的构造方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构造方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public DatagramPacket(byte[]buf, int length)</td>
+<td style="text-align:center">创建一个用于接收数据报的对象，buf数组用于接收数据报中的数据，接收长度为length</td>
+</tr>
+<tr>
+<td style="text-align:center">public DatagramPacket ( byte[] buf，int length, InetAddress address, int port)</td>
+<td style="text-align:center">创建一个用于发送给远程系统的数据报对象。并将数组buf中长度为length的数据发送到地址为address、端口号为port的主机上</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>DatagramPacket类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public byte[] getData()</td>
+<td style="text-align:center">返回一个字节数组,包含收到或要发送的数据报中的数据</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getLength()</td>
+<td style="text-align:center">返回发送或接收到的数据的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">public InetAddress getAddress()</td>
+<td style="text-align:center">返回目标数据包的IP地址或发送该数据包主机的IP地址</td>
+</tr>
+<tr>
+<td style="text-align:center">public int getPort()</td>
+<td style="text-align:center">返回目标数据包的端口号或发送该数据包主机的端口号</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="DatagramSocket类"><a href="#DatagramSocket类" class="headerlink" title="DatagramSocket类"></a>DatagramSocket类</h4><p>于在发送主机中建立数据报通信方式，提出发送请求，实现数据报的发送与接收。</p>
+<ul>
+<li>DatagramSocket类的构造方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构造方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public DatagramSocket()</td>
+<td style="text-align:center">创建一个以当前计算机的任一个可用端口为发送端口的数据报连接</td>
+</tr>
+<tr>
+<td style="text-align:center">public DatagramSocket(int port)</td>
+<td style="text-align:center">创建一个以当前计算机的指定端口为接收端口的数据报连接</td>
+</tr>
+<tr>
+<td style="text-align:center">public DatagramSocket(int port, InetAddress laddr)</td>
+<td style="text-align:center">用于在有多个IP地址的当前主机上，创建一一个以laddr 为指定IP地址、以port为指定端口的数据报连接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>SocketException异常</p>
+<ul>
+<li>DatagramSocket类的常用方法</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常用方法</th>
+<th style="text-align:center">功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">public void receive(DatagramPacket p)</td>
+<td style="text-align:center">从建立的数据报连接中接收数据,并保存到p中</td>
+</tr>
+<tr>
+<td style="text-align:center">public void send(DatagramPacket p)</td>
+<td style="text-align:center">将数据报对象p中包含的报文发送到所指定的IP地址主机的指定端口</td>
+</tr>
+<tr>
+<td style="text-align:center">public void setSoTimeout(int timeout)</td>
+<td style="text-align:center">设置传输超时为timeout</td>
+</tr>
+<tr>
+<td style="text-align:center">public void close()</td>
+<td style="text-align:center">关闭数据报连接</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>由于数据报是不可靠的通信方式，所以receive()方法不一定能接收到数据，为防止线程死掉，应该利用setSoTimeout()。</p>
+</blockquote>
+<h4 id="数据报通信的发送与接收过程"><a href="#数据报通信的发送与接收过程" class="headerlink" title="数据报通信的发送与接收过程"></a>数据报通信的发送与接收过程</h4><p>发送</p>
+<p>（1）创建一个用于发送数据的DatagramPacket对象，使其包含如下信息：<br>要发送的数据；<br>数据报分组的长度；<br>发送目的地的主机IP地址和目的端口号。<br>（2）在指定的或可用的本机端口创建DatagramSocket对象。<br>（3）调用DatagramSocket对象的send()方法，以DatagramPacke对象为参数发送数据报。</p>
+<p>接收</p>
+<p>（1）创建一个用于接收数据报的DatagramPacket对象，其中包含空白数据缓冲区和指定数据报分组的长度。<br>（2）在指定的或可用的本机端口创建DatagramSocket对象。<br>（3） 调用DatagramSocket 对象的receive()方法， 以DatagramPacket对象为参数接收数据报，接收到的信息有：<br>收到的数据报分组的内容；<br>发送端主机的IP地址；<br>发送端主机的发送端口号。</p>
+<p>在数据报通信中，由于通信双方之间并不需要建立连接，所以服务器端应用程序通信过程与客户端应用程序的通信过程是非常相似的，客户端与服务器端双方均可以发送与接收数据报分组。所不同的是服务器应用程序要面向网络中的所有计算机，所以服务器应用程序收到一个数据报分组后要分析它，得到数据报的源地址信息，这样才能创建正确的返回结果分组给客户机。</p>
+<h2 id="本章小结-1"><a href="#本章小结-1" class="headerlink" title="本章小结"></a>本章小结</h2><ul>
+<li>通信端口是一个标记计算机逻辑通信信道的正整数，用于区分一台主机中的不同应用程序，端口号不是物理实体。</li>
+<li>IP地址和端口号组成了所谓的Socket。Socket是实现客户与服务器（Client/Server, C/S）模式的通信方式，Socket原意为“插座”，在通信领域中译为“套接字”，在网络通信里的含义就是建立一个连接。</li>
+<li>URL是统一资源定位器（Uniform Resource Locator）的简称，它表示Internet上某一资源的地址。URL的基本结构由五部分组成。</li>
+<li>Java的网络编程分为三个层次。最高一级的网络通信就是从网络上下载小程序；次一级的通信就是通过URL类的对象指明文件所在位置，并从网络上下载音频、视频或图像文件，然后播放音频、视频或显示图像；最低一级的通信是利用java.net包中提供的类直接在程序中实现网络通信。</li>
+<li>针对不同层次的网络通信，Java语言提供的网络功能有四大类：URL、InetAddress、Socket、Datagram。<br>（1）URL：面向应用层，通过URL，Java程序可以直接输出或读取网络上的数据。<br>（2）InetAddress：面向的是IP层，用于标识网络上的硬件资源。<br>（3）Socket和Datagram：面向的是传输层。Socket使用TCP，这是传统网络程序最常用的方式，可以想象为两个不同的程序通过网络的通信信道进行通信；Datagram则使用UDP，是另一种网络传输方式，它把数据的目的地址记录在数据包中，然后直接放在网络上。</li>
+</ul>
+<h2 id="课后习题-1"><a href="#课后习题-1" class="headerlink" title="课后习题"></a>课后习题</h2><ul>
+<li>什么是URL？URL地址由哪几部分组成？</li>
+<li>什么是Socket？它与TCP/IP有何关系？</li>
+<li>简述流式Socket的通信机制。它的最大特点是什么？为什么可以实现无差错通信？</li>
+<li>什么是端口号？服务器端和客户端分别如何使用端口号？</li>
+<li>什么是套接字？其作用是什么？</li>
+<li>编写Java程序，使用InetAddress类实现根据域名自动到DNS（域名服务器）上查找IP地址的功能。</li>
+<li>用Java程序实现流式Socket通信，需要使用哪两个类？它们是如何定义的？应怎样使用？</li>
+<li>与流式Socket相比，数据报通信有何特点？</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2022/01/10/JAVA程序设计基础-第6版陈国君2006-学习笔记5/">http://hibiscidai.com/2022/01/10/JAVA程序设计基础-第6版陈国君2006-学习笔记5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JAVA/">JAVA</a><a class="post-meta__tags" href="/tags/JAVA%E5%9F%BA%E7%A1%80/">JAVA基础</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2022/03/20/%E7%99%BD%E4%BA%91%E5%87%B9%E9%99%B7%E7%8F%A0%E6%B1%9F%E7%BB%84-%E6%81%A9%E5%B9%B3%E7%BB%84%E9%AB%98%E6%B8%A9%E9%AB%98%E5%8E%8B%E4%BD%8E%E6%B8%97%E6%B0%94%E5%B1%82%E6%B5%8B%E4%BA%95%E8%AF%84%E4%BB%B7-%E8%BD%AF%E4%BB%B6%E6%A0%B8%E5%BF%83%E4%BB%A3%E7%A0%81/"><i class="fa fa-chevron-left">  </i><span>白云凹陷珠江组-恩平组高温高压低渗气层测井评价-软件核心代码</span></a></div><div class="next-post pull-right"><a href="/2022/01/05/JAVA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80-%E7%AC%AC6%E7%89%88%E9%99%88%E5%9B%BD%E5%90%9B2006-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04/"><span>JAVA程序设计基础-第6版陈国君2006-学习笔记4</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

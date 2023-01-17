@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Linux实操-组管理和权限管理"><meta name="keywords" content="学习笔记,大数据,Linux"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>Linux实操-组管理和权限管理 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86-%E2%80%BB"><span class="toc-number">1.</span> <span class="toc-text">Linux实操-组管理和权限管理 ※</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E7%BB%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">Linux组基本介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E6%89%80%E6%9C%89%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">文件&#x2F;目录所有者问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%80%E6%9C%89%E8%80%85"><span class="toc-number">3.1.</span> <span class="toc-text">查看文件的所有者</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">3.1.1.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.1.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E6%9C%89%E8%80%85"><span class="toc-number">3.2.</span> <span class="toc-text">修改文件所有者</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">3.2.2.</span> <span class="toc-text">应用案例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%84%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">4.</span> <span class="toc-text">组的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4"><span class="toc-number">4.1.</span> <span class="toc-text">基本指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-1"><span class="toc-number">4.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E6%89%80%E5%9C%A8%E7%BB%84"><span class="toc-number">5.</span> <span class="toc-text">文件&#x2F;目录所在组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E6%89%80%E5%9C%A8%E7%BB%84"><span class="toc-number">5.1.</span> <span class="toc-text">查看文件&#x2F;目录所在组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4-1"><span class="toc-number">5.1.1.</span> <span class="toc-text">基本指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E5%9C%A8%E7%9A%84%E7%BB%84"><span class="toc-number">5.1.2.</span> <span class="toc-text">修改文件所在的组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4-2"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">基本指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-2"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%BB%84"><span class="toc-number">5.2.</span> <span class="toc-text">其他组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E7%94%A8%E6%88%B7%E6%89%80%E5%9C%A8%E7%BB%84"><span class="toc-number">5.3.</span> <span class="toc-text">改变用户所在组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4-3"><span class="toc-number">5.3.1.</span> <span class="toc-text">基本指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-3"><span class="toc-number">5.3.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">6.</span> <span class="toc-text">权限的基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rw-r-r-0-9%E4%BD%8D%E8%AF%B4%E6%98%8E"><span class="toc-number">6.1.</span> <span class="toc-text">- rw- r-- r--0-9位说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">6.2.</span> <span class="toc-text">1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0"><span class="toc-number">6.3.</span> <span class="toc-text">0</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rwx%E6%9D%83%E9%99%90%E8%AF%A6%E8%A7%A3"><span class="toc-number">7.</span> <span class="toc-text">rwx权限详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#rwx%E4%BD%9C%E7%94%A8%E5%88%B0%E6%96%87%E4%BB%B6%E2%80%BB"><span class="toc-number">7.1.</span> <span class="toc-text">rwx作用到文件※</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rwx%E4%BD%9C%E7%94%A8%E5%88%B0%E7%9B%AE%E5%BD%95%E2%80%BB"><span class="toc-number">7.2.</span> <span class="toc-text">rwx作用到目录※</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90%E5%AE%9E%E9%99%85%E6%A1%88%E4%BE%8B"><span class="toc-number">7.3.</span> <span class="toc-text">文件及目录权限实际案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%BB%A3%E8%A1%A8%E6%96%87%E4%BB%B6%E7%B1%BB"><span class="toc-number">7.3.1.</span> <span class="toc-text">第一个字符代表文件类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BD%99%E5%AD%97%E7%AC%A6%E6%AF%8F3%E4%B8%AA%E4%B8%80%E7%BB%84"><span class="toc-number">7.3.2.</span> <span class="toc-text">其余字符每3个一组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%94%A8%E6%95%B0%E5%AD%97%E8%A1%A8%E7%A4%BA%E4%B8%BA-r-4-w-2-x-1-%E5%9B%A0%E6%AD%A4rwx-4-2-1-7"><span class="toc-number">7.3.3.</span> <span class="toc-text">可用数字表示为: r&#x3D;4,w&#x3D;2,x&#x3D;1 因此rwx&#x3D;4+2+1&#x3D;7</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90"><span class="toc-number">8.</span> <span class="toc-text">修改权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9A-%E3%80%81-%E3%80%81-%E5%8F%98%E6%9B%B4%E6%9D%83%E9%99%90"><span class="toc-number">8.1.</span> <span class="toc-text">第一种方式：+ 、-、&#x3D; 变更权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA"><span class="toc-number">8.1.1.</span> <span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9A%E9%80%9A%E8%BF%87%E6%95%B0%E5%AD%97%E5%8F%98%E6%9B%B4%E6%9D%83%E9%99%90"><span class="toc-number">8.2.</span> <span class="toc-text">第二种方式：通过数字变更权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA-1"><span class="toc-number">8.2.1.</span> <span class="toc-text">案例演示</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%89%80%E6%9C%89%E8%80%85-1"><span class="toc-number">9.</span> <span class="toc-text">修改文件所有者</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">9.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA-2"><span class="toc-number">9.2.</span> <span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%89%80%E5%9C%A8%E7%BB%84"><span class="toc-number">10.</span> <span class="toc-text">改变文件所在组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">10.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA-3"><span class="toc-number">10.2.</span> <span class="toc-text">案例演示</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E5%AE%9E%E8%B7%B5-%E8%AD%A6%E5%AF%9F%E5%9C%9F%E5%8C%AA%E6%B8%B8%E6%88%8F"><span class="toc-number">11.</span> <span class="toc-text">权限实践-警察土匪游戏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E5%90%8E%E7%BB%83%E4%B9%A01"><span class="toc-number">12.</span> <span class="toc-text">课后练习1</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Linux实操-组管理和权限管理</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-13</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Linux/">Linux</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2.1k</span><span class="post-meta__separator">|</span><span>阅读时长: 7 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86.png" class="" title="Linux实操-组管理和权限管理">
+<p>Linux实操-组管理和权限管理</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="Linux实操-组管理和权限管理-※"><a href="#Linux实操-组管理和权限管理-※" class="headerlink" title="Linux实操-组管理和权限管理 ※"></a>Linux实操-组管理和权限管理 ※</h1><h1 id="Linux组基本介绍"><a href="#Linux组基本介绍" class="headerlink" title="Linux组基本介绍"></a>Linux组基本介绍</h1><p>在linux中的每个用户必须属于一个组，不能独立于组外。</p>
+<p>在linux中每个文件有所有者、所在组、其它组的概念。</p>
+<p>1) 所有者<br>2) 所在组<br>3) 其它组<br>4) 改变用户所在的组</p>
+<h1 id="文件-目录所有者问题"><a href="#文件-目录所有者问题" class="headerlink" title="文件/目录所有者问题"></a>文件/目录所有者问题</h1><p>一般为文件的创建者，谁创建了该文件，就自然的成为该文件的所有者。</p>
+<h2 id="查看文件的所有者"><a href="#查看文件的所有者" class="headerlink" title="查看文件的所有者"></a>查看文件的所有者</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls –ahl</span><br></pre></td></tr></table></figure>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><p>创建一个组<code>police</code>，再创建一个用户<code>tom</code>，将<code>tom</code>放在<code>police</code>组 ,然后使用<code>tom</code>来创建一个文件<code>ok.txt</code>，看看情况如何。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd police</span><br><span class="line">useradd -g police tom</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/ls-1.png" class="" title="ls-1">
+<h2 id="修改文件所有者"><a href="#修改文件所有者" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h2><h3 id="指令-1"><a href="#指令-1" class="headerlink" title="指令"></a>指令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown 用户名 文件名</span><br></pre></td></tr></table></figure>
+<h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><p>使用<code>root</code>创建一个文件<code>apple.txt</code>，然后将其所有者修改成<code>tom</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch apple.txt</span><br><span class="line">ls -ahl</span><br><span class="line">chown tom apple.txt</span><br><span class="line">ls -ahl</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/ls-2.png" class="" title="ls-2">
+<h1 id="组的创建"><a href="#组的创建" class="headerlink" title="组的创建"></a>组的创建</h1><h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd 组名</span><br></pre></td></tr></table></figure>
+<h2 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h2><ul>
+<li>创建一个组，<code>monster</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd monster</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个用户<code>fox</code>，并放入到<code>monster</code>组中</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g monster fox</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/group-1.png" class="" title="group-1">
+<h1 id="文件-目录所在组"><a href="#文件-目录所在组" class="headerlink" title="文件/目录所在组"></a>文件/目录所在组</h1><p>当某个用户创建了一个文件后，默认情况下，这个文件的所在组就是该用户所在的组。</p>
+<h2 id="查看文件-目录所在组"><a href="#查看文件-目录所在组" class="headerlink" title="查看文件/目录所在组"></a>查看文件/目录所在组</h2><h3 id="基本指令-1"><a href="#基本指令-1" class="headerlink" title="基本指令"></a>基本指令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls –ahl </span><br></pre></td></tr></table></figure>
+<h3 id="修改文件所在的组"><a href="#修改文件所在的组" class="headerlink" title="修改文件所在的组"></a>修改文件所在的组</h3><h4 id="基本指令-2"><a href="#基本指令-2" class="headerlink" title="基本指令"></a>基本指令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp 组名 文件名</span><br></pre></td></tr></table></figure>
+<h4 id="应用实例-2"><a href="#应用实例-2" class="headerlink" title="应用实例"></a>应用实例</h4><ul>
+<li>使用<code>root</code>用户创建文件<code>orange.txt</code>，看看当前这个文件属于哪个组，然后将这个文件所在组，修改到<code>police</code>组。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch orange.txt</span><br><span class="line">chgrp police orange.txt</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/chgrp-1.png" class="" title="chgrp-1">
+<h2 id="其他组"><a href="#其他组" class="headerlink" title="其他组"></a>其他组</h2><p>除文件的所有者和所在组的用户外，系统的其它用户都是文件的其它组。</p>
+<h2 id="改变用户所在组"><a href="#改变用户所在组" class="headerlink" title="改变用户所在组"></a>改变用户所在组</h2><p>在添加用户时，可以指定将该用户添加到哪个组中，同样的用<code>root</code>的管理权限可以改变某个用户所在的组。</p>
+<h3 id="基本指令-3"><a href="#基本指令-3" class="headerlink" title="基本指令"></a>基本指令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod –g 组名 用户名</span><br></pre></td></tr></table></figure>
+<ul>
+<li>改变该用户登陆的初始目录</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod –d 目录名 用户名</span><br></pre></td></tr></table></figure>
+<h3 id="应用实例-3"><a href="#应用实例-3" class="headerlink" title="应用实例"></a>应用实例</h3><p>创建一个土匪组<code>bandit</code>将<code>tom</code>这个用户从原来所在的<code>police</code>组，修改到<code>bandit</code> 组。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -g bandit tom</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/usermod-1.png" class="" title="usermod-1">
+<h1 id="权限的基本介绍"><a href="#权限的基本介绍" class="headerlink" title="权限的基本介绍"></a>权限的基本介绍</h1><p>指文件目录的权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls  -l</span><br></pre></td></tr></table></figure>
+<p>中显示的内容如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--. 1 tom police 0 5月  15 20:58 ok.txt</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/%E6%9D%83%E9%99%90-1.png" class="" title="权限-1">
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文件类型(1) 所有者权限(3) 所在组权限(3) 其他用户权限(3). 硬链接与目录数目 文件拥有者名 文件所在组名 文件大小 最后修改时间 文件名</span><br></pre></td></tr></table></figure>
+<h2 id="rw-r-r-0-9位说明"><a href="#rw-r-r-0-9位说明" class="headerlink" title="- rw- r-- r--0-9位说明"></a><code>- rw- r-- r--</code>0-9位说明</h2><ul>
+<li>第0位<code>-</code>确定文件类型</li>
+</ul>
+<p><code>-</code>：普通文件<br><code>d</code>：目录<br><code>l</code>：连接文件<br><code>c</code>：字符设备文件[键盘,鼠标]<br><code>b</code>：块设备文件[硬盘]</p>
+<ul>
+<li>第1-3位<code>rw-</code>确定<code>所有者</code>（该文件的所有者）拥有该文件的权限。</li>
+</ul>
+<p><code>r</code>：读<br><code>w</code>：写权限<br><code>x</code>：执行权限<br><code>-</code>：没有权限</p>
+<ul>
+<li>第4-6位<code>r--</code>确定<code>所属组</code>（同用户组的）拥有该文件的权限</li>
+</ul>
+<p>只有读的权限。</p>
+<ul>
+<li>第7-9位<code>r--</code>确定<code>其他用户</code>拥有该文件的权限 </li>
+</ul>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a><code>1</code></h2><p>如果是文件，表示硬链接的数目<br>如果是目录，则表示有多少个子目录</p>
+<h2 id="0"><a href="#0" class="headerlink" title="0"></a><code>0</code></h2><p>表示文件大小<br>如果是目录，则统一为<code>4096</code></p>
+<h1 id="rwx权限详解"><a href="#rwx权限详解" class="headerlink" title="rwx权限详解"></a>rwx权限详解</h1><h2 id="rwx作用到文件※"><a href="#rwx作用到文件※" class="headerlink" title="rwx作用到文件※"></a>rwx作用到文件※</h2><ul>
+<li><code>r</code>代表可读(read)</li>
+</ul>
+<p>可以读取，查看。</p>
+<ul>
+<li><code>w</code>代表可写(write)</li>
+</ul>
+<p>可以修改，但是不代表可以删除该文件。<br>删除一个文件的前提条件是对该文件所在的目录有写权限，才能删除该文件。</p>
+<ul>
+<li><code>x</code>代表可执行(execute)</li>
+</ul>
+<p>可以被执行</p>
+<h2 id="rwx作用到目录※"><a href="#rwx作用到目录※" class="headerlink" title="rwx作用到目录※"></a>rwx作用到目录※</h2><ul>
+<li><code>r</code>代表可读(read)</li>
+</ul>
+<p>可以读取，<code>ls</code>查看目录内容</p>
+<ul>
+<li><code>w</code>代表可写(write)</li>
+</ul>
+<p>可以修改，目录内创建+删除+重命名目录</p>
+<ul>
+<li><code>x</code>代表可执行(execute)</li>
+</ul>
+<p>可以进入该目录</p>
+<h2 id="文件及目录权限实际案例"><a href="#文件及目录权限实际案例" class="headerlink" title="文件及目录权限实际案例"></a>文件及目录权限实际案例</h2><p><code>ls  -l</code>中显示的内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drwx------. 4 admin admin 4096 5月 9 05:36 admin</span><br></pre></td></tr></table></figure>
+<p>10个字符确定不同用户能对文件干什么</p>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/mod.png" class="" title="mod">
+<h3 id="第一个字符代表文件类"><a href="#第一个字符代表文件类" class="headerlink" title="第一个字符代表文件类"></a>第一个字符代表文件类</h3><p><code>-</code>：文件<br><code>d</code>：目录<br><code>l</code>：链接</p>
+<h3 id="其余字符每3个一组"><a href="#其余字符每3个一组" class="headerlink" title="其余字符每3个一组"></a>其余字符每3个一组</h3><p><code>r</code>：读<br><code>w</code>：写<br><code>x</code>：执行</p>
+<p>第一组<code>rwx</code>：文件拥有者的权限是读、写和执行<br>第二组<code>rw-</code>：与文件所在组的用户的权限是读、写但不能执行<br>第三组<code>r--</code>：不与文件拥有者同组的其他用户的权限是读不能写和执行</p>
+<h3 id="可用数字表示为-r-4-w-2-x-1-因此rwx-4-2-1-7"><a href="#可用数字表示为-r-4-w-2-x-1-因此rwx-4-2-1-7" class="headerlink" title="可用数字表示为: r=4,w=2,x=1 因此rwx=4+2+1=7"></a>可用数字表示为: r=4,w=2,x=1 因此rwx=4+2+1=7</h3><p>1    文件：硬连接数或  目录：子目录数<br>root      用户<br>root    组<br>1213    文件大小(字节)，如果是文件夹，显示 4096字节<br>Feb 2 09:39        最后修改日期<br>abc        文件名 </p>
+<h1 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h1><p>通过<code>chmod</code>指令，可以修改文件或者目录的权限。</p>
+<h2 id="第一种方式：-、-、-变更权限"><a href="#第一种方式：-、-、-变更权限" class="headerlink" title="第一种方式：+ 、-、= 变更权限"></a>第一种方式：+ 、-、= 变更权限</h2><p><code>u</code>：所有者<br><code>g</code>：所有组<br><code>o</code>：其他人<br><code>a</code>：所有人(u、g、o的总和)</p>
+<ul>
+<li>给所有者rwx, 给所在组的用户rx, 给其他人x</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=rx,o=x 文件、目录</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给其它用户增加w的权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod o+w 文件、目录</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给所有用户去掉x权限</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a-x 文件、目录	</span><br></pre></td></tr></table></figure>
+<h3 id="案例演示"><a href="#案例演示" class="headerlink" title="案例演示"></a>案例演示</h3><ul>
+<li>给abc文件的所有者读写执行的权限，给所在组读执行权限，给其它组读执行权限。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=rx,o=rx abc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给abc文件的所有者除去执行的权限，增加组写的权限。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u-x,g+w abc</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给abc文件的所有用户添加读的权限 。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+r abc</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/chmod-1.png" class="" title="chmod-1">
+<h2 id="第二种方式：通过数字变更权限"><a href="#第二种方式：通过数字变更权限" class="headerlink" title="第二种方式：通过数字变更权限"></a>第二种方式：通过数字变更权限</h2><p>r=4，w=2，x=1<br>rwx=4+2+1=7</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=rx,o=x 文件、目录</span><br></pre></td></tr></table></figure>
+<p>相当于</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 751 文件、目录</span><br></pre></td></tr></table></figure>
+<h3 id="案例演示-1"><a href="#案例演示-1" class="headerlink" title="案例演示"></a>案例演示</h3><ul>
+<li>将<code>/home/abc.txt</code>文件的权限修改成<code>rwxr-xr-x</code>，使用给数字的方式实现。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx,g=xr,o=x /home/abc.txt</span><br><span class="line">chmod 751 /home/abc.txt</span><br></pre></td></tr></table></figure>
+<h1 id="修改文件所有者-1"><a href="#修改文件所有者-1" class="headerlink" title="修改文件所有者"></a>修改文件所有者</h1><h2 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h2><ul>
+<li>改变文件的所有者</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown newowner file</span><br></pre></td></tr></table></figure>
+<ul>
+<li>改变用户的所有者和所有组</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown newowner:newgroup file</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果是目录 则使其下所有子文件或目录递归生效</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-R</span><br></pre></td></tr></table></figure>
+<h2 id="案例演示-2"><a href="#案例演示-2" class="headerlink" title="案例演示"></a>案例演示</h2><ul>
+<li>将<code>/home/abc.txt</code>文件的所有者修改成tom。</li>
+</ul>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/chown-1.png" class="" title="chown-1">
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown tom /home/abc.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将<code>/home/kkk</code>目录下所有的文件和目录的所有者都修改成tom</li>
+</ul>
+<p>需要<code>root</code>权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown –R tom /home/kkk</span><br></pre></td></tr></table></figure>
+<ul>
+<li>home下的所有文件和目录的所有者都改成 tom，将所在组改成police</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown –R tom:police /home/</span><br></pre></td></tr></table></figure>
+<h1 id="改变文件所在组"><a href="#改变文件所在组" class="headerlink" title="改变文件所在组"></a>改变文件所在组</h1><h2 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h2><ul>
+<li>改变文件的所有组</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp newgroup file </span><br></pre></td></tr></table></figure>
+<h2 id="案例演示-3"><a href="#案例演示-3" class="headerlink" title="案例演示"></a>案例演示</h2><ul>
+<li>将<code>/home/abc.txt</code>文件的所在组修改成<code>shaolin</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp shaolin /home/abc.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将<code>/home/kkk</code>目录下所有的文件和目录的所在组都修改成<code>shaolin</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chgrp -R shaolin /home/kkk </span><br></pre></td></tr></table></figure>
+<h1 id="权限实践-警察土匪游戏"><a href="#权限实践-警察土匪游戏" class="headerlink" title="权限实践-警察土匪游戏"></a>权限实践-警察土匪游戏</h1><p>police，bandit </p>
+<p>jack，jerry：警察<br>xh，xq：土匪</p>
+<ul>
+<li>创建组。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd police</span><br><span class="line">groupadd bandit</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建用户。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd -g police jack</span><br><span class="line">useradd -g police jerry</span><br><span class="line">useradd -g bandit xh</span><br><span class="line">useradd -g bandit xq</span><br></pre></td></tr></table></figure>
+<ul>
+<li>jack 创建一个文件，自己可以读写，本组人可以读，其它组没人任何权限。</li>
+</ul>
+<p>要给用户提前指定密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su - jack</span><br><span class="line">vim jack1.txt</span><br><span class="line">~hello jack1</span><br><span class="line">chmod 640 jack1.txt</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/%E6%9D%83%E9%99%90%E5%AE%9E%E8%B7%B5-1.png" class="" title="权限实践-1">
+<ul>
+<li>jack 修改该文件，让其它组人可以读, 本组人可以读写。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod o=r,g=rw jack1.txt</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/%E6%9D%83%E9%99%90%E5%AE%9E%E8%B7%B5-2.png" class="" title="权限实践-2">
+<ul>
+<li>xh投靠警察，看看是否可以读写。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su - xh</span><br><span class="line">cd /home/jack/</span><br><span class="line">~权限不够</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/%E6%9D%83%E9%99%90%E5%AE%9E%E8%B7%B5-3.png" class="" title="权限实践-3">
+<p>使用root修改xh所在组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">usermod -g police xh</span><br><span class="line">id xh</span><br></pre></td></tr></table></figure>
+<img src="/2020/05/13/Linux%E5%AE%9E%E6%93%8D-%E7%BB%84%E7%AE%A1%E7%90%86%E5%92%8C%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/%E6%9D%83%E9%99%90%E5%AE%9E%E8%B7%B5-4.png" class="" title="权限实践-4">
+<p>xh用户可以进入jack目录并且可以修改文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">su - jack</span><br><span class="line">chmod g=rw jack/</span><br><span class="line"></span><br><span class="line">su - xh</span><br><span class="line">cd /home/jack //可以进入</span><br><span class="line">vim jack1.txt //可以写</span><br></pre></td></tr></table></figure>
+<p>xq用户没有权限进行修改</p>
+<h1 id="课后练习1"><a href="#课后练习1" class="headerlink" title="课后练习1"></a>课后练习1</h1><ul>
+<li>建立两个组<code>神仙</code>,<code>妖怪</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd shenxian</span><br><span class="line">groupadd yaoguai</span><br></pre></td></tr></table></figure>
+<ul>
+<li>建立四个用户<code>唐僧</code>，<code>悟空</code>，<code>八戒</code>，<code>沙僧</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd tangseng</span><br><span class="line">useradd wukong</span><br><span class="line">useradd bajie</span><br><span class="line">useradd shaseng</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>设置密码</p>
+</li>
+<li><p>把<code>悟空</code>，<code>八戒</code>放入<code>妖怪</code>组；<code>唐僧</code>、<code>沙僧</code>放入<code>神仙</code>组</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">usermod -g yaoguai wukong</span><br><span class="line">usermod -g yaoguai bajie</span><br><span class="line">usermod -g shenxian tangseng</span><br><span class="line">usermod -g shenxian shaseng</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用<code>悟空</code>建立一个文件<code>monkey.go</code>该文件要输出<code>i am monkey</code></li>
+</ul>
+<p><code>wukong</code>用户登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim monkey.go</span><br><span class="line">~i am monkey</span><br><span class="line">~:wq</span><br></pre></td></tr></table></figure>
+<ul>
+<li>给<code>八戒</code>一个可以<code>rw</code>的权限</li>
+</ul>
+<p><code>wukong</code>用户登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 770 monkey.go</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 751 /home/wukong/</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>八戒</code>修改<code>monkey.go</code>加入一句话<code>i am pig</code></li>
+</ul>
+<p><code>bajie</code>用户登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/wukong/</span><br><span class="line">vim monkey.go</span><br><span class="line">~i am pig</span><br><span class="line">~:wq</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>唐僧</code>、<code>沙僧</code>对该文件没有权限</li>
+</ul>
+<p><code>wukong</code>用户登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 770 monkey.go</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把<code>沙僧</code>放入<code>妖怪</code>组</li>
+</ul>
+<p><code>root</code>用户登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -g yaoguai shaseng</span><br></pre></td></tr></table></figure>
+<ul>
+<li>让<code>沙僧</code>修改该文件<code>monkey.go</code>，加入一句话`我是沙僧，我是妖怪!</li>
+</ul>
+<p><code>shaseng</code>用户登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/wukong</span><br><span class="line">vim monkey.go</span><br><span class="line">~我是沙僧，我是妖怪！</span><br><span class="line">~:wq</span><br></pre></td></tr></table></figure>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2020/05/13/Linux实操-组管理和权限管理/">http://hibiscidai.com/2020/05/13/Linux实操-组管理和权限管理/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/05/17/The%20Create%20Gatsby/"><i class="fa fa-chevron-left">  </i><span>The Create Gatsby</span></a></div><div class="next-post pull-right"><a href="/2020/05/09/Linux%E5%AE%9E%E6%93%8D-%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4/"><span>Linux实操-实用命令</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

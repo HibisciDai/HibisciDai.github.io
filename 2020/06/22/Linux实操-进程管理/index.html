@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Linux实操-进程管理"><meta name="keywords" content="学习笔记,大数据,Linux"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>Linux实操-进程管理 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">Linux实操-进程管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">进程的基本介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">显示系统执行的进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ps%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.1.</span> <span class="toc-text">ps详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">3.1.1.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="toc-number">3.1.2.</span> <span class="toc-text">指令说明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8Bkill%E5%92%8Ckillall"><span class="toc-number">4.</span> <span class="toc-text">终止进程kill和killall</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">4.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="toc-number">4.2.1.</span> <span class="toc-text">常用选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">4.2.2.</span> <span class="toc-text">最佳实践</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%E6%A0%91pstree"><span class="toc-number">5.</span> <span class="toc-text">查看进程树pstree</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1"><span class="toc-number">5.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9-1"><span class="toc-number">5.2.</span> <span class="toc-text">常用选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-1"><span class="toc-number">5.3.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1-service-%E7%AE%A1%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">服务(service)管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">6.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#service%E7%AE%A1%E7%90%86%E6%8C%87%E4%BB%A4"><span class="toc-number">6.2.</span> <span class="toc-text">service管理指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">6.3.</span> <span class="toc-text">使用案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%86%E8%8A%82%E8%AE%A8%E8%AE%BA"><span class="toc-number">6.4.</span> <span class="toc-text">细节讨论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1%E5%90%8D"><span class="toc-number">6.5.</span> <span class="toc-text">查看服务名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%9A%84%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB-runlevel"><span class="toc-number">6.6.</span> <span class="toc-text">服务的运行级别(runlevel)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%9C%BA%E7%9A%84%E6%B5%81%E7%A8%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">6.6.1.</span> <span class="toc-text">开机的流程说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chkconfig%E6%8C%87%E4%BB%A4"><span class="toc-number">6.6.2.</span> <span class="toc-text">chkconfig指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="toc-number">6.6.2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-2"><span class="toc-number">6.6.2.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-2"><span class="toc-number">6.6.2.3.</span> <span class="toc-text">应用实例</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%9B%91%E6%8E%A7%E8%BF%9B%E7%A8%8B-top"><span class="toc-number">7.</span> <span class="toc-text">动态监控进程-top</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-3"><span class="toc-number">7.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-3"><span class="toc-number">7.2.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E9%A1%B9%E8%AF%B4%E6%98%8E"><span class="toc-number">7.3.</span> <span class="toc-text">选项说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E4%BA%92%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E"><span class="toc-number">7.4.</span> <span class="toc-text">交互操作说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-3"><span class="toc-number">7.5.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E7%BD%91%E7%BB%9C%E7%8A%B6%E6%80%81-netstat"><span class="toc-number">8.</span> <span class="toc-text">监控网络状态-netstat</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-4"><span class="toc-number">8.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E9%A1%B9%E8%AF%B4%E6%98%8E-1"><span class="toc-number">8.2.</span> <span class="toc-text">选项说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">8.3.</span> <span class="toc-text">应用案例</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Linux实操-进程管理</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-06-22</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Linux/">Linux</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">2.4k</span><span class="post-meta__separator">|</span><span>阅读时长: 8 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86.png" class="" title="Linux实操-进程管理">
+<p>Linux实操-进程管理</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="Linux实操-进程管理"><a href="#Linux实操-进程管理" class="headerlink" title="Linux实操-进程管理"></a>Linux实操-进程管理</h1><h1 id="进程的基本介绍"><a href="#进程的基本介绍" class="headerlink" title="进程的基本介绍"></a>进程的基本介绍</h1><ul>
+<li>在LINUX中，每个执行的<em>程序（代码）</em>都称为一个进程。每一个进程都分配一个ID号。</li>
+<li>每一个进程，都会对应一个父进程，而这个父进程可以复制多个子进程。例如www服务器。</li>
+<li>每个进程都可能以两种方式存在的。<em>前台</em>与<em>后台</em>，所谓<em>前台</em>进程就是用户目前的屏幕上可以进行操作的。<em>后台</em>进程则是实际在操作，但由于屏幕上无法看到的进程，通常使用后台方式执行[sshd , crond]。 </li>
+<li>一般系统的服务都是以后台进程的方式存在，而且都会常驻在系统中。直到关机才才结束。</li>
+</ul>
+<h1 id="显示系统执行的进程"><a href="#显示系统执行的进程" class="headerlink" title="显示系统执行的进程"></a>显示系统执行的进程</h1><p><code>ps</code>命令是用来查看目前系统中，有哪些正在执行，以及它们执行的状况，可以不加任何参数。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">PID</td>
+<td style="text-align:center">进程识别号</td>
+</tr>
+<tr>
+<td style="text-align:center">TTY</td>
+<td style="text-align:center">终端机号</td>
+</tr>
+<tr>
+<td style="text-align:center">TIME</td>
+<td style="text-align:center">此进程所消CPU时间</td>
+</tr>
+<tr>
+<td style="text-align:center">CMD</td>
+<td style="text-align:center">正在执行的命令或者进程名</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>ps -a</code>：显示当前终端的所有进程信息<br><code>ps -u</code>：以用户的格式显示进程信息<br><code>ps -x</code>：显示后台进程运行的参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | more</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B-1.png" class="" title="显示系统执行的进程-1">
+<h2 id="ps详解"><a href="#ps详解" class="headerlink" title="ps详解"></a><code>ps</code>详解</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps –aux | grep xxx</span><br></pre></td></tr></table></figure>
+<p>比如我看看有没有sshd服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep sshd</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B-2.png" class="" title="显示系统执行的进程-2">
+<h3 id="指令说明"><a href="#指令说明" class="headerlink" title="指令说明"></a>指令说明</h3><p><code>System V</code>：展示风格<br><code>USER</code>：用户名称<br><code>PID</code>：进程号<br><code>%CPU</code>：进程占用CPU的百分比<br><code>%MEM</code>：进程占用物理内存的百分比<br><code>VSZ</code>：进程占用的虚拟内存大小（单位：KB）<br><code>RSS</code>：进程占用的物理内存大小（单位：KB）<br><code>TTY</code>：终端名称,缩写 .<br><code>STAT</code>：进程状态，其中<code>S</code>-睡眠，<code>s</code>-表示该进程是会话的先导进程，<code>N</code>-表示进程拥有比普通优先级更低的优先级，<code>R</code>-正在运行，<code>D</code>-短期等待，<code>Z</code>-僵死进程，<code>T</code>-被跟踪或者被停止等等<br><code>STARTED</code>：进程的启动时间<br><code>TIME</code>：CPU时间，即进程使用CPU的总时间<br><code>COMMAND</code>：启动进程所用的命令和参数，如果过长会被截断显示</p>
+<h2 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h2><p>以全格式显示当前所有的进程，查看进程的父进程。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | more </span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E6%89%A7%E8%A1%8C%E7%9A%84%E8%BF%9B%E7%A8%8B-3.png" class="" title="显示系统执行的进程-3">
+<p><code>ps -ef</code>是以全格式显示当前所有的进程<br><code>-e</code> 显示所有进程。<code>-f</code> 全格式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep xxx</span><br></pre></td></tr></table></figure>
+<p>是BSD风格<br><code>UID</code>：用户ID<br><code>PID</code>：进程ID<br><code>PPID</code>：父进程ID<br><code>C</code>：CPU用于计算执行优先级的因子。数值越大，表明进程是CPU密集型运算，执行优先级会降低；数值越小，表明进程是I/O密集型运算，执行优先级会提高<br><code>STIME</code>：进程启动的时间<br><code>TTY</code>：完整的终端名称<br><code>TIME</code>：CPU时间<br><code>CMD</code>：启动进程所用的命令和参数</p>
+<ul>
+<li>查看sshd进程的父进程号是多少，应该怎样</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep sshd</span><br></pre></td></tr></table></figure>
+<h1 id="终止进程kill和killall"><a href="#终止进程kill和killall" class="headerlink" title="终止进程kill和killall"></a>终止进程<code>kill</code>和<code>killall</code></h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>若是某个进程执行一半需要停止时，或是已消了很大的系统资源时，此时可以考虑停止该进程。使用kill命令来完成此项任务。</p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kill [选项] 进程号</span><br><span class="line">（功能描述：通过进程号杀死进程 -9 强制终止）</span><br><span class="line">killall 进程名称</span><br><span class="line">（功能描述：通过进程名称杀死进程，也支持通配符，这在系统因负载过大而变得很慢时很有用）</span><br></pre></td></tr></table></figure>
+<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><p><code>-9</code>：表示强迫进程立即停止</p>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li>案例1：踢掉某个非法登录用户</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep sshd</span><br><span class="line">//找到对应进程号</span><br><span class="line">kill 4010</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例2: 终止远程登录服务<code>sshd</code>, 在适当时候再次重启<code>sshd</code>服务</li>
+</ul>
+<p>查看进程号，找到 <code>/usr/sbin/sshd</code> 命令，kill进程即可，之后再查找就找不到对应进程了。</p>
+<ul>
+<li>案例3: 终止多个<code>gedit</code>编辑器</li>
+</ul>
+<p><code>kill gedit</code>，通过名称终止进程。</p>
+<ul>
+<li>案例4：强制杀掉一个终端 </li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep bash</span><br><span class="line">kill 4090</span><br><span class="line">//终端比较重要会忽略kill指令</span><br><span class="line">kill -9 4090</span><br><span class="line">//强制终止</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E7%BB%88%E6%AD%A2%E8%BF%9B%E7%A8%8B-1.png" class="" title="终止进程-1">
+<h1 id="查看进程树pstree"><a href="#查看进程树pstree" class="headerlink" title="查看进程树pstree"></a>查看进程树<code>pstree</code></h1><h2 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pstree [选项]</span><br><span class="line">//可以更加直观的来看进程信息</span><br></pre></td></tr></table></figure>
+<h2 id="常用选项-1"><a href="#常用选项-1" class="headerlink" title="常用选项"></a>常用选项</h2><p><code>-p</code> :显示进程的PID<br><code>-u</code> :显示进程的所属用户</p>
+<h2 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h2><ul>
+<li>案例1：请用树状的形式显示进程的pid </li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pstree -p</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例2：请用树状的形式进程的用户id</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pstree –u</span><br><span class="line">Pstree -pu</span><br></pre></td></tr></table></figure>
+<h1 id="服务-service-管理"><a href="#服务-service-管理" class="headerlink" title="服务(service)管理"></a>服务(service)管理</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p>服务(service) 本质就是进程，但是是运行在后台的，通常都会监听某个端口，等待其它程序的请求，比如(mysql , sshd  防火墙等)，因此我们又称为守护进程，是Linux中非常重要的知识点。</p>
+<h2 id="service管理指令"><a href="#service管理指令" class="headerlink" title="service管理指令"></a>service管理指令</h2><p>service  服务名 [start | stop | restart | reload | status]<br>在 CentOS7.0 后 不再使用<code>service</code>，而是<code>systemctl</code></p>
+<h2 id="使用案例"><a href="#使用案例" class="headerlink" title="使用案例"></a>使用案例</h2><ul>
+<li>s查看当前防火墙的状况，关闭防火墙和重启防火墙。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br><span class="line">service iptables status</span><br><span class="line">service iptables stop</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/%E6%9C%8D%E5%8A%A1-1.png" class="" title="服务-1">
+<h2 id="细节讨论"><a href="#细节讨论" class="headerlink" title="细节讨论"></a>细节讨论</h2><ul>
+<li>关闭或者启用防火墙后，立即生效，查看端口是否在监听。</li>
+</ul>
+<p>用windows cmd打开<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet ip 端口</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>start</code>和<code>stop</code>指令只是临时生效，当重启系统后，还是回归以前对服务的设置。</li>
+<li>如果希望设置某个服务自启动或关闭永久生效，要使用<code>chkconfig</code>指令。（见后）</li>
+</ul>
+<h2 id="查看服务名"><a href="#查看服务名" class="headerlink" title="查看服务名"></a>查看服务名</h2><ul>
+<li>方式1：使用setup -&gt; 系统服务 就可以看到。</li>
+</ul>
+<p>本机打开终端，输入<code>setup</code>，选择系统服务，带<code>*</code>的是自启动服务，按<code>空格</code>选择是否自启动。</p>
+<ul>
+<li>方式2:   <code>/etc/init.d/</code>服务名称 【程序】</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /etc/init.d/</span><br></pre></td></tr></table></figure>
+<h2 id="服务的运行级别-runlevel"><a href="#服务的运行级别-runlevel" class="headerlink" title="服务的运行级别(runlevel)"></a>服务的运行级别(runlevel)</h2><p>查看或者修改默认级别：<code>vi /etc/inittab</code></p>
+<p>Linux系统有7种运行级别(runlevel)：常用的是级别3和5</p>
+<p>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动<br>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆<br>运行级别2：多用户状态(没有NFS)，不支持网络<br>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式<br>运行级别4：系统未使用，保留<br>运行级别5：X11控制台，登陆后进入图形GUI模式<br>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</p>
+<blockquote>
+<p>每一个服务对每一个运行级别都回设定是否自启动</p>
+</blockquote>
+<h3 id="开机的流程说明"><a href="#开机的流程说明" class="headerlink" title="开机的流程说明"></a>开机的流程说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">    subgraph 开机流程</span><br><span class="line">    A1(开机) --&gt; A2(BIOS)</span><br><span class="line">    A2(BIOS) --&gt; A3(/boot)</span><br><span class="line">    A3(/boot) --&gt; A4(init进程1)</span><br><span class="line">    A4(init进程1) --&gt; A5(运行级别)</span><br><span class="line">    A5(运行级别) --&gt; A6(运行级别对应的服务)</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+<h3 id="chkconfig指令"><a href="#chkconfig指令" class="headerlink" title="chkconfig指令"></a><code>chkconfig</code>指令</h3><h4 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h4><p>通过<code>chkconfig</code>命令可以给每个服务的各个运行级别设置<code>自启动/关闭</code></p>
+<h4 id="基本语法-2"><a href="#基本语法-2" class="headerlink" title="基本语法"></a>基本语法</h4><ul>
+<li>查看服务 </li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --list | grep xxx </span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/chkconfig-1.png" class="" title="chkconfig-1">
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/chkconfig-2.png" class="" title="chkconfig-2">
+<ul>
+<li>查看某个服务的详细 <code>chkconfig 服务名 --list</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/chkconfig-3.png" class="" title="chkconfig-3">
+<ul>
+<li>将sshd服务在运行级别为5的情况下，不要自启动<code>chkconfig --level 5 服务名 on/off</code> </li>
+</ul>
+<p>[可以指定某个服务，某各个运行级别，开启或关闭]</p>
+<p>sshd 服务在 1 运行级别 off</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig –level 1 sshd off/on</span><br></pre></td></tr></table></figure>
+<ul>
+<li>彻底关闭服务<code>chkconfig 服务名 on/off</code></li>
+</ul>
+<p>iptables 彻底关闭</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig iptables off</span><br><span class="line">//[不管是哪个级别都关闭]</span><br></pre></td></tr></table></figure>
+<h4 id="应用实例-2"><a href="#应用实例-2" class="headerlink" title="应用实例"></a>应用实例</h4><ul>
+<li>案例1： 请显示当前系统所有服务的各个运行级别的运行状态</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --list</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例2 ：请查看sshd服务的运行状态</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chkconfig sshd –list</span><br><span class="line"></span><br><span class="line">chkconfig –list | grep sshd</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例3： 将sshd 服务在运行级别5下设置为不自动启动，看看有什么效果？</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig –level 5 sshd off</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例4： 当运行级别为5时，关闭防火墙。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig –level 5 iptables off</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例5： 在所有运行级别下，关闭防火墙</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure>
+<ul>
+<li>案例6： 在所有运行级别下，开启防火墙</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig iptables on</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用细节</li>
+</ul>
+<p>chkconfig重新设置服务后自启动或关闭，重启机器就会按设置的状态运行。</p>
+<h1 id="动态监控进程-top"><a href="#动态监控进程-top" class="headerlink" title="动态监控进程-top"></a>动态监控进程-top</h1><h2 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h2><p><code>top</code>与<code>ps</code>命令很相似。它们都用来显示正在执行的进程。<br><code>top</code>与<code>ps</code>最大的不同之处，在于top在执行一段时间可以更新正在运行的的进程(默认每3秒变化一次)。</p>
+<h2 id="基本语法-3"><a href="#基本语法-3" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top [选项]</span><br></pre></td></tr></table></figure>
+<h2 id="选项说明"><a href="#选项说明" class="headerlink" title="选项说明"></a>选项说明</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-d 秒数</td>
+<td style="text-align:center">指定top命令每隔几秒更新。默认是3秒在top命令的交互模式当中可以执行的命令</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">使top不显示任何闲置或者僵死进程。</td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">通过指定监控进程ID来仅仅监控某个进程的状态。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="交互操作说明"><a href="#交互操作说明" class="headerlink" title="交互操作说明"></a>交互操作说明</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">P</td>
+<td style="text-align:center">以CPU使用率排序，默认就是此项</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:center">以内存使用率排序</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">以PID排序</td>
+</tr>
+<tr>
+<td style="text-align:center">q</td>
+<td style="text-align:center">退出top</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="应用实例-3"><a href="#应用实例-3" class="headerlink" title="应用实例"></a>应用实例</h2><ul>
+<li>案例1.如何监视特定用户</li>
+</ul>
+<p>top：输入此命令，按回车键，查看执行的进程。<br>u：然后输入<code>u</code>回车，再输入用户名，即可。</p>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/top-1.png" class="" title="top-1">
+<ul>
+<li>案例2：如何终止指定的进程</li>
+</ul>
+<p>top：输入此命令，按回车键，查看执行的进程。<br>k：然后输入“k”回车，再输入要结束的进程ID号</p>
+<ul>
+<li>案例3:指定系统状态更新的时间(每隔10秒自动更新)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -d 10</span><br></pre></td></tr></table></figure>
+<h1 id="监控网络状态-netstat"><a href="#监控网络状态-netstat" class="headerlink" title="监控网络状态-netstat"></a>监控网络状态-netstat</h1><h2 id="基本语法-4"><a href="#基本语法-4" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat [选项]</span><br></pre></td></tr></table></figure>
+<h2 id="选项说明-1"><a href="#选项说明-1" class="headerlink" title="选项说明"></a>选项说明</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-an</td>
+<td style="text-align:center">按一定顺序排列输出</td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">显示哪个进程在调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h2><ul>
+<li>查看系统所有网络服务</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp | more</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看服务名为 sshd 的服务的信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat –anp | grep sshd</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/22/Linux%E5%AE%9E%E6%93%8D-%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/netstat-1.png" class="" title="netstat-1">
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2020/06/22/Linux实操-进程管理/">http://hibiscidai.com/2020/06/22/Linux实操-进程管理/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/06/23/Linux%E5%AE%9E%E6%93%8D-RPM%E4%B8%8EYUM/"><i class="fa fa-chevron-left">  </i><span>Linux实操-RPM与YUM</span></a></div><div class="next-post pull-right"><a href="/2020/06/15/Linux%E5%AE%9E%E6%93%8D-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"><span>Linux实操-网络配置</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

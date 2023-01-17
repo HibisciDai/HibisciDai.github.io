@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Linux实操-Linux磁盘分区、挂载"><meta name="keywords" content="学习笔记,大数据,Linux"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>Linux实操-Linux磁盘分区、挂载 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">Linux实操-Linux磁盘分区、挂载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">分区的基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E7%9A%84%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.1.</span> <span class="toc-text">分区的模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mbr%E5%88%86%E5%8C%BA"><span class="toc-number">2.1.1.</span> <span class="toc-text">mbr分区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gtp%E5%88%86%E5%8C%BA"><span class="toc-number">2.1.2.</span> <span class="toc-text">gtp分区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows%E4%B8%8B%E7%9A%84%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">2.2.</span> <span class="toc-text">windows下的磁盘分区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%88%86%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">Linux分区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.</span> <span class="toc-text">原理介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E7%9B%98%E8%AF%B4%E6%98%8E"><span class="toc-number">3.2.</span> <span class="toc-text">硬盘说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%88%86%E5%8C%BA%E6%8C%82%E8%BD%BD%E6%83%85%E5%86%B5"><span class="toc-number">3.2.1.</span> <span class="toc-text">查看分区挂载情况</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E7%9A%84%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B"><span class="toc-number">3.3.</span> <span class="toc-text">挂载的经典案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%A1%AC%E7%9B%98"><span class="toc-number">3.3.1.</span> <span class="toc-text">1 虚拟机添加硬盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%86%E5%8C%BA"><span class="toc-number">3.3.2.</span> <span class="toc-text">2 分区</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E5%91%BD%E4%BB%A4-fdisk-dev-sdb"><span class="toc-number">3.3.2.1.</span> <span class="toc-text">分区命令  fdisk &#x2F;dev&#x2F;sdb</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">3.3.3.</span> <span class="toc-text">3 格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E5%91%BD%E4%BB%A4mkfs-t-ext4-dev-sdb1"><span class="toc-number">3.3.4.</span> <span class="toc-text">分区命令mkfs -t ext4 &#x2F;dev&#x2F;sdb1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8C%82%E8%BD%BD"><span class="toc-number">3.3.5.</span> <span class="toc-text">4 挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-number">3.3.5.1.</span> <span class="toc-text">创建目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E5%85%B3%E7%B3%BB"><span class="toc-number">3.3.5.2.</span> <span class="toc-text">挂载关系</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="toc-number">3.3.6.</span> <span class="toc-text">设置可以自动挂载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E6%83%85%E5%86%B5%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">磁盘情况查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-number">4.1.</span> <span class="toc-text">查询系统整体磁盘使用情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">4.1.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E7%9A%84%E7%A3%81%E7%9B%98%E5%8D%A0%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-number">4.2.</span> <span class="toc-text">查询指定目录的磁盘占用情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95-1"><span class="toc-number">4.2.1.</span> <span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B-1"><span class="toc-number">4.2.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E6%83%85%E5%86%B5-%E5%B7%A5%E4%BD%9C%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">4.3.</span> <span class="toc-text">磁盘情况-工作实用指令</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">204</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">73</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">Linux实操-Linux磁盘分区、挂载</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-06-09</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Linux/">Linux</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">1.3k</span><span class="post-meta__separator">|</span><span>阅读时长: 4 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD.png" class="" title="Linux实操-Linux磁盘分区、挂载">
+<p>Linux实操-Linux磁盘分区、挂载</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="Linux实操-Linux磁盘分区、挂载"><a href="#Linux实操-Linux磁盘分区、挂载" class="headerlink" title="Linux实操-Linux磁盘分区、挂载"></a>Linux实操-Linux磁盘分区、挂载</h1><h1 id="分区的基础知识"><a href="#分区的基础知识" class="headerlink" title="分区的基础知识"></a>分区的基础知识</h1><h2 id="分区的模式"><a href="#分区的模式" class="headerlink" title="分区的模式"></a>分区的模式</h2><h3 id="mbr分区"><a href="#mbr分区" class="headerlink" title="mbr分区"></a>mbr分区</h3><ul>
+<li>最多支持四个主分区</li>
+<li>系统只能安装在主分区</li>
+<li>扩展分区要占一个主分区</li>
+<li>MBR最大只支持2TB，但拥有最好的兼容性</li>
+</ul>
+<h3 id="gtp分区"><a href="#gtp分区" class="headerlink" title="gtp分区"></a>gtp分区</h3><ul>
+<li>支持无限多个主分区（但操作系统可能限制，比如 windows下最多128个分区）</li>
+<li>最大支持18EB的大容量（1EB=1024 PB，1PB=1024 TB ）</li>
+<li>windows7 64位以后支持gtp</li>
+</ul>
+<h2 id="windows下的磁盘分区"><a href="#windows下的磁盘分区" class="headerlink" title="windows下的磁盘分区"></a>windows下的磁盘分区</h2><img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD-1.png" class="" title="Linux实操-Linux磁盘分区、挂载-1">
+<h1 id="Linux分区"><a href="#Linux分区" class="headerlink" title="Linux分区"></a>Linux分区</h1><h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><ul>
+<li><p>Linux来说无论有几个分区，分给哪一目录使用，它归根结底就只有一个根目录，一个独立且唯一的文件结构 , Linux中每个分区都是用来组成整个文件系统的一部分。</p>
+</li>
+<li><p>Linux采用了一种叫“载入”的处理方法，它的整个文件系统中包含了一整套的文件和目录，且将一个分区和一个目录联系起来。这时要载入的一个分区将使它的存储空间在一个目录下获得。</p>
+</li>
+<li><p>示意图</p>
+</li>
+</ul>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD-2.png" class="" title="Linux实操-Linux磁盘分区、挂载-2">
+<h2 id="硬盘说明"><a href="#硬盘说明" class="headerlink" title="硬盘说明"></a>硬盘说明</h2><ul>
+<li><p>Linux硬盘分IDE硬盘和SCSI硬盘，目前基本上是SCSI硬盘</p>
+</li>
+<li><p>对于IDE硬盘，驱动器标识符为<code>hdx~</code>,其中<code>hd</code>表明分区所在设备的类型，这里是指IDE硬盘了。<code>x</code>为盘号（<code>a</code>为基本盘，<code>b</code>为基本从属盘，<code>c</code>为辅助主盘，d为辅助从属盘）,<code>~</code>代表分区，前四个分区用数字1到4表示，它们是主分区或扩展分区，从5开始就是逻辑分区。例，<code>hda3</code>表示为第一个IDE硬盘上的第三个主分区或扩展分区，<code>hdb2</code>表示为第二个IDE硬盘上的第二个主分区或扩展分区。 </p>
+</li>
+<li><p>对于SCSI硬盘则标识为<code>sdx~</code>，SCSI硬盘是用<code>sd</code>来表示分区所在设备的类型的，其余则和IDE硬盘的表示方法一样。sdb1 [表示第2块scsi 硬盘的第1个分区]</p>
+</li>
+</ul>
+<h3 id="查看分区挂载情况"><a href="#查看分区挂载情况" class="headerlink" title="查看分区挂载情况"></a>查看分区挂载情况</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lsblk -f</span><br><span class="line"></span><br><span class="line">分区情况	分区类型	唯一标识分区的40位不重复的字符串	挂载点</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E6%9F%A5%E7%9C%8B%E5%88%86%E5%8C%BA%E6%8C%82%E8%BD%BD%E6%83%85%E5%86%B5.png" class="" title="查看分区挂载情况">
+<h2 id="挂载的经典案例"><a href="#挂载的经典案例" class="headerlink" title="挂载的经典案例"></a>挂载的经典案例</h2><blockquote>
+<p>Linux挂载分区会把挂载的分区原来的文件隐藏，所以尽量新建目录挂载，否则造成系统崩溃</p>
+</blockquote>
+<p>下面我们以增加一块硬盘2G为例来熟悉下磁盘的相关指令和深入理解磁盘分区、挂载、卸载的概念。</p>
+<ul>
+<li>新增一个硬盘挂载到 <code>/home/newdisk</code> 目录下</li>
+</ul>
+<h3 id="1-虚拟机添加硬盘"><a href="#1-虚拟机添加硬盘" class="headerlink" title="1 虚拟机添加硬盘"></a>1 虚拟机添加硬盘</h3><p>在【虚拟机】菜单中，选择【设置】，然后设备列表里添加硬盘，然后一路【下一步】，中间只有选择磁盘大小的地方需要修改，至到完成。然后重启系统（才能识别）！</p>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%A1%AC%E7%9B%98-1.png" class="" title="虚拟机添加硬盘-1">
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%A1%AC%E7%9B%98-2.png" class="" title="虚拟机添加硬盘-2">
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%A1%AC%E7%9B%98-3.png" class="" title="虚拟机添加硬盘-3">
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%BB%E5%8A%A0%E7%A1%AC%E7%9B%98-4.png" class="" title="虚拟机添加硬盘-4">
+<p>没有发现sdb-sdb1磁盘，需要重启。</p>
+<h3 id="2-分区"><a href="#2-分区" class="headerlink" title="2 分区"></a>2 分区</h3><img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E5%88%86%E5%8C%BA-1.png" class="" title="分区-1">
+<h4 id="分区命令-fdisk-dev-sdb"><a href="#分区命令-fdisk-dev-sdb" class="headerlink" title="分区命令  fdisk /dev/sdb"></a>分区命令  <code>fdisk /dev/sdb</code></h4><p>开始对/sdb分区</p>
+<ul>
+<li><code>m</code>   显示命令列表</li>
+<li><code>p</code>    显示磁盘分区 同 fdisk  –l</li>
+<li><code>n</code>    新增分区</li>
+<li><code>d</code>     删除分区</li>
+<li><code>w</code>   写入并退出</li>
+</ul>
+<p>说明： 开始分区后输入n，新增分区，然后选择p ，分区类型为主分区。两次回车默认剩余全部空间。最后输入w写入分区并退出，若不保存退出输入q。</p>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E5%88%86%E5%8C%BA-2.png" class="" title="分区-2">
+<h3 id="3-格式化"><a href="#3-格式化" class="headerlink" title="3 格式化"></a>3 格式化</h3><h3 id="分区命令mkfs-t-ext4-dev-sdb1"><a href="#分区命令mkfs-t-ext4-dev-sdb1" class="headerlink" title="分区命令mkfs -t ext4 /dev/sdb1"></a>分区命令<code>mkfs -t ext4 /dev/sdb1</code></h3><p>其中ext4是分区类型</p>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E5%88%86%E5%8C%BA-3.png" class="" title="分区-3">
+<h3 id="4-挂载"><a href="#4-挂载" class="headerlink" title="4 挂载"></a>4 挂载</h3><h4 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/newdisk</span><br></pre></td></tr></table></figure>
+<p>进入目录发先为空</p>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E6%8C%82%E8%BD%BD-1.png" class="" title="挂载-1">
+<h4 id="挂载关系"><a href="#挂载关系" class="headerlink" title="挂载关系"></a>挂载关系</h4><p>将一个分区与一个目录联系起来</p>
+<p><code>mount 设备名称 挂载目录</code></p>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdb1 /home/newdisk</span><br></pre></td></tr></table></figure>
+<p><code>umount 设备名称/挂载目录</code></p>
+<p>例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">umount /dev/sdb1</span><br><span class="line">umount /home/newdisk</span><br></pre></td></tr></table></figure>
+<ul>
+<li>执行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/sdb1 /home/newdisk</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E6%8C%82%E8%BD%BD-2.png" class="" title="挂载-2">
+<p>当重启机器时候，会发现挂载关系失败。</p>
+<h3 id="设置可以自动挂载"><a href="#设置可以自动挂载" class="headerlink" title="设置可以自动挂载"></a>设置可以自动挂载</h3><p>重启系统后，仍然可以挂载到分区。</p>
+<p>通过修改<code>/etc/fstab</code>实现挂载 ,添加完成后，执行<code>mount –a</code>即刻生效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/fstab</span><br><span class="line">/dev/sdb1 /home/newdisk ext4 defaults 0 0</span><br><span class="line"></span><br><span class="line">mount -a</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD-1.png" class="" title="自动挂载-1">
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD-2.png" class="" title="自动挂载-2">
+<h1 id="磁盘情况查询"><a href="#磁盘情况查询" class="headerlink" title="磁盘情况查询"></a>磁盘情况查询</h1><h2 id="查询系统整体磁盘使用情况"><a href="#查询系统整体磁盘使用情况" class="headerlink" title="查询系统整体磁盘使用情况"></a>查询系统整体磁盘使用情况</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p><code>df -h</code><br><code>df -l</code></p>
+<h3 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h3><p>查询系统整体磁盘使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -lh</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5-1.png" class="" title="查询系统整体磁盘使用情况-1">
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5-2.png" class="" title="查询系统整体磁盘使用情况-2">
+<h2 id="查询指定目录的磁盘占用情况"><a href="#查询指定目录的磁盘占用情况" class="headerlink" title="查询指定目录的磁盘占用情况"></a>查询指定目录的磁盘占用情况</h2><h3 id="基本语法-1"><a href="#基本语法-1" class="headerlink" title="基本语法"></a>基本语法</h3><p><code>du -h /目录</code></p>
+<p>查询指定目录的磁盘占用情况，默认为当前目录</p>
+<ul>
+<li><code>s</code> 指定目录占用大小汇总</li>
+<li><code>h</code> 带计量单位</li>
+<li><code>a</code> 含文件</li>
+<li><code>-max-depth=1</code>  子目录深度</li>
+<li><code>c</code> 列出明细的同时，增加汇总值</li>
+</ul>
+<h3 id="应用实例-1"><a href="#应用实例-1" class="headerlink" title="应用实例"></a>应用实例</h3><p>查询 <code>/usr</code> 目录的磁盘占用情况，深度为1</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -ach --max-depth=1 /usr</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5-3.png" class="" title="查询系统整体磁盘使用情况-3">
+<h2 id="磁盘情况-工作实用指令"><a href="#磁盘情况-工作实用指令" class="headerlink" title="磁盘情况-工作实用指令"></a>磁盘情况-工作实用指令</h2><ul>
+<li>统计<code>/home</code>文件夹下文件的个数</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls –l /home/ | grep “^-” | wc -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计<code>/home</code>文件夹下目录的个数</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls –l /home/ | grep “^d” | wc -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计<code>/home</code>文件夹下文件的个数，包括子文件夹里的</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls –lR /home/ | grep “^-” | wc -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>统计<code>/home</code>文件夹下目录的个数，包括子文件夹里的</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls –lR /home/ | grep “^d” | wc -l</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E7%A3%81%E7%9B%98%E6%83%85%E5%86%B5-%E5%B7%A5%E4%BD%9C%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4-1.png" class="" title="磁盘情况-工作实用指令-1">
+<ul>
+<li>以树状显示<code>/home</code>目录结构  [没有tree指令咋办, 使用yum 来安装]</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install tree</span><br><span class="line">tree /home</span><br><span class="line">ls -lR  , grep &quot;^-&quot; , wc -l</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/09/Linux%E5%AE%9E%E6%93%8D-Linux%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%E3%80%81%E6%8C%82%E8%BD%BD/%E7%A3%81%E7%9B%98%E6%83%85%E5%86%B5-%E5%B7%A5%E4%BD%9C%E5%AE%9E%E7%94%A8%E6%8C%87%E4%BB%A4-2.png" class="" title="磁盘情况-工作实用指令-2"></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2020/06/09/Linux实操-Linux磁盘分区、挂载/">http://hibiscidai.com/2020/06/09/Linux实操-Linux磁盘分区、挂载/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/zhifubaodashang.jpg"><div class="post-qr-code__desc">支付宝打赏</div></div><div class="post-qr-code-item"><img class="post-qr-code__img" src="/img/weixin.png"><div class="post-qr-code__desc">微信打赏</div></div></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2020/06/10/CUDA%E5%9F%BA%E7%A1%80-%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%A4%BA/"><i class="fa fa-chevron-left">  </i><span>CUDA基础-实例演示</span></a></div><div class="next-post pull-right"><a href="/2020/06/03/The%20Tale%20of%20Peter%20Rabbit/"><span>The Tale of Peter Rabbit</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2023 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
