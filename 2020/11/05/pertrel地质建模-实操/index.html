@@ -10,7 +10,7 @@
   hexoVersion: '6.1.0'
 } </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
 </head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">数据输入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">数据准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wellheader-%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">wellheader(井头文件)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D"><span class="toc-number">1.1.2.</span> <span class="toc-text">加载井头文件实操</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%95%E6%96%9C%EF%BC%88%E4%BA%95%E8%BD%A8%E8%BF%B9%EF%BC%89%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.3.</span> <span class="toc-text">井斜（井轨迹）数据文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D"><span class="toc-number">1.1.4.</span> <span class="toc-text">加载井斜数据实操</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E4%BA%95%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.5.</span> <span class="toc-text">测井数据文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D"><span class="toc-number">1.1.6.</span> <span class="toc-text">加载测井数据实操</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.7.</span> <span class="toc-text">地质分层数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D"><span class="toc-number">1.1.8.</span> <span class="toc-text">地质分层数据实操</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C"><span class="toc-number">1.1.9.</span> <span class="toc-text">加载工区边界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D"><span class="toc-number">1.1.10.</span> <span class="toc-text">加载工区边界实操</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B7%A5%E5%8C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">创建工区</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">计算器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E6%B3%A5%E8%B4%A8%E5%90%AB%E9%87%8F%E5%8E%BB%E8%AE%A1%E7%AE%97%E7%A0%82%E5%B2%A9%E6%B3%A5%E5%B2%A9%E5%8C%BA%E5%88%86"><span class="toc-number">2.1.</span> <span class="toc-text">根据泥质含量去计算砂岩泥岩区分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%AA%E6%9B%B2%E7%BA%BF%E8%BF%90%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">单个曲线运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E6%9B%B2%E7%BA%BF%E8%BF%90%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">多个曲线运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">联井剖面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BB%BA%E6%A8%A1"><span class="toc-number">4.</span> <span class="toc-text">建模</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">新建模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">断层模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96"><span class="toc-number">4.3.</span> <span class="toc-text">网格平面化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82"><span class="toc-number">4.4.</span> <span class="toc-text">划分标准层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86"><span class="toc-number">4.5.</span> <span class="toc-text">纵向网格划分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.</span> <span class="toc-text">属性模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B"><span class="toc-number">5.0.1.</span> <span class="toc-text">相模型建立</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9B%B8%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA"><span class="toc-number">5.1.</span> <span class="toc-text">其他相模型构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B2%A9%E6%80%A7%E7%9B%B8"><span class="toc-number">5.1.1.</span> <span class="toc-text">岩性相</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A5%E8%B4%A8%E7%9B%B8"><span class="toc-number">5.1.2.</span> <span class="toc-text">泥质相</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8"><span class="toc-number">5.1.3.</span> <span class="toc-text">孔隙度相</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8"><span class="toc-number">5.1.4.</span> <span class="toc-text">渗透率相</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8"><span class="toc-number">5.1.5.</span> <span class="toc-text">含油饱和度相</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97"><span class="toc-number">5.2.</span> <span class="toc-text">储量计算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E5%82%A8%E9%87%8F%E9%9C%80%E8%A6%81%E5%8F%82%E6%95%B0"><span class="toc-number">5.2.1.</span> <span class="toc-text">算储量需要参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%80%E6%AF%9B%E6%AF%94%E7%9B%B8%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.2.2.</span> <span class="toc-text">净毛比相模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B2%B9%E6%B0%B4%E8%BE%B9%E7%95%8C%E7%A1%AE%E5%AE%9A"><span class="toc-number">5.2.3.</span> <span class="toc-text">油水边界确定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E4%BD%93%E7%A7%AF"><span class="toc-number">5.2.4.</span> <span class="toc-text">计算体积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%9C"><span class="toc-number">5.2.5.</span> <span class="toc-text">计算结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%AD%E5%B1%82%E6%A8%A1%E5%9E%8B-1"><span class="toc-number">6.</span> <span class="toc-text">断层模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Fault-Stick"><span class="toc-number">6.1.</span> <span class="toc-text">Fault Stick</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fault-Polygon"><span class="toc-number">6.2.</span> <span class="toc-text">Fault Polygon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5"><span class="toc-number">6.3.</span> <span class="toc-text">断层连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96"><span class="toc-number">6.4.</span> <span class="toc-text">断层网格化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%BE%B9%E7%95%8C"><span class="toc-number">6.4.1.</span> <span class="toc-text">设置边界</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%92%E5%88%86%E7%BD%91%E6%A0%BC"><span class="toc-number">6.4.2.</span> <span class="toc-text">划分网格</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.</span> <span class="toc-text">裂缝模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%B5%84%E6%96%99%E5%AF%BC%E5%85%A5"><span class="toc-number">7.1.</span> <span class="toc-text">基础资料导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%A3%82%E7%BC%9D%E6%95%B0%E6%8D%AE"><span class="toc-number">7.2.</span> <span class="toc-text">导入裂缝数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E4%BA%95%E5%89%96%E9%9D%A2%E8%BF%9B%E8%A1%8C%E6%98%BE%E7%A4%BA"><span class="toc-number">7.2.1.</span> <span class="toc-text">连井剖面进行显示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%A2%E9%87%8F%E5%9B%BE%E6%98%BE%E7%A4%BA%E5%80%BE%E8%A7%92%E4%BF%A1%E6%81%AF"><span class="toc-number">7.2.1.1.</span> <span class="toc-text">矢量图显示倾角信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%8E%AB%E7%91%B0%E8%8A%B1%E5%9B%BE%E6%98%BE%E7%A4%BA%E5%80%BE%E5%90%91%E4%BF%A1%E6%81%AF"><span class="toc-number">7.2.1.2.</span> <span class="toc-text">玫瑰花图显示倾向信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%82%E7%BC%9D%E7%A6%BB%E6%95%A3%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.3.</span> <span class="toc-text">裂缝离散网络模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E8%A3%82%E7%BC%9D%E5%AF%86%E5%BA%A6%E6%9B%B2%E7%BA%BF"><span class="toc-number">7.3.1.</span> <span class="toc-text">生成裂缝密度曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%A2%84%E6%B5%8B"><span class="toc-number">7.3.2.</span> <span class="toc-text">人工神经网络预测</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%8A%9F%E8%83%BD"><span class="toc-number">7.3.2.1.</span> <span class="toc-text">人工神经网络功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">7.3.2.2.</span> <span class="toc-text">输入数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">7.3.2.3.</span> <span class="toc-text">设置参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C%E7%94%9F%E6%88%90"><span class="toc-number">7.3.2.4.</span> <span class="toc-text">根据预测结果生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%82%E7%BC%9D%E5%AF%86%E5%BA%A6%E4%B8%89%E7%BB%B4%E6%9B%B2%E7%BA%BF"><span class="toc-number">7.3.3.</span> <span class="toc-text">裂缝密度三维曲线</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%9A%82%E8%9A%81%E4%BD%93%E6%95%B0%E6%8D%AE-%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE"><span class="toc-number">7.3.3.1.</span> <span class="toc-text">导入蚂蚁体数据(地震数据)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%B0%E9%9C%87%E6%95%B0%E6%8D%AE%E9%87%8D%E9%87%87%E6%A0%B7"><span class="toc-number">7.3.3.2.</span> <span class="toc-text">地震数据重采样</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.4.</span> <span class="toc-text">三维空间裂缝模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%82%E7%BC%9D%E5%AF%86%E5%BA%A6%E6%9B%B2%E7%BA%BF%E7%B2%97%E5%8C%96"><span class="toc-number">7.4.1.</span> <span class="toc-text">裂缝密度曲线粗化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%82%E7%BC%9D%E5%AF%86%E5%BA%A6%E4%B8%89%E7%BB%B4%E7%A9%BA%E9%97%B4"><span class="toc-number">7.4.2.</span> <span class="toc-text">裂缝密度三维空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A3%82%E7%BC%9D%E7%A6%BB%E6%95%A3%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-1"><span class="toc-number">7.4.2.1.</span> <span class="toc-text">裂缝离散网络模型</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">221</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">76</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">29</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">pertrel地质建模-实操</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-11-05</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%9F%B3%E6%B2%B9%E5%9C%B0%E8%B4%A8/">石油地质</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">3.7k</span><span class="post-meta__separator">|</span><span>阅读时长: 12 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>pertrel地质建模-实操</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D.png" class="" alt="pertrel地质建模-实操">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D.png" class="" title="pertrel地质建模-实操">
 <span id="more"></span>
 <p>[TOC]</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/HibisciDai/Petrel2009_testdata">HibisciDai/Petrel2009_testdata</a></p>
@@ -113,11 +113,11 @@
 <li>井头源数据</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/wellhead</span><br><span class="line"></span><br><span class="line">jingtou.txt</span><br></pre></td></tr></table></figure>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-1.png" class="" alt="加载井头文件实操-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-2.png" class="" alt="加载井头文件实操-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-3.png" class="" alt="加载井头文件实操-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-4.png" class="" alt="加载井头文件实操-4">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-5.png" class="" alt="加载井头文件实操-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-1.png" class="" title="加载井头文件实操-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-2.png" class="" title="加载井头文件实操-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-3.png" class="" title="加载井头文件实操-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-4.png" class="" title="加载井头文件实操-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-5.png" class="" title="加载井头文件实操-5">
 <h3 id="井斜（井轨迹）数据文件"><a href="#井斜（井轨迹）数据文件" class="headerlink" title="井斜（井轨迹）数据文件"></a>井斜（井轨迹）数据文件</h3><p>井轨迹数据应该是ASCII码文件，按列排放。数据中包含几种可能的信息组合格式：</p>
 <ul>
 <li>①Measured depth（测深MD），inclination（井斜角），azimuth（方位角）；</li>
@@ -275,10 +275,10 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/inclination</span><br><span class="line"></span><br><span class="line">W1.txt</span><br><span class="line">W2.txt</span><br><span class="line">W3.txt</span><br><span class="line">W4.txt</span><br><span class="line">W5.txt</span><br><span class="line">W6.txt</span><br><span class="line">W7.txt</span><br><span class="line">W8.txt</span><br></pre></td></tr></table></figure>
 <p>雷同<code>加载井头文件实操-2</code>导入</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-1.png" class="" alt="加载井斜文件实操-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-2.png" class="" alt="加载井斜文件实操-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-3.png" class="" alt="加载井斜文件实操-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-4.png" class="" alt="加载井斜文件实操-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-1.png" class="" title="加载井斜文件实操-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-2.png" class="" title="加载井斜文件实操-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-3.png" class="" title="加载井斜文件实操-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E4%BA%95%E6%96%9C%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-4.png" class="" title="加载井斜文件实操-4">
 <h3 id="测井数据文件"><a href="#测井数据文件" class="headerlink" title="测井数据文件"></a>测井数据文件</h3><p>Petrel软件对输入的测井曲线格式是灵活的，唯一的要求是测井数据文件按列排列，即每条测井曲线为列数据排列。<br>Petrel软件支持<code>LAS格式</code>和<code>文本格式</code>的测井曲线数据。</p>
 <ul>
 <li>文本格式</li>
@@ -352,13 +352,13 @@
 <li>ascii转las格式</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/tools/AscToLas</span><br><span class="line"></span><br><span class="line">AscToLas.exe</span><br></pre></td></tr></table></figure>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/ascii%E8%BD%AClas%E6%A0%BC%E5%BC%8F-1.png" class="" alt="ascii转las格式-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/ascii%E8%BD%AClas%E6%A0%BC%E5%BC%8F-1.png" class="" alt="ascii转las格式-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/ascii%E8%BD%AClas%E6%A0%BC%E5%BC%8F-1.png" class="" title="ascii转las格式-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/ascii%E8%BD%AClas%E6%A0%BC%E5%BC%8F-1.png" class="" title="ascii转las格式-1">
 <p>雷同<code>加载井头文件实操-2</code>导入</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-1.png" class="" alt="加载测井文件实操-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-2.png" class="" alt="加载测井文件实操-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-3.png" class="" alt="加载测井文件实操-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-4.png" class="" alt="加载测井文件实操-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-1.png" class="" title="加载测井文件实操-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-2.png" class="" title="加载测井文件实操-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-3.png" class="" title="加载测井文件实操-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E6%B5%8B%E4%BA%95%E6%96%87%E4%BB%B6%E5%AE%9E%E6%93%8D-4.png" class="" title="加载测井文件实操-4">
 <h3 id="地质分层数据"><a href="#地质分层数据" class="headerlink" title="地质分层数据"></a>地质分层数据</h3><p>分层数据是指一个层位或者一个断层与井轨迹发生交叉，在井上的一系列标记。</p>
 <div class="table-container">
 <table>
@@ -417,339 +417,339 @@
 </table>
 </div>
 <h3 id="地质分层数据实操"><a href="#地质分层数据实操" class="headerlink" title="地质分层数据实操"></a>地质分层数据实操</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/stratification</span><br><span class="line"></span><br><span class="line">stratification.txt</span><br></pre></td></tr></table></figure>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D-1.png" class="" alt="地质分层数据实操-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D-2.png" class="" alt="地质分层数据实操-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D-3.png" class="" alt="地质分层数据实操-3">
-<h3 id="加载工区边界"><a href="#加载工区边界" class="headerlink" title="加载工区边界"></a>加载工区边界</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C-1.png" class="" alt="加载工区边界-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D-1.png" class="" title="地质分层数据实操-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D-2.png" class="" title="地质分层数据实操-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%9C%B0%E8%B4%A8%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E5%AE%9E%E6%93%8D-3.png" class="" title="地质分层数据实操-3">
+<h3 id="加载工区边界"><a href="#加载工区边界" class="headerlink" title="加载工区边界"></a>加载工区边界</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C-1.png" class="" title="加载工区边界-1">
 <p>需要对工区数据进行数值化。</p>
 <h3 id="加载工区边界实操"><a href="#加载工区边界实操" class="headerlink" title="加载工区边界实操"></a>加载工区边界实操</h3><ul>
 <li>数值化边界</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/boundary</span><br><span class="line"></span><br><span class="line">boundary.bmp | 工区边界图</span><br><span class="line">boundary.prj | 数值化处理后项目</span><br><span class="line">boundary.xyz | 工区边界数据</span><br><span class="line"></span><br><span class="line">/tools/Numerical_boundary</span><br><span class="line"></span><br><span class="line">R2V.exe</span><br></pre></td></tr></table></figure>
 <p>采用R2V数值化软件，点线数值化，打开bmp格式工区边界图片。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-1.png" class="" alt="数值化边界-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-2.png" class="" alt="数值化边界-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-1.png" class="" title="数值化边界-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-2.png" class="" title="数值化边界-2">
 <p>需要确定3-4个定位点作为工区基准，图中可以看到边界基准点的焦点。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-3.png" class="" alt="数值化边界-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-3.png" class="" title="数值化边界-3">
 <p>雷同操作，进行四个基准点的添加。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-4.png" class="" alt="数值化边界-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-4.png" class="" title="数值化边界-4">
 <p>通过四个基准点，可以确定改平面任一一点的位置，下边进行边界划分。</p>
 <p>依次按照边界进行鼠标点击，连接成线，点位要按顺序点击。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-5.png" class="" alt="数值化边界-5">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-6.png" class="" alt="数值化边界-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-5.png" class="" title="数值化边界-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-6.png" class="" title="数值化边界-6">
 <p>选择<code>.xyz</code>格式，点击<code>OK</code>。</p>
 <blockquote>
 <p>边界数据是x,y,z格式，制作时候可以选择z值。</p>
 </blockquote>
 <p>用记事本打开数据，要进行闭合，<code>起始点和结束点必须相同</code>。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-7.png" class="" alt="数值化边界-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%95%B0%E5%80%BC%E5%8C%96%E8%BE%B9%E7%95%8C-7.png" class="" title="数值化边界-7">
 <ul>
 <li>添加工区边界源数据</li>
 </ul>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-1.png" class="" alt="加载工区边界实操-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-2.png" class="" alt="加载工区边界实操-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-3.png" class="" alt="加载工区边界实操-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-4.png" class="" alt="加载工区边界实操-4">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-5.png" class="" alt="加载工区边界实操-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-1.png" class="" title="加载工区边界实操-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-2.png" class="" title="加载工区边界实操-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-3.png" class="" title="加载工区边界实操-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-4.png" class="" title="加载工区边界实操-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D-5.png" class="" title="加载工区边界实操-5">
 <p><code>File-expert graphic</code> 导出图片</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D%E7%BB%93%E6%9E%9C%E5%9B%BE.bmp" class="" alt="加载工区边界实操结果图">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%8A%A0%E8%BD%BD%E5%B7%A5%E5%8C%BA%E8%BE%B9%E7%95%8C%E5%AE%9E%E6%93%8D%E7%BB%93%E6%9E%9C%E5%9B%BE.bmp" class="" title="加载工区边界实操结果图">
 <h2 id="创建工区"><a href="#创建工区" class="headerlink" title="创建工区"></a>创建工区</h2><p>通过选择菜单栏的 <code>File: Save Project</code> ，Ctrl+S 或者单击Tools Bar上面的 Save Project 图标存储当前工区，软件会弹出“Save project as”窗口，提示输入工区名字，输入工区名称（如下图），OK。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%9B%E5%BB%BA%E5%B7%A5%E5%8C%BA.png" class="" alt="创建工区">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%9B%E5%BB%BA%E5%B7%A5%E5%8C%BA.png" class="" title="创建工区">
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">截止此步操作，进行保留备份工作空间</span><br><span class="line"></span><br><span class="line">data\workspace_backup\importdate_finish</span><br></pre></td></tr></table></figure>
 <h1 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h1><p>计算全局就点击well，计算单口井就选择单口井。</p>
-<h2 id="根据泥质含量去计算砂岩泥岩区分"><a href="#根据泥质含量去计算砂岩泥岩区分" class="headerlink" title="根据泥质含量去计算砂岩泥岩区分"></a>根据泥质含量去计算砂岩泥岩区分</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-1.png" class="" alt="计算器-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-2.png" class="" alt="计算器-2">
+<h2 id="根据泥质含量去计算砂岩泥岩区分"><a href="#根据泥质含量去计算砂岩泥岩区分" class="headerlink" title="根据泥质含量去计算砂岩泥岩区分"></a>根据泥质含量去计算砂岩泥岩区分</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-1.png" class="" title="计算器-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-2.png" class="" title="计算器-2">
 <p>if(SH&lt;=40%,shayan,niyan)</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-3.png" class="" alt="计算器-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-3.png" class="" title="计算器-3">
 <p>点击<code>enter</code>，如果有井没有SH曲线则会提示错误，点击确定跳过。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-4.png" class="" alt="计算器-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-4.png" class="" title="计算器-4">
 <p>打开一口井查看数据。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-5.png" class="" alt="计算器-5">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-6.png" class="" alt="计算器-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-5.png" class="" title="计算器-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-6.png" class="" title="计算器-6">
 <h2 id="单个曲线运算"><a href="#单个曲线运算" class="headerlink" title="单个曲线运算"></a>单个曲线运算</h2><p>孔隙度*10。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-7.png" class="" alt="计算器-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-7.png" class="" title="计算器-7">
 <h2 id="多个曲线运算"><a href="#多个曲线运算" class="headerlink" title="多个曲线运算"></a>多个曲线运算</h2><p>新增曲线然后用曲线相乘，计算<code>储量 = 孔隙度 * 含油饱和度</code>。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-8.png" class="" alt="计算器-8">
-<h1 id="联井剖面"><a href="#联井剖面" class="headerlink" title="联井剖面"></a>联井剖面</h1><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-1.png" class="" alt="联井剖面-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-2.png" class="" alt="联井剖面-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%AE%A1%E7%AE%97%E5%99%A8-8.png" class="" title="计算器-8">
+<h1 id="联井剖面"><a href="#联井剖面" class="headerlink" title="联井剖面"></a>联井剖面</h1><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-1.png" class="" title="联井剖面-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-2.png" class="" title="联井剖面-2">
 <p>选择 1 2 3 井进行联井</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-3.png" class="" alt="联井剖面-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-3.png" class="" title="联井剖面-3">
 <p>勾选孔隙度和泥质含量</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-4.png" class="" alt="联井剖面-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-4.png" class="" title="联井剖面-4">
 <p>调整比例尺</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-5.png" class="" alt="联井剖面-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-5.png" class="" title="联井剖面-5">
 <p>调整曲线顺序，井深度曲线在中间，左边右边各一条曲线</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-6.png" class="" alt="联井剖面-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-6.png" class="" title="联井剖面-6">
 <p>调整曲线的刻度</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-7.png" class="" alt="联井剖面-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-8.png" class="" alt="联井剖面-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-7.png" class="" title="联井剖面-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-8.png" class="" title="联井剖面-8">
 <p>添加分层数据到井段</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-9.png" class="" alt="联井剖面-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-9.png" class="" title="联井剖面-9">
 <p>通过层位拉平</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-10.png" class="" alt="联井剖面-10">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-10.png" class="" title="联井剖面-10">
 <p>适当调整比例尺</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-11.png" class="" alt="联井剖面-11">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-11.png" class="" title="联井剖面-11">
 <p>调整井曲线距离</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-12.png" class="" alt="联井剖面-12">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-12.png" class="" title="联井剖面-12">
 <p>调整曲线颜色，线形</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-13.png" class="" alt="联井剖面-13">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-13.png" class="" title="联井剖面-13">
 <p>输出图像</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-14.png" class="" alt="联井剖面-14">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-14.png" class="" title="联井剖面-14">
 <p>注意调整输出图像页面大小</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-15.png" class="" alt="联井剖面-15">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-16.png" class="" alt="联井剖面-16">
-<h1 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h1><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%BB%BA%E6%A8%A1%E6%B5%81%E7%A8%8B.png" class="" alt="建模流程">
-<h2 id="新建模型"><a href="#新建模型" class="headerlink" title="新建模型"></a>新建模型</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%B0%E5%BB%BA%E6%A8%A1%E5%9E%8B-1.png" class="" alt="新建模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-15.png" class="" title="联井剖面-15">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%81%94%E4%BA%95%E5%89%96%E9%9D%A2-16.png" class="" title="联井剖面-16">
+<h1 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h1><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%BB%BA%E6%A8%A1%E6%B5%81%E7%A8%8B.png" class="" title="建模流程">
+<h2 id="新建模型"><a href="#新建模型" class="headerlink" title="新建模型"></a>新建模型</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%B0%E5%BB%BA%E6%A8%A1%E5%9E%8B-1.png" class="" title="新建模型-1">
 <h2 id="断层模型"><a href="#断层模型" class="headerlink" title="断层模型"></a>断层模型</h2><p>没有略</p>
 <h2 id="网格平面化"><a href="#网格平面化" class="headerlink" title="网格平面化"></a>网格平面化</h2><p>网格化之前确定边界（未边界化）</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96-1.png" class="" alt="网格平面化-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96-1.png" class="" title="网格平面化-1">
 <p>设置网格大小</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96-2.png" class="" alt="网格平面化-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96-2.png" class="" title="网格平面化-2">
 <p>查看3D划分</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96-3.png" class="" alt="网格平面化-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BD%91%E6%A0%BC%E5%B9%B3%E9%9D%A2%E5%8C%96-3.png" class="" title="网格平面化-3">
 <h2 id="划分标准层"><a href="#划分标准层" class="headerlink" title="划分标准层"></a>划分标准层</h2><p>利用井数据进行构造形态划分。</p>
 <p>做构造面有两种方式，<code>地震数据</code>或者<code>井数据</code>。</p>
 <p>利用生产边界建立工区</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-1.png" class="" alt="划分标准层-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-2.png" class="" alt="划分标准层-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-1.png" class="" title="划分标准层-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-2.png" class="" title="划分标准层-2">
 <p>该层面数据来自于8口井插值法</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-3.png" class="" alt="划分标准层-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-3.png" class="" title="划分标准层-3">
 <p>插值以后改变了井点的原来数据，所以要采用矫正，使用A21层去矫正。</p>
 <p>保证插值以后层面数据和井上数据是一致的。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-4.png" class="" alt="划分标准层-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-4.png" class="" title="划分标准层-4">
 <p>插值后处理</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-5.png" class="" alt="划分标准层-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-5.png" class="" title="划分标准层-5">
 <ul>
 <li><code>Unchange</code> 不改变</li>
 <li><code>Truncated</code> 截断(设置高度)，%表示输入数据的百分比。<br><code>10%</code>，插值后如果超过输入数据10%，做截断操作。<br><code>10</code>，最大值不超过10，超过=10。</li>
 <li><code>Eliminated</code> 删除<br>超过直接删除</li>
 </ul>
 <p>设置显示格式</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-6.png" class="" alt="划分标准层-6">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-7.png" class="" alt="划分标准层-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-6.png" class="" title="划分标准层-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-7.png" class="" title="划分标准层-7">
 <p>可以看出是一个单斜构造面</p>
 <p>同理做其他三个层面</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-8.png" class="" alt="划分标准层-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-8.png" class="" title="划分标准层-8">
 <p>四个层面已经输入，需要导入至模型中</p>
 <p>双击<code>make horizons</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-9.png" class="" alt="划分标准层-9">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-10.png" class="" alt="划分标准层-10">
-<h2 id="纵向网格划分"><a href="#纵向网格划分" class="headerlink" title="纵向网格划分"></a>纵向网格划分</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BA%B5%E5%90%91%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86-1.png" class="" alt="纵向网格划分-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BA%B5%E5%90%91%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86-2.png" class="" alt="纵向网格划分-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-9.png" class="" title="划分标准层-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%88%92%E5%88%86%E6%A0%87%E5%87%86%E5%B1%82-10.png" class="" title="划分标准层-10">
+<h2 id="纵向网格划分"><a href="#纵向网格划分" class="headerlink" title="纵向网格划分"></a>纵向网格划分</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BA%B5%E5%90%91%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86-1.png" class="" title="纵向网格划分-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%BA%B5%E5%90%91%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86-2.png" class="" title="纵向网格划分-2">
 <h1 id="属性模型"><a href="#属性模型" class="headerlink" title="属性模型"></a>属性模型</h1><p>模型建立需要对测井曲线进行粗化</p>
 <p>模型通过井的数据差值、数学算法得到井间数据</p>
 <p>为了更接近需要用更多信息进行约束（数学运算）</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%9B%B8%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-1.png" class="" alt="相模型建立-1">
-<h3 id="相模型建立"><a href="#相模型建立" class="headerlink" title="相模型建立"></a>相模型建立</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-1.png" class="" alt="属性模型建立-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-2.png" class="" alt="属性模型建立-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E7%9B%B8%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-1.png" class="" title="相模型建立-1">
+<h3 id="相模型建立"><a href="#相模型建立" class="headerlink" title="相模型建立"></a>相模型建立</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-1.png" class="" title="属性模型建立-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-2.png" class="" title="属性模型建立-2">
 <p>主要依据井数据，通过数学方法得到数据建立模型。为了让模型更接近实际，需要用其他资料进行约束。</p>
 <p>比如在建立碎屑岩地层，建立渗透率模型可以采用孔隙度来约束。孔隙度高的地方渗透率也会变高。通过井上的孔渗数据进行分析。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-3.png" class="" alt="属性模型建立-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-4.png" class="" alt="属性模型建立-4">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-5.png" class="" alt="属性模型建立-5">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-6.png" class="" alt="属性模型建立-6">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-7.png" class="" alt="属性模型建立-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-8.png" class="" alt="属性模型建立-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-3.png" class="" title="属性模型建立-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-4.png" class="" title="属性模型建立-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-5.png" class="" title="属性模型建立-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-6.png" class="" title="属性模型建立-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-7.png" class="" title="属性模型建立-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-8.png" class="" title="属性模型建立-8">
 <ul>
 <li>样式改变</li>
 </ul>
 <p>A21面向上平移50m</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-9.png" class="" alt="属性模型建立-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-9.png" class="" title="属性模型建立-9">
 <p>通过计算器计算</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-10.png" class="" alt="属性模型建立-10">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-11.png" class="" alt="属性模型建立-11">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-10.png" class="" title="属性模型建立-10">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-11.png" class="" title="属性模型建立-11">
 <p>同理A23下移50m</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-12.png" class="" alt="属性模型建立-12">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-12.png" class="" title="属性模型建立-12">
 <p>井在目的层之上的段去掉（不可返回操作）</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-13.png" class="" alt="属性模型建立-13">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-13.png" class="" title="属性模型建立-13">
 <p>调整井名称显示</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-14.png" class="" alt="属性模型建立-14">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-14.png" class="" title="属性模型建立-14">
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">workspace_backup\k_model_finsih2</span><br><span class="line">k_model_finsih2.pet</span><br></pre></td></tr></table></figure>
 <p>同理对砂泥岩曲线进行粗化</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-15.png" class="" alt="属性模型建立-15">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-15.png" class="" title="属性模型建立-15">
 <p>对岩性曲线进行图像划分</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-16.png" class="" alt="属性模型建立-16">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-16.png" class="" title="属性模型建立-16">
 <p>调整后的岩性曲线如下</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-17.png" class="" alt="属性模型建立-17">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B1%9E%E6%80%A7%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B-17.png" class="" title="属性模型建立-17">
 <h2 id="其他相模型构建"><a href="#其他相模型构建" class="headerlink" title="其他相模型构建"></a>其他相模型构建</h2><p>建立相模型前要进行测井曲线的粗化，保证一个网格一个数据。</p>
 <h3 id="岩性相"><a href="#岩性相" class="headerlink" title="岩性相"></a>岩性相</h3><p><code>Property modeling</code> -&gt; <code>Scale up well logs</code></p>
 <p>选择岩性曲线</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" alt="岩性相模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" title="岩性相模型-1">
 <p>粗化后的曲线有<code>[U]</code>标识，只是测井曲线上的粗化。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" alt="岩性相模型-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" title="岩性相模型-2">
 <p>井上边可以看到代表岩性的色块。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" alt="岩性相模型-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" title="岩性相模型-3">
 <p>双击<code>Propetry modeling</code>-&gt;<code>Facies modeling</code>，相模型</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-4.png" class="" alt="岩性相模型-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-4.png" class="" title="岩性相模型-4">
 <p>采用截断高斯函数，对于岩相来说只有两种格式，泥岩和砂岩。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-5.png" class="" alt="岩性相模型-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-5.png" class="" title="岩性相模型-5">
 <p>需要先对岩性曲线进行修改</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-6.png" class="" alt="岩性相模型-6">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-7.png" class="" alt="岩性相模型-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-8.png" class="" alt="岩性相模型-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-6.png" class="" title="岩性相模型-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-7.png" class="" title="岩性相模型-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-8.png" class="" title="岩性相模型-8">
 <p>返回相模型创建界面</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-9.png" class="" alt="岩性相模型-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-9.png" class="" title="岩性相模型-9">
 <p>高斯截断对每一个相进行单独设置</p>
 <p>设置变参函数</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-10.png" class="" alt="岩性相模型-10">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-10.png" class="" title="岩性相模型-10">
 <p>由于没有约束条件，所以仅仅是简单的数学运算，没有体现地质规律。</p>
 <p>一般用地震或者平面沉积相组合来进行约束。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-11.png" class="" alt="岩性相模型-11">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%B2%A9%E6%80%A7%E7%9B%B8%E6%A8%A1%E5%9E%8B-11.png" class="" title="岩性相模型-11">
 <h3 id="泥质相"><a href="#泥质相" class="headerlink" title="泥质相"></a>泥质相</h3><p>粗化泥质曲线。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B3%A5%E8%B4%A8%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" alt="泥质相模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B3%A5%E8%B4%A8%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" title="泥质相模型-1">
 <p>设置岩石物理模型</p>
 <p>双击<code>Property modeling</code>-&gt;<code>Petrophysical modeling</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B3%A5%E8%B4%A8%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" alt="泥质相模型-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B3%A5%E8%B4%A8%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" alt="泥质相模型-3">
-<h3 id="孔隙度相"><a href="#孔隙度相" class="headerlink" title="孔隙度相"></a>孔隙度相</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" alt="孔隙度相模型-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" alt="孔隙度相模型-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B3%A5%E8%B4%A8%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" title="泥质相模型-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B3%A5%E8%B4%A8%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" title="泥质相模型-3">
+<h3 id="孔隙度相"><a href="#孔隙度相" class="headerlink" title="孔隙度相"></a>孔隙度相</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" title="孔隙度相模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" title="孔隙度相模型-2">
 <p>采用相控比较符合地层规律。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" alt="孔隙度相模型-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%AD%94%E9%9A%99%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" title="孔隙度相模型-3">
 <h3 id="渗透率相"><a href="#渗透率相" class="headerlink" title="渗透率相"></a>渗透率相</h3><p>粗化渗透率曲线，暂时选用算数平均法。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" alt="渗透率相模型-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" alt="渗透率相模型-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" alt="渗透率相模型-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" title="渗透率相模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" title="渗透率相模型-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" title="渗透率相模型-3">
 <p>结果与孔隙度相模型有一定的相关度。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-4.png" class="" alt="渗透率相模型-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%B8%97%E9%80%8F%E7%8E%87%E7%9B%B8%E6%A8%A1%E5%9E%8B-4.png" class="" title="渗透率相模型-4">
 <h3 id="含油饱和度相"><a href="#含油饱和度相" class="headerlink" title="含油饱和度相"></a>含油饱和度相</h3><p>粗化含油饱和度曲线。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" alt="含油饱和度相模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-1.png" class="" title="含油饱和度相模型-1">
 <p>含油饱和度与孔隙度渗透率也有关系，原始含有饱和度跟储层物性有必然相关性。</p>
 <p>采用渗透率去约束。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" alt="含油饱和度相模型-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" alt="含油饱和度相模型-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-4.png" class="" alt="含油饱和度相模型-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-2.png" class="" title="含油饱和度相模型-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-3.png" class="" title="含油饱和度相模型-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%90%AB%E6%B2%B9%E9%A5%B1%E5%92%8C%E5%BA%A6%E7%9B%B8%E6%A8%A1%E5%9E%8B-4.png" class="" title="含油饱和度相模型-4">
 <h2 id="储量计算"><a href="#储量计算" class="headerlink" title="储量计算"></a>储量计算</h2><p>基于三维网格计算，将有效网格储量累加起来，就是油藏的储量。</p>
 <h3 id="算储量需要参数"><a href="#算储量需要参数" class="headerlink" title="算储量需要参数"></a>算储量需要参数</h3><p>1.面积；<br>2.储层有效厚度；(网格高度是有效厚度)<br>3.孔隙度；<br>4.原始含油饱和度；<br>5.原油的密度；(需要输入)<br>6.原油的体积系数。(需要输入)</p>
 <h3 id="净毛比相模型"><a href="#净毛比相模型" class="headerlink" title="净毛比相模型"></a>净毛比相模型</h3><p>需要判断哪些网格有效。<br>即孔隙度、渗透率、含油和饱和度大于某个值，网格才有效。</p>
 <p><code>净毛比</code>，判断为储层的网格，值为0或者1。</p>
 <p>生成净毛比模型，先复制一个相模型。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-1.png" class="" alt="储量计算-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-1.png" class="" title="储量计算-1">
 <p>计算器计算，注意单位类型。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-2.png" class="" alt="储量计算-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-3.png" class="" alt="储量计算-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-2.png" class="" title="储量计算-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-3.png" class="" title="储量计算-3">
 <h3 id="油水边界确定"><a href="#油水边界确定" class="headerlink" title="油水边界确定"></a>油水边界确定</h3><p>双击<code>Structural modeling</code>-&gt;<code>Make contacts</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-4.png" class="" alt="储量计算-4">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-5.png" class="" alt="储量计算-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-4.png" class="" title="储量计算-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-5.png" class="" title="储量计算-5">
 <h3 id="计算体积"><a href="#计算体积" class="headerlink" title="计算体积"></a>计算体积</h3><p>双击<code>Utilities</code>-&gt;<code>Volume calculation</code></p>
 <ul>
 <li>设置油水界面</li>
 </ul>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-6.png" class="" alt="储量计算-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-6.png" class="" title="储量计算-6">
 <ul>
 <li>设置孔隙度</li>
 </ul>
 <p>计算储量时候孔隙度的单位是小数，目前模型为百分数。</p>
 <p>采用计算器对 孔隙度/100。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-8.png" class="" alt="储量计算-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-8.png" class="" title="储量计算-8">
 <ul>
 <li>设置含油饱和度</li>
 </ul>
 <p>采用计算器对 含油饱和度/100。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-9.png" class="" alt="储量计算-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-9.png" class="" title="储量计算-9">
 <ul>
 <li>设置净毛比</li>
 </ul>
 <p>如果没设置则会计算全部。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-7.png" class="" alt="储量计算-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-7.png" class="" title="储量计算-7">
 <ul>
 <li>设置油藏属性</li>
 </ul>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-10.png" class="" alt="储量计算-10">
-<h3 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-11.png" class="" alt="储量计算-11">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-10.png" class="" title="储量计算-10">
+<h3 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E5%82%A8%E9%87%8F%E8%AE%A1%E7%AE%97-11.png" class="" title="储量计算-11">
 <p>结果未精确到小数点后，可以采用 % 方式计算最后结果 / 100即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">workspace_backup\petrophysical_modling_finsih</span><br><span class="line">petrophysical_modling_finsih.pet</span><br></pre></td></tr></table></figure>
 <h1 id="断层模型-1"><a href="#断层模型-1" class="headerlink" title="断层模型"></a>断层模型</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fault_model</span><br></pre></td></tr></table></figure>
 <p>断层数据有两种类型<br>断层序<code>Fault Stick</code>和断层多边形<code>Fault Polygon</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fault_import_data\Fault_Polygon</span><br><span class="line">fault_import_data\Fault_Stick</span><br></pre></td></tr></table></figure>
-<h2 id="Fault-Stick"><a href="#Fault-Stick" class="headerlink" title="Fault Stick"></a>Fault Stick</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-1.png" class="" alt="Fault_Stick-1">
+<h2 id="Fault-Stick"><a href="#Fault-Stick" class="headerlink" title="Fault Stick"></a>Fault Stick</h2><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-1.png" class="" title="Fault_Stick-1">
 <blockquote>
 <p>Pertrel中井文件需要有专用文件夹，其他数据都可以自定义文件夹。</p>
 </blockquote>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-2.png" class="" alt="Fault_Stick-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-3.png" class="" alt="Fault_Stick-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-4.png" class="" alt="Fault_Stick-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-2.png" class="" title="Fault_Stick-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-3.png" class="" title="Fault_Stick-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-4.png" class="" title="Fault_Stick-4">
 <p>单条线代表断层切面。</p>
 <p>新建Fault Stick模型。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-5.png" class="" alt="Fault_Stick-5">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-6.png" class="" alt="Fault_Stick-6">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-7.png" class="" alt="Fault_Stick-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-8.png" class="" alt="Fault_Stick-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-5.png" class="" title="Fault_Stick-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-6.png" class="" title="Fault_Stick-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-7.png" class="" title="Fault_Stick-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Stick-8.png" class="" title="Fault_Stick-8">
 <h2 id="Fault-Polygon"><a href="#Fault-Polygon" class="headerlink" title="Fault Polygon"></a>Fault Polygon</h2><p>数据来源于构造图，断层在构造图上的投影。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-1.png" class="" alt="Fault_Polygon-1">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-2.png" class="" alt="Fault_Polygon-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-1.png" class="" title="Fault_Polygon-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-2.png" class="" title="Fault_Polygon-2">
 <p>雷同stick，先新建模型。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-3.png" class="" alt="Fault_Polygon-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-3.png" class="" title="Fault_Polygon-3">
 <p>点击右侧按钮<code>Create fault from fault polygons</code>从断层多边形产生断层模型</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-4.png" class="" alt="Fault_Polygon-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-4.png" class="" title="Fault_Polygon-4">
 <p>默认形成的断层形状，在两边有畸形体现。一般需要把两边的断层删掉。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-5.png" class="" alt="Fault_Polygon-5">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-6.png" class="" alt="Fault_Polygon-6">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-7.png" class="" alt="Fault_Polygon-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-8.png" class="" alt="Fault_Polygon-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-5.png" class="" title="Fault_Polygon-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-6.png" class="" title="Fault_Polygon-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-7.png" class="" title="Fault_Polygon-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-8.png" class="" title="Fault_Polygon-8">
 <p>利用外边界区域扩展范围。选中边界stick后点击右侧工具栏<code>Add pillar to end</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-9.png" class="" alt="Fault_Polygon-9">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-10.png" class="" alt="Fault_Polygon-10">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-9.png" class="" title="Fault_Polygon-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-10.png" class="" title="Fault_Polygon-10">
 <p>如果对断层stick间隔感到太宽，需要在两个柱子之间增加一个。多选两个柱子然后点击右侧工具栏<code>Add pillar between</code>。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-11.png" class="" alt="Fault_Polygon-11">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-12.png" class="" alt="Fault_Polygon-12">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-11.png" class="" title="Fault_Polygon-11">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/Fault_Polygon-12.png" class="" title="Fault_Polygon-12">
 <h2 id="断层连接"><a href="#断层连接" class="headerlink" title="断层连接"></a>断层连接</h2><p>勾选Fault Stick和Fault Polygon两个模型，调整显示格式。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-1.png" class="" alt="断层连接-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-1.png" class="" title="断层连接-1">
 <p>Polygon断层柱子有超过Stick模型，所以需要先删掉Polygon断层与Stick相切部分的边界柱子。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-2.png" class="" alt="断层连接-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-2.png" class="" title="断层连接-2">
 <p>观察相交趋势面，连接两个断层的stick。(不是同一个断层模型中的断层不可以链接)</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-3.png" class="" alt="断层连接-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-4.png" class="" alt="断层连接-4">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-5.png" class="" alt="断层连接-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-3.png" class="" title="断层连接-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-4.png" class="" title="断层连接-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-5.png" class="" title="断层连接-5">
 <p>公用的stick变为纯色，两个断层链接成功。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-6.png" class="" alt="断层连接-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-6.png" class="" title="断层连接-6">
 <p>Polygon断层有穿过Stick断层，需要调整弯曲度。</p>
 <p>对于当个柱子的调整需要选中整个柱子然后拖拽上下移动。</p>
 <p>单选一个点可以进行上下移动。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-7.png" class="" alt="断层连接-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-7.png" class="" title="断层连接-7">
 <p>调整后连接的断层</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-8.png" class="" alt="断层连接-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E8%BF%9E%E6%8E%A5-8.png" class="" title="断层连接-8">
 <h2 id="断层网格化"><a href="#断层网格化" class="headerlink" title="断层网格化"></a>断层网格化</h2><p>点击<code>Processes</code>-&gt;<code>Pillar gridding</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-1.png" class="" alt="断层网格化-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-1.png" class="" title="断层网格化-1">
 <h3 id="设置边界"><a href="#设置边界" class="headerlink" title="设置边界"></a>设置边界</h3><p>设置断层边界，将断层作为边界的一部分。</p>
 <p>选中断层边界，右边工具栏点击<code>Set part of grid boundary</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-2.png" class="" alt="断层网格化-2">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-3.png" class="" alt="断层网格化-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-2.png" class="" title="断层网格化-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-3.png" class="" title="断层网格化-3">
 <p>其他边界参考工区边界，手动画。</p>
 <p>勾选显示工区边界。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-4.png" class="" alt="断层网格化-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-4.png" class="" title="断层网格化-4">
 <p>点击右侧工具栏<code>Create external grid boundary segment</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-5.png" class="" alt="断层网格化-5">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-5.png" class="" title="断层网格化-5">
 <p>从断层最末点开始点击，沿着工区边界划线，再到断层起始点结束。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-6.png" class="" alt="断层网格化-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-6.png" class="" title="断层网格化-6">
 <h3 id="划分网格"><a href="#划分网格" class="headerlink" title="划分网格"></a>划分网格</h3><p>双击<code>Processes</code>-&gt;<code>Pillar gridding</code></p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-7.png" class="" alt="断层网格化-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-8.png" class="" alt="断层网格化-8">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-7.png" class="" title="断层网格化-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E6%96%AD%E5%B1%82%E7%BD%91%E6%A0%BC%E5%8C%96-8.png" class="" title="断层网格化-8">
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">workspace_backup\fault_model_grid_finish</span><br><span class="line">fault_model_grid_finish</span><br></pre></td></tr></table></figure>
 <p>后接创建层面操作。</p>
 <h1 id="裂缝模型"><a href="#裂缝模型" class="headerlink" title="裂缝模型"></a>裂缝模型</h1><h2 id="基础资料导入"><a href="#基础资料导入" class="headerlink" title="基础资料导入"></a>基础资料导入</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">workspace_backup\crack_model_start</span><br><span class="line">crack_model_start</span><br></pre></td></tr></table></figure>
 <p>初始模型中已经将常规的测井资料导入</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-1.png" class="" alt="裂缝模型-1">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-1.png" class="" title="裂缝模型-1">
 <h2 id="导入裂缝数据"><a href="#导入裂缝数据" class="headerlink" title="导入裂缝数据"></a>导入裂缝数据</h2><p>输入数据为成像测井解释裂缝数据，<code>深度</code>、<code>裂缝倾角</code>、<code>裂缝倾向</code>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data\crack_data</span><br><span class="line">imaging_logging_fracture_parameters.prn</span><br></pre></td></tr></table></figure>
 <p>插入井点数据文件夹（输入裂缝资料属于点数据）。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-2.png" class="" alt="裂缝模型-2">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-2.png" class="" title="裂缝模型-2">
 <p>输入数据。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-3.png" class="" alt="裂缝模型-3">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-4.png" class="" alt="裂缝模型-4">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-5.png" class="" alt="裂缝模型-5">
-<h3 id="连井剖面进行显示"><a href="#连井剖面进行显示" class="headerlink" title="连井剖面进行显示"></a>连井剖面进行显示</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-6.png" class="" alt="裂缝模型-6">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-3.png" class="" title="裂缝模型-3">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-4.png" class="" title="裂缝模型-4">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-5.png" class="" title="裂缝模型-5">
+<h3 id="连井剖面进行显示"><a href="#连井剖面进行显示" class="headerlink" title="连井剖面进行显示"></a>连井剖面进行显示</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-6.png" class="" title="裂缝模型-6">
 <p>显示GR，裂缝参数（主要有<code>玫瑰花图</code>和<code>矢量图</code>），</p>
-<h4 id="矢量图显示倾角信息"><a href="#矢量图显示倾角信息" class="headerlink" title="矢量图显示倾角信息"></a>矢量图显示倾角信息</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-7.png" class="" alt="裂缝模型-7">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-8.png" class="" alt="裂缝模型-8">
-<h4 id="玫瑰花图显示倾向信息"><a href="#玫瑰花图显示倾向信息" class="headerlink" title="玫瑰花图显示倾向信息"></a>玫瑰花图显示倾向信息</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-9.png" class="" alt="裂缝模型-9">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-10.png" class="" alt="裂缝模型-10">
+<h4 id="矢量图显示倾角信息"><a href="#矢量图显示倾角信息" class="headerlink" title="矢量图显示倾角信息"></a>矢量图显示倾角信息</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-7.png" class="" title="裂缝模型-7">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-8.png" class="" title="裂缝模型-8">
+<h4 id="玫瑰花图显示倾向信息"><a href="#玫瑰花图显示倾向信息" class="headerlink" title="玫瑰花图显示倾向信息"></a>玫瑰花图显示倾向信息</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-9.png" class="" title="裂缝模型-9">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-10.png" class="" title="裂缝模型-10">
 <blockquote>
 <p>倾角和倾向主要呈90度关系，可以对应验证裂缝信息。</p>
 </blockquote>
 <h2 id="裂缝离散网络模型"><a href="#裂缝离散网络模型" class="headerlink" title="裂缝离散网络模型"></a>裂缝离散网络模型</h2><h3 id="生成裂缝密度曲线"><a href="#生成裂缝密度曲线" class="headerlink" title="生成裂缝密度曲线"></a>生成裂缝密度曲线</h3><p>需要裂缝密度参数。需要根据成像测井数据来计算裂缝密度。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-11.png" class="" alt="裂缝模型-11">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-11.png" class="" title="裂缝模型-11">
 <p>根据输入裂缝点数据来生成裂缝密度。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-12.png" class="" alt="裂缝模型-12">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-12.png" class="" title="裂缝模型-12">
 <p>对于没有输入裂缝点的井，可以通过对已有裂缝资料的井建立样品，用人工神经网络方法进行预测。</p>
 <h3 id="人工神经网络预测"><a href="#人工神经网络预测" class="headerlink" title="人工神经网络预测"></a>人工神经网络预测</h3><h4 id="人工神经网络功能"><a href="#人工神经网络功能" class="headerlink" title="人工神经网络功能"></a>人工神经网络功能</h4><ul>
 <li>人工神经网络分类</li>
@@ -765,36 +765,36 @@
 <li>裂缝与那些测井曲线相关</li>
 </ul>
 <p>GR（岩性）、声波、密度、电阻率、深浅电阻幅度差（设置新曲线幅度差、一般俩个电阻取对数再减）、井径</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-13.png" class="" alt="裂缝模型-13">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-13.png" class="" title="裂缝模型-13">
 <p>生成新曲线RDRS，测井曲线深浅电阻幅度差。</p>
-<h4 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-14.png" class="" alt="裂缝模型-14">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-15.png" class="" alt="裂缝模型-15">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-16.png" class="" alt="裂缝模型-16">
+<h4 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-14.png" class="" title="裂缝模型-14">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-15.png" class="" title="裂缝模型-15">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-16.png" class="" title="裂缝模型-16">
 <p>误差满足或者迭代次数达到就退出训练。</p>
 <p>预测完成后会生成非线性的关系式，软件中看不到。</p>
-<h4 id="根据预测结果生成"><a href="#根据预测结果生成" class="headerlink" title="根据预测结果生成"></a>根据预测结果生成</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-17.png" class="" alt="裂缝模型-17">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-18.png" class="" alt="裂缝模型-18">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-19.png" class="" alt="裂缝模型-19">
+<h4 id="根据预测结果生成"><a href="#根据预测结果生成" class="headerlink" title="根据预测结果生成"></a>根据预测结果生成</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-17.png" class="" title="裂缝模型-17">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-18.png" class="" title="裂缝模型-18">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-19.png" class="" title="裂缝模型-19">
 <h3 id="裂缝密度三维曲线"><a href="#裂缝密度三维曲线" class="headerlink" title="裂缝密度三维曲线"></a>裂缝密度三维曲线</h3><h4 id="导入蚂蚁体数据-地震数据"><a href="#导入蚂蚁体数据-地震数据" class="headerlink" title="导入蚂蚁体数据(地震数据)"></a>导入蚂蚁体数据(地震数据)</h4><p>直接导入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data\crack_data</span><br><span class="line">ANT(dept)-2.zgy</span><br></pre></td></tr></table></figure>
 <p>选择地震数据</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-20.png" class="" alt="裂缝模型-20">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-21.png" class="" alt="裂缝模型-21">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-22.png" class="" alt="裂缝模型-22">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-20.png" class="" title="裂缝模型-20">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-21.png" class="" title="裂缝模型-21">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-22.png" class="" title="裂缝模型-22">
 <p>此时输入的蚂蚁体数据并没有写入模型当中。</p>
 <p>需要对地震数据进行重采样来对应模型网格大小。</p>
-<h4 id="地震数据重采样"><a href="#地震数据重采样" class="headerlink" title="地震数据重采样"></a>地震数据重采样</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-23.png" class="" alt="裂缝模型-23">
+<h4 id="地震数据重采样"><a href="#地震数据重采样" class="headerlink" title="地震数据重采样"></a>地震数据重采样</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-23.png" class="" title="裂缝模型-23">
 <p>将地震数据放入模型。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-24.png" class="" alt="裂缝模型-24">
-<h2 id="三维空间裂缝模型"><a href="#三维空间裂缝模型" class="headerlink" title="三维空间裂缝模型"></a>三维空间裂缝模型</h2><h3 id="裂缝密度曲线粗化"><a href="#裂缝密度曲线粗化" class="headerlink" title="裂缝密度曲线粗化"></a>裂缝密度曲线粗化</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-25.png" class="" alt="裂缝模型-25">
-<h3 id="裂缝密度三维空间"><a href="#裂缝密度三维空间" class="headerlink" title="裂缝密度三维空间"></a>裂缝密度三维空间</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-26.png" class="" alt="裂缝模型-26">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-27.png" class="" alt="裂缝模型-27">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-28.png" class="" alt="裂缝模型-28">
-<h4 id="裂缝离散网络模型-1"><a href="#裂缝离散网络模型-1" class="headerlink" title="裂缝离散网络模型"></a>裂缝离散网络模型</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-29.png" class="" alt="裂缝模型-29">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-30.png" class="" alt="裂缝模型-30">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-24.png" class="" title="裂缝模型-24">
+<h2 id="三维空间裂缝模型"><a href="#三维空间裂缝模型" class="headerlink" title="三维空间裂缝模型"></a>三维空间裂缝模型</h2><h3 id="裂缝密度曲线粗化"><a href="#裂缝密度曲线粗化" class="headerlink" title="裂缝密度曲线粗化"></a>裂缝密度曲线粗化</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-25.png" class="" title="裂缝模型-25">
+<h3 id="裂缝密度三维空间"><a href="#裂缝密度三维空间" class="headerlink" title="裂缝密度三维空间"></a>裂缝密度三维空间</h3><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-26.png" class="" title="裂缝模型-26">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-27.png" class="" title="裂缝模型-27">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-28.png" class="" title="裂缝模型-28">
+<h4 id="裂缝离散网络模型-1"><a href="#裂缝离散网络模型-1" class="headerlink" title="裂缝离散网络模型"></a>裂缝离散网络模型</h4><img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-29.png" class="" title="裂缝模型-29">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-30.png" class="" title="裂缝模型-30">
 <p>根据裂缝密度来进行确定裂缝平均长度，约小的长度，最终结果越密集。</p>
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-31.png" class="" alt="裂缝模型-31">
-<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-32.png" class="" alt="裂缝模型-32">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-31.png" class="" title="裂缝模型-31">
+<img src="/2020/11/05/pertrel%E5%9C%B0%E8%B4%A8%E5%BB%BA%E6%A8%A1-%E5%AE%9E%E6%93%8D/%E8%A3%82%E7%BC%9D%E6%A8%A1%E5%9E%8B-32.png" class="" title="裂缝模型-32">
 <blockquote>
 <p>最重要是确定裂缝与那些因素有关，用参数去尽可能的约束。</p>
 </blockquote>
