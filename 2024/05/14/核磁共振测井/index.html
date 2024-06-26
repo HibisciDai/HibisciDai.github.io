@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="核磁共振测井"><meta name="keywords" content="核磁共振原理,测井方法"><meta name="author" content="HibisciDai"><meta name="copyright" content="HibisciDai"><title>核磁共振测井 | HibisciDai</title><link rel="shortcut icon" href="/img/avatar.png"><link rel="stylesheet" href="/css/index.css?version=1.9.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.0"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css?version=1.9.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="manifest" href="/manifest.json"><link rel="manifest" href="/manifest.json"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://v1.hitokoto.cn/?encode=js&amp;charset=utf-8&amp;select=.footer_custom_text" defer></script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  hexoVersion: '6.1.0'
+} </script><meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="HibisciDai" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95"><span class="toc-number">1.</span> <span class="toc-text">核磁共振测井</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95%E7%89%A9%E7%90%86%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">核磁共振测井物理基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%A5%E6%BA%90%E3%80%8A%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8%E3%80%8B%E4%B9%A6%E7%B1%8D%E6%88%AA%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">来源《核磁共振测井原理与应用》书籍截图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NMR%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">NMR数据采集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E4%BD%8D%E6%97%8B%E8%BD%AC"><span class="toc-number">3.1.</span> <span class="toc-text">相位旋转</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NMR%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">NMR数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%8C%87%E6%95%B0%E5%8F%8D%E6%BC%94%E7%AE%97%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">多指数反演算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVD%E7%AE%97%E6%B3%95"><span class="toc-number">4.2.</span> <span class="toc-text">SVD算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2%E8%B0%B1%E9%9D%9E%E8%B4%9F%E9%99%90%E5%88%B6%E6%80%A7%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.3.</span> <span class="toc-text">T2谱非负限制性的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BRD%E7%AE%97%E6%B3%95"><span class="toc-number">4.4.</span> <span class="toc-text">BRD算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#T2%E8%B0%B1%E9%9D%9E%E8%B4%9F%E9%99%90%E5%88%B6%E6%80%A7%E7%9A%84%E5%AE%9E%E7%8E%B0-1"><span class="toc-number">4.5.</span> <span class="toc-text">T2谱非负限制性的实现</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/Avatar.png"></div><div class="author-info__name text-center">HibisciDai</div><div class="author-info__description text-center">HibisciDai'Blog</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">226</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">79</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">31</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">友情链接</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/HibisciDai/hexo-theme-melody">HexoTheme-github</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://molunerfinn.com/">molunerfinn</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(/img/banner2.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">HibisciDai</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">主页</a><a class="site-page" href="/about">关于我</a><a class="site-page" href="/archives">归档</a><a class="site-page" href="/tags">标签</a><a class="site-page" href="/categories">分类</a><a class="site-page" href="/gallery">相册</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a></span></div><div id="post-info"><div id="post-title">核磁共振测井</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2024-05-14</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF/">核磁共振</a><div class="post-meta-wordcount"><span>字数总计: </span><span class="word-count">10.3k</span><span class="post-meta__separator">|</span><span>阅读时长: 32 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95.png" class="" title="核磁共振测井">
+<p>核磁共振测井</p>
+<span id="more"></span>
+<p>[TOC]</p>
+<h1 id="核磁共振测井"><a href="#核磁共振测井" class="headerlink" title="核磁共振测井"></a>核磁共振测井</h1><h1 id="核磁共振测井物理基础"><a href="#核磁共振测井物理基础" class="headerlink" title="核磁共振测井物理基础"></a>核磁共振测井物理基础</h1><p>核磁共振是量子力学最经典的一个实例。</p>
+<p>核磁共振原理经典六张图。</p>
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86%E7%BB%8F%E5%85%B8%E5%85%AD%E5%BC%A0%E5%9B%BE-1.png" class="" title="核磁共振测井">
+<p>很多原子核都可以做核磁共振，但是测井的重点在于氢核，氢核本身在高速运动。<br>氢核本身在做高速运动的时候像一个石头一样有南北极。<br>对于一个原子核来说是有磁性的，但是当很多氢原子核在一起的时候，如果没有外加磁场，每一个氢核都是随机取向的，所以没有什么磁性。</p>
+<p>单独的氢核，快速运动，具有一定的磁性，产生一个N极和S极。<br>当氢核放在外加磁场中，外加磁场强度是B0，氢核会围绕外加磁场方向轴转动，称为进动。进动频率为拉莫尔频率。</p>
+<script type="math/tex; mode=display">f = \frac{\gamma}{2 \pi} B_0</script><script type="math/tex; mode=display">\gamma $$ 叫旋磁比，是原子核的一个性质，核素定了，数值就定了。
+$$ B_0 $$ 是外加磁场强度。
+
+当磁场强度确定的时候，进动频率确定。
+在同一个磁场强度里面，不同的原子核因为它有不同的旋磁比，所以他们也会有不同的进动频率。
+在不同的磁场强度里面，那么对同一个原子核，也会不同的进动频率。
+
+单个自旋是理想状态，通常任何时候都是多个自旋。
+在B0磁场内，进动是量子化的，不是一个有很多种连续这个进度频率状态存在的，而是对于氢原子核来说，它有一个进动是沿着B0方向向，还有一种进动是逆着B0方向。那么对应的就是两个态，一个是高能态，一个是低能态，高能态的是逆着B0方向的，低能态顺着B0方向。
+
+在磁场里面当多个自旋的时候，有一个能级的分裂。
+没有外加磁场只有一个能级，加了外加磁场能级就分开了。氢原子核有两个能级。
+
+低能态的原子核数量会稍多于高能态的原子核数量。恰恰是因为这两个人群之间有原子核的数量有稍微的差异，所以就能够去做核磁共振。
+
+最终原子核数量的差异会产生一个宏观磁化量M0，可测量。不仅是可以测量它，而且可以测量它的变化过程。
+
+M0跟这个体系里面的氢原子核的数量成正比，如果能够把M0测出来，那么实际上通过标定，就可以把这个样品里面的原子核的数量测量出来。通过标定以后，实际上可以把孔隙度测量出来。
+
+M0它不是一下就形成的，它会有个过程，一个磁化的过程里面，它服从这样一个指数的这样一个规律，就这个原子核这么多原子核放在B0磁场里面的时候，M慢慢长，长的过程叫做纵向弛豫的过程，或者说实际上它是一个磁化的过程，极化的过程。
+
+Mt慢慢随着时间的增加是这样的长涨着涨到了一个平衡态，这个平衡态就是最终M0，完全极化。
+
+$$ M_t = M_0 * (1 - e^{\frac{-t}{T_1}})</script><p>增长的速率就是用这个时间常数，T1表示，纵向弛豫时间。</p>
+<p>单纯从磁化量变化或者磁化的过程来看，来定义它，但实际上其一它还有更多的物理含义。<br>物理上定义为自旋-晶格弛豫时间。</p>
+<p>我怎么样才能够磁化，让它充分磁化？充分磁化，因为它是一个无限接近的过程。<br>怎么样在比较少的时间里面，就让它代表了充分磁化？<br>T1，后面要讲到孔隙介质T1的时候，它还对应了我们样品的很多的属性，很多的特性，可以做很多的应用。</p>
+<p>在跟B0磁场垂直的方向，加一个B1磁场。<br>B1磁场的频率刚好等于拉摩尔进动频率，此时会发生共振。核加了这样一个磁，核磁，然后再加一个磁场，共振。</p>
+<p>共振：共振的情况就是低能态的原子核会从电磁场里面吸收能量，当拉莫尔频率进动的频率和外加磁场的频率相等的时候，低磁低能级的低能态的这个自旋会从这个磁场里面吸收能量，跃迁到高能态。</p>
+<p>从量子力学的角度来说，它量子跃迁了第一轮胎的这个自旋发生了，量子跃迁到高能上去了。<br>从经典力学的角度来描述，需要一个很重要的概念叫坐标变换，没有这个坐标变换，我们很难来理解很多事儿。<br>目前我们讨论那么进度评论这些都是在叫实验室坐标系里面，实验室坐标系，就是我们现在坐在这里，所以我们能够看到它高速的进洞，看到它自己去在自选看这两个现象。<br>但是磁场加了以后，你要理解后续发生的行为，要做一个坐标系的变换，要在旋转坐标系里面来看待问题。<br>我们自己要跟着进动的自旋跑步跑，跟着进动自旋跑，就是在自旋，围绕着 B0磁场，我们现在要跟着它一起跑，那就叫旋转坐标系，我们是在旋转的，跟着进动频率在旋转。<br>我们加了电磁波加的 b1磁场，它是个脉冲磁场。早期工作的时候是叫连续波，连续波的时候它不是一个脉冲的，但是现在所有的核磁共振技术是脉冲核磁共振技术。<br>脉冲里面有一个宽度脉冲的宽度，然后有一个幅度，然后里面有一个调制频率，调制频率就是拉莫尔的进动频率。<br>所以脉冲电磁波它有三个要素，调制频率，幅度，长度。<br>你加上脉冲以后，如果我们在旋转坐标系里面来看，就有一个很重要的现象。<br>你就发现原来在旋转坐标系里面，我们随着这个来旋转的话，那么原来宏观磁化量是m，然后在旋转坐标系下，加上脉冲后，实际上等效于把m要搬转翻转。翻转到一个角度：<script type="math/tex">\Theta</script></p>
+<script type="math/tex; mode=display">\Theta = \gamma B_1 \tau</script><p>前提条件是脉冲的调制频率等于进动频率，或者等于旋转坐标系的频率，否则它不会共振，否则也看不到板转的过程。</p>
+<p>假设这个条件满足的情况下，那么 M就被扳转一个<script type="math/tex">\Theta</script>角，这个<script type="math/tex">\Theta</script>角完全由脉冲它的高度和它的长度来定义。如果希望把 M翻转到XY平面上来，实际上就是翻转90度，我们把脉冲叫90度脉冲。如果要搬转到180度，也就是从这个方向搬到另外一个方向，我们就把板转角叫做180度脉冲。</p>
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86%E7%BB%8F%E5%85%B8%E5%85%AD%E5%BC%A0%E5%9B%BE-2.png" class="" title="核磁共振测井">
+<p>本来是 M0是这个方向的，然后我们加一个90度脉冲意味着什么呢？这个方向的磁化量，我们把它搬走了，XY平面来，90的脉冲激发完了以后，如果我们用线圈去接收的话，你可以接收到一个信号，这个信号就是我们把这个FID叫自由感应衰减。</p>
+<p>这个FID信号是因为我们把它搬走了，XY平面以后，它会散向。在旋转这个系里面，我们把它叫做相位散掉了。相位的分散，实际上对应的是实验室坐标系里面，它的频率不一样。<br>它的频率为什么不一样？因为它的磁场不是完全均匀的，磁场不是完全均匀，所以拉莫尔频率不是完全一样，它就会分散。在我们的旋转坐标系里面，就是它们的相位不一样，那么相位不一样。<br>所以慢慢的随着时间推移，它慢慢散相散相，散相了以后就变成了各个方向都有了，所以在XY平面上，平均值慢慢就归零了，这个过程我们也把它叫做横向弛豫过程。</p>
+<p>FID在理想条件下，我们也是可以把它用一个方程来表达出来的。</p>
+<script type="math/tex; mode=display">M_t = M_0 * e^{\frac {-t} {T_2 ^ * } }</script><p>T2称为横向弛豫时间，<script type="math/tex">T_ 2 ^ *</script> 是理想状态的，<script type="math/tex">T_ 2</script> 是实际测量到的。</p>
+<p>因为这里面可能有磁场的不均匀性等等问题，所以 <script type="math/tex">T_ 2 ^ *</script> 跟我们样品本身的T2可能会有区别，甚至会区别比较大。但是从它的弛豫机制来说，我们把这个过程叫横向弛豫的过程。有一个横向弛豫的速率，叫T2，横向弛豫时间。</p>
+<p>但是由于磁场本身的不均匀性，使得拉莫尔频率不一样，使它的相位在实验室在旋转坐标系里面，它不容易重聚，所以这样得到的T2不是我们本真的T2，而是T2和磁场的非均匀性的一个共同作用的结果。</p>
+<p>用FID是测不到真实的T2的，如何测量到真实的T2？这个时候就提出了一个叫CPMG，叫自旋回波的方法，是测量横向弛豫时间的方法。</p>
+<p>最简单的一个自旋回波的脉冲序列，它包括什么呢？包括一个90度脉冲，把它磁化量翻转90度到xy平面，到xy平面以后，由于磁场的非均匀性，它会散相。这个时候我们再加一个所谓的180的脉冲。<br>一个90的脉冲，然后我们再过一段时间加一个180的脉冲。加一个180的脉冲，然后再等待相同的时间，会产生一个所谓的回波，叫自旋回波。自旋回波就成为我们真实的实验的一个方法，包括我们岩心分析和下面的测井，都来用自旋回波。</p>
+<p>而且自旋回波不光是可以测一个，它还可以测很多一个序列，一个系列，这个系列我们把它叫自旋回波串。<br>就是你在90度脉冲，一个FID，然后我们加一个180的脉冲，形成一个回波，再加一个180的脉冲，再形成回波，再加再形成。你不断的加180的脉冲，它会有一串回波，而这一串回波它是按照我们的横向弛豫时间为时间常数来衰减的，所以我们通过这个方法就得到了所谓的横向弛豫时间的测量值。</p>
+<p>在旋转坐标系里面去理解90脉冲，180脉冲，所谓的脉冲扳转角。<br>我们过去的很多的测量是一个fid信号，甚至我们在很多的化学谱里面，他就测fid信号。<br>磁场非常的均匀条件下，就用这个FID来解析它的谱学的信息。<br>通谱学的信息来获得分子的结构，分子的动力学等等很多的应用。</p>
+<p>很多脉冲序列来做所谓的量子调控，做很多所谓的极化转移。就是它可以通过一大堆的这些脉冲序列对量子调控，然后让分子发生变化，然后来获取分子里面的信息，来实现对分子的表征，对分子结构的解析。高场方向发展。</p>
+<p>我们这里考虑了磁场的非均匀性，因为高场的时候希望磁场越均匀越好，但是我们面对低场，面对我们的孔隙介质，你是不可能做到均匀的。我们也不去用这个FID了，我们来做弛豫的测量。在非均匀磁场的条件下，怎么样把它的持续时间测准。</p>
+<p>怎么产生回波？</p>
+<p>90度脉冲以后，我们仍然在旋转坐标系里面来看的话，那就是相位的问题。因为我们知道这一个磁化量，它实际上是很多单个的自旋磁化量的一个叠加。那么单个的自旋它可能有我们考虑到磁场的非均匀性，它可能是由于我们外加的B0磁场不均匀，也可能是由于我们的样品本身里面产生了一个背景梯度磁场，不管什么原因，就导致了每一个自选所经历的磁场强度可能是不一样的。</p>
+<p>磁场强度不一样，拉莫尔频率不一样，旋转坐标系里面的旋转频率不一样，旋转坐标系里面的相位不一样。</p>
+<p>所以在这个里面我们就看到一部分磁场，一部分自旋，它会往这个方向跑，跑的比这个B0磁场的拉莫尔频率还快，还有一部分可能跟不上，所以你在前面旋转坐标系里面来看，你就比方说我们有三个人的跑步，如果我的速度刚好是正中间的话，那么有一个人跑得比较快的，有一个人跑得比较慢的，我在我看来那个人跑得快的就往那边去跑的，慢的就往后再往回再往那边跑，跑得快的再往前面跑，跑的慢的在后面跑，如果以我作为参照系的话。那么这里也就是一样，如果我们以B0磁场，这个H核和在B0磁场对应的拉莫尔频率作为参照，作为参照系的话，那么一部分磁场不均匀的比较大的一个信号，它就相当于在这个里面往前跑，而一部分磁场强度比较小的相当于往后跑，慢慢就分散了。</p>
+<p>如果我们只考虑两个的话，实际上很多的那么这个过程我们把它叫做散相。那么这个项目的分散了以后，当然慢慢算就没有了，所以成了这个FID。<br>但是当我们再加一个180的脉冲，前面我们讲加一个180的脉冲，就意味着它做180度的翻转。</p>
+<p>180板转有很多可能性，一种就是说我做180度的翻转，实际上把跑得快的翻转的跑的慢的地方去了，把跑得比较慢的搬走的跑得快的地方去，也就是说一般是相当于我们跑步，我们三个人在跑步，然后一个指令下来，全部向后跑，全部向后跑的结果什么我就往那边跑了是吧？原来跑得慢的那个人，他反而变得朝着我的方向跑，跑得比较快的人反而落后于我了，但他也要向着我来跑，原来跑的快的，慢慢的，因为他经历的路径多，他就往那边跑了，然后跑得慢的他就跑得快的往这边。最后在同样的时间里面，他们跑到这个地方来就会重聚，在重聚在一块的结果，我们就会通过我们的线圈就观测了一个很大的信号叫回波信号，回波就是这样来形成的。</p>
+<p>所以这里就有一个旋转坐标系里面来分析脉冲的作用和回波的形成。那么然后180度脉冲以后，到这里来重聚，然后重聚了以后你把回波采集到了，过一段采集完了以后，然后他又要分散了，又要反散相，散相了以后，那么你再来一个180度，又测量了一下，不断地散相、重聚、散相、重聚、散相、重聚。</p>
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86%E7%BB%8F%E5%85%B8%E5%85%AD%E5%BC%A0%E5%9B%BE-3.png" class="" title="核磁共振测井">
+<p>我们统一来看：首先我们把样品放到外加磁场里面，放到外加磁场里面，那么B0所以它慢慢的就遵守纵向弛豫的过程，进行极化，达到M0，有了一个宏观磁化矢量，可观测量。然后我们用个脉冲这个序列加一个脉冲射频场，脉冲射频的有90度，一串180度，那么如果这个时候我没有测量的话，你就发现90的脉冲以后有FID，然后在180的脉冲以后就有一串的回波的信号，回波串。然后我们再来，测完了以后我们再来这个过程，又是磁化，又是测量，所以你最后看到的仪器给你显示的就是这样一个B0磁场，然后磁化，然后有一个脉冲射频场，然后再采集，然后再这样循环下去。</p>
+<p>T2这个信号是逐渐衰减的，第一个180度后，第一个回波串信号幅度是大的，它逐渐衰减。其实在过程中一个就是一个相散和聚相的问题，聚相信号最大化，为什么第二个回波串它的能量要减小了？<br>T2本质上叫自旋-自旋弛豫时间，实际上它反映的是两个自旋之间或者自旋-自旋之间的很多的这种相互作用，这种相互作用它除了聚相的过程，除了相位重聚的过程以外，它本身由于自旋和自旋的相互作用，它会消耗能量，所以它是一个衰减的过程。它最后要恢复到没有了，在轴上它慢慢就没有了。<br>所以，T2是一个样品的重要的物理性质，它是一个它的物理特性，需要我们只是把T2通过这个方式把它测量出来。这个方式它之所以这个衰减，它是由它的物理性质来决定的，是自旋-自旋相互作用消耗能量来决定的，正是它我们想要研究它的一个特性。<br>相当于每一次聚相和散相他自身的能量已经衰减。</p>
+<p>等待时间是不是就相当于必须要恢复最大的M0？</p>
+<script type="math/tex; mode=display">T_w = 3 * T_1 → 95% M_0</script><script type="math/tex; mode=display">T_w = 5 * T_1 → 99.7% M_0</script><p>磁场的非均匀性：B0的非均匀性 + 介质本身的非均匀性。在B0的作用下，岩石的多孔介质本身会产生一个背景梯度磁场，而且你B0越大，B0背景梯度磁场就越大。</p>
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86%E7%BB%8F%E5%85%B8%E5%85%AD%E5%BC%A0%E5%9B%BE-4.png" class="" title="核磁共振测井">
+<p>多孔介质中的问题：<br>第一：液体那么到了孔隙里面的时候，这是孔隙的表面，它就会形成一个在表面上面形成一层膜，行非常重要。水流液体的分子，它本身会快速的扩散。里面的水中心部位的水，它的水分就快速的扩散。那么到了瓶子的表面的时候，这个界面上面就表面，那么它会形成一个这样的简单的膜，这个膜不是简单的膜，这个膜可能很复杂，这个膜的科学表面的科学无处不在。<br>1、表面是什么？表面还有很多胶接物，对吧？那么它有大量的这种非成对的电子，很多的非水性类的电子，这些非成对的电子的存在就导致了它会跟你相互作用，甚至会发生化学反应。<br>2、表面润湿性问题？<br>3、表面粗糙程度不同？表面的粗糙度可能也不一样，海岸线一样的，很粗糙不光滑的。因为在扩散的过程，在中间扩散的时候，它是布朗运动描述，可是一旦到定界面相接触的时候，他就会慢下来，碰撞淹没。所以这里面就有一个过渡带在这个地方，我们叫分子的表面层。</p>
+<p>自由状态的液体，它有一个本身的T2，也有一个本身T1，但是你一旦液体放在孔隙里面，饱和到孔隙里面以后，它所测量出来的T2、T1，就跟原来完全不一样了。<br>在孔隙介质里面以后的T1、T2与饱和在孔隙介质本身的T1、T2很不一样。</p>
+<script type="math/tex; mode=display">\frac{1}{T_1} = \frac{1}{T_{1 bulk}} + \rho_1 \frac{S}{V}</script><script type="math/tex; mode=display">\frac{1}{T_2} = \frac{1}{T_{2 bulk}} + \rho_2 \frac{S}{V} + \frac{ D (\gamma G T_E)^2 }{12}</script><p>T1不仅和自身有关，还跟比表面(S/V)有关，纵向弛豫强度(ρ1)有关<br>T2不仅与自身有关，还跟比表面(S/V)有关，横向弛豫强度(ρ1)有关，还有扩散项有关。</p>
+<p>又有别的扩散弛豫理论，孔隙介质里面的弛豫跟孔隙的直径和扩散系数的比值又有关系。在这个条件它会分分快扩散区域，慢扩散区域，中等扩散区域。</p>
+<p>如果说在常规里面，那几个假设可能还存在的话，成立的话，那么在页岩油气以及非常规里面，那几个假设可能就不成立了，假设条件不成立了，所以还能不能用？</p>
+<p>应用1：孔径测量</p>
+<p>当测量的T1和T2跟孔径对应的时候，T1忽略了自由弛豫，T2忽略了自由弛豫和扩散弛豫，才有了这样一个持续时间和孔径分布的一个对应关系，或者说一个相关性。因为这个量的量纲就是孔径，那么这样才有了这样一个定性的这样一个关系。<br>当然也可以定量，定量就是假设你知道这个的情况下，知道它的纵向持续强度和横向持续强度，你就可以来做定量。</p>
+<p>那么如果成立这个时候，我们才有可能这样，一个是多指数，一个是统计，我们可以做孔径上的标定。<br>那么我可以说在常规游戏的时候，这个没有太多的问题，但是在页岩油气的时候这个一定有问题。我们可能没有这样的信噪比和分辨率，去表证页岩的孔径。</p>
+<p>应用2：T2分布</p>
+<p>在第一个应用假设存在的情况下，T2的大小跟孔径有了对应关系，所以需要分布可以把它标定成孔径的分布。一个简单的物理的原理就是说小孔隙流体不容易流动，大孔隙的流体容易流动。又假设孔隙与孔隙之间是连通的，注意死孔不是这样不存在，假设孔隙孔隙是连通的条件下，那么大孔是可流动的，小孔是没法流动的。那些就是碎屑岩，分选的比较好，并且也胶结作用不是很大的一些条件下面，这种状态他才成立这个东西。</p>
+<p>那么如果存在这个的话，我们说我们在物理上就可以说这一部分是可动，另一部分是不可动。</p>
+<p>那么既然在概念上有这两个，我们就想象可能有一个截止值。它首先截止值并不是它的T2截止值，这个截止值首先从物理上来说，它应该是一个孔径的截止值，当我们把孔径分布上面，一部分是束缚的，一部分是可动的，分开的时候，我们假设有一个孔径的介质，由于核磁的T2分布能够标定为孔径分布，所以我们对应的就有一个T2的截止值，这是有点野蛮粗暴，但是管用。它简单它管用，因为测井里面经常会遇到特别多的影响因素，你要每个都考虑的话，你是考虑不清楚的，那就抓主要的东西，管用。<br>T2截止值是表象，孔径截止值是本质。</p>
+<p>所以我们现在假设孔径都是这种一个颗粒这样堆积起来的，那么它的T2分布就是代表一个孔径的分布。<br>对核磁来说，应该它的反应孔径的覆盖范围是目前所有的技术里面比较比较大的范围，而且是一个比较准的范围，而且不损害样品。</p>
+<p>那么假设成立的情况下，这个时候我们就可以通过实验的方法来获得一个确定值，用来确定它的流体的赋存状态用，来获取我们非常重要的束缚水信息。所以一直就发展了一套标准实验流程和方法。</p>
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86%E7%BB%8F%E5%85%B8%E5%85%AD%E5%BC%A0%E5%9B%BE-5.png" class="" title="核磁共振测井">
+<p>有标准的流程，也有假设。<br>标准的流程：<br>第一步，把样品100%饱和水的时候，做一个核磁共振CPMG测量，然后做一个反演，得到它的T2分布，然后对应的相当于一个孔径的分布。<br>第二步，我们把这个岩样脱水，注意用离心机脱水，当然你也可以用别的方法脱水，然后脱完水以后，把那些自由水或者自由流体给它离心掉了，或者给它脱掉了，我们认为这个样品里面剩下来的都是束缚水。然后重复测量。<br>注意这是一个非常重要的概念，我们认为。谁认为？做实验的人认为。这个说法对不对？对也不对，这个自由裁定权太大，问题出在这儿。<br>第三步，两个放在一块，然后来求一个100%饱和的时候的一个孔隙度，然后只有束缚水时候一个记录束缚水孔隙度。自由水和束缚水相交的地方就是所谓的T2截止值，代表的是孔径截止值。</p>
+<p>所以它有标准的规范流程，可是有一点它没有规范流程，你认为他是舒服水。</p>
+<p>关键是你怎么去控制它，我认为这个里面就是舒服水？<br>那离心机的离心的速度，它可能会设置不一样，高了就把你们本来就束缚的也把它离心出来了，低了他还有可能所谓的在自由水，它也变成了在束缚水里面的。</p>
+<p>斯伦贝谢提出相对截止值，放弃绝对的截止值。</p>
+<p>测井的渗透率计算他是个估算的问题，是吧？我们并不直接的测量，我们是通过一些间接的量去估算的渗透率，那么估算的过程中间，它就会有很多的影响因素在这里，这些影响因素决定了我们究竟得到一个什么样的渗透率。</p>
+<p>孔隙度、束缚水、渗透率是岩石物理特性，但是在流体的时候是另外的概念。流体储存的空间以及流体本身的性质和每一种流体的含量，这些对我们来说当然非常重要。</p>
+<p>在单个孔里面，如果流体它们是混相的话，你是分不出来的，你是分不出来几个峰的，他们就是一个峰混在一块的。但是当我们中间有油，比方说我们假设中间可能也是个油珠，在哪个地方也可能跟他有认识性关系的等等。这个时候因为油和水它们不稳，像是它如果是溶解油油的话，你可能也看不出来。当他们两个不混相的时候，在他们的界面就有一层膜，他们互相不能扩散，不能扩散的情况下，这个时候他们就是两个分开的弛豫机制起作用。这个时候我们测量回波算，你就可以看到这个峰代表的是界面上的弛豫，这个峰是代表水包油的弛豫。所以这个时候就有了这样一个你看很明显的一个一个区分。</p>
+<p>更进一步，假设这是股价，这个是骨架，这是孔隙是吧？孔隙里面有一个油珠，随着油的减少，你看水的峰，油的峰都在发生相应的变化。</p>
+<p>对这两个问题，第一个问题只是我们我们是可以去识别油气了，油水了，可以把它们分开了。<br>第二个怎么分开，它是一个怎么样的变化的过程？<br>你看是非常明确的一个物理的概念，物理的意义在这里面了，你可以看到要把它分析出来，这分析出来将来对我们应用是有用的。</p>
+<p>孔隙表面峰随着孔隙表面的水的增加，你看它的T2在变大，它不光是峰值在变化，T2也在变化。因为它跟界面的相互作用在变化。</p>
+<p>核磁不管是谱学还是成像还是弛豫，它最重要的一点就是说几乎所有的表象都能够对应原理，这是核磁一个分析测试手段受到大家欢迎和青睐的重要的原因之一。当我们说不清楚的时候，是因为我们对样品缺少相关的理论缺少认识。</p>
+<p>在孔隙里面的时候，然后在孔隙里面的时候怎么来区分流体的赋存状态，然后怎么样去求取相应的参数，然后当流体里面有不同的流体的时候，那么它的弛豫测量值上面又有什么表现？这是我们应用的基础。</p>
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86%E7%BB%8F%E5%85%B8%E5%85%AD%E5%BC%A0%E5%9B%BE-6.png" class="" title="核磁共振测井">
+<p>因为一维里面尽管好像有，但是通常情况下分不出来。更多的时候是分不出来的，叠在一块，叠在一块你就要用新技术是吧？用就要认识它的三维里面是什么样子，然后就要有发展二维的是吧？轻轻自由中等粘度的油稠油天然气分别通过二维怎么把它能够更好的区分开来是吧？</p>
+<p>定域谱的这些技术，一个像素里面，那么它的t2分布是什么样子？</p>
+<h2 id="来源《核磁共振测井原理与应用》书籍截图"><a href="#来源《核磁共振测井原理与应用》书籍截图" class="headerlink" title="来源《核磁共振测井原理与应用》书籍截图"></a>来源《核磁共振测井原理与应用》书籍截图</h2><img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%A0%B8%E8%87%AA%E6%97%8B.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E5%8E%9F%E5%AD%90%E6%A0%B8%E8%BF%9B%E5%8A%A8.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E5%AE%8F%E8%A7%82%E7%A3%81%E5%8C%96%E7%9F%A2%E9%87%8F.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/T1%E5%BC%9B%E8%B1%AB.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E8%83%BD%E7%BA%A7%E8%B7%83%E8%BF%81.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E6%89%B3%E8%BD%AC%E8%A7%92.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E8%87%AA%E7%94%B1%E6%84%9F%E5%BA%94%E8%A1%B0%E5%87%8F%E4%BF%A1%E5%8F%B7.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E8%87%AA%E6%97%8B%E5%9B%9E%E6%B3%A2%E4%BF%A1%E5%8F%B7.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/CPMG%E8%84%89%E5%86%B2%E5%BA%8F%E5%88%97.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/T2%E5%BC%9B%E8%B1%AB.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/CPMG%E8%84%89%E5%86%B2%E5%BA%8F%E5%88%97-2.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E5%AD%94%E9%9A%99%E6%B5%81%E4%BD%93%E5%BC%9B%E8%B1%AB.png" class="" title="核磁共振测井">
+<img src="/2024/05/14/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E6%B5%8B%E4%BA%95/%E5%AD%94%E9%9A%99%E6%B5%81%E4%BD%93%E5%BC%9B%E8%B1%AB-2.png" class="" title="核磁共振测井">
+<h1 id="NMR数据采集"><a href="#NMR数据采集" class="headerlink" title="NMR数据采集"></a>NMR数据采集</h1><p>测井仪器除了探测FID和CPMG自旋回波信号，还需要将这些信号进行数字化、存储和处理。典型的CPMG自旋回波串通常有成百上千的回波，将整个回波曲线数字化难度太大，故而只需测量和存储自旋回波信号的峰值即可。信号的记录方式有两种：<code>单道检测法</code>和<code>正交检测法</code>。</p>
+<p><code>单道检测法</code>：从样品来的射频信号送入单个的相敏检测器中以识别样品信号频率与射频脉冲载频的频率(即为测量值设定的平均拉莫尔频率)之间的差异。由于单个相敏检测器只能得到频率差异的大小，而不能确定相位差，所以在NMR测井中不能利用单道检测法。</p>
+<p><code>正交检测法</code>：输入的采样信号送到两个同样的相敏检测器中，这两个检测器的参考信号相差90°，合成声频信号被放大，然后通过同样的低通滤波器，经多元模数转换器数字化并存储在单独的数据存储区中。正交傅里叶变换以与单道检测法相同的方式产生实数谱和虚数谱，并可区分出相对与射频载频的正频率和负频率。</p>
+<p>为了消除振铃和基线偏移的影响，测井作业中总是成对采集T2的CPMG测量值，该方法称为交叉相位对(PAPs)。第一个回波串的采集利用常规设置，而在第二组中发射脉冲的相位改变了180°，从而使得自旋回波具有负振幅，这两组CPMG信号被称为正相位和负相位，结合形成PAPs，用以消除振铃和基线偏移的影响。</p>
+<h2 id="相位旋转"><a href="#相位旋转" class="headerlink" title="相位旋转"></a>相位旋转</h2><p>记录数据的两个通道通常称为X通道和Y通道。这两个通道的信号表达式如下：</p>
+<script type="math/tex; mode=display">X_{j}=S_{j}\cos \varphi+\varepsilon_{j}^{X}</script><script type="math/tex; mode=display">Y_j=S_j sin\varphi +\varepsilon_j^Y</script><p>式中，<script type="math/tex">X_j</script> 和 <script type="math/tex">Y_j</script> 分别是 X 和 Y 通道的第j个回波的幅度，<script type="math/tex">S_j</script>是回波的实际幅度，<script type="math/tex">\varphi</script>为相位角，<script type="math/tex">\varepsilon_{j}^{X}</script> 和 <script type="math/tex">\varepsilon_j^Y</script> 分别是 X 和 Y 通道的第 j 个回波的噪声。如果将回波串中的所有回波相加(回波个数为n)，可以得到：</p>
+<script type="math/tex; mode=display">\sum_{j=1}^nX_j=\left[\sum_{j=1}^nS_j\right]cos\varphi+\left[\sum_{j=1}^n\varepsilon_j^X\right]</script><script type="math/tex; mode=display">\sum_{j=1}^nY_j=\left[\sum_{j=1}^nS_j\right]sin\varphi+\left[\sum_{j=1}^n\varepsilon_j^Y\right]</script><p>因为噪声是随机的，取正负值的概率相等。如果去平均噪声进行计算，上述方程等式右边的第二项将最终趋近于零。将两式相比，则可以得到相位角公式：</p>
+<script type="math/tex; mode=display">\varphi=\arctan\left[\sum_{j=1}^{n}Y_{j}/\sum_{j=1}^{n}X_{j}\right]</script><p>通过上式得到相位角后，便可利用下面的等式进行坐标轴的旋转，从而得到信号道和噪声道。</p>
+<script type="math/tex; mode=display">C_{signal}(j)=X_jcos\varphi+Y_jsin\varphi=S_j+(\varepsilon_j^Xcos\varphi+\varepsilon_j^Ysin\varphi)</script><script type="math/tex; mode=display">C_{noise}(j)=-X_jsin\varphi+Y_jcos\varphi=(-\varepsilon_j^Xsin\varphi+\varepsilon_j^Ycos\varphi)</script><h1 id="NMR数据处理"><a href="#NMR数据处理" class="headerlink" title="NMR数据处理"></a>NMR数据处理</h1><p>核磁共振测井技术是一种间接测量技术，它所采集到的原始数据是岩石孔隙中所含流体弛豫信号的叠加，即自旋回波信号，必须采用现代数学方法对回波信号进行反演得到T2谱才能进一步应用，并且反演结果直接影响后续储层参数计算和流体识别评价的准确性。</p>
+<p>假设有n个回波，每个回波在时间 <script type="math/tex">t_i</script> 处的幅度测量值为 <script type="math/tex">g_i</script>，并假设有m个预先选择的驰豫时间 <script type="math/tex">T_j</script> 在对数刻度上等间隔分布。回波幅度 <script type="math/tex">g_i</script> 为  <script type="math/tex">t_i</script> 时刻测量的系统磁化强度 <script type="math/tex">M(t_i)</script> ，并经由t=0时的磁化强度 <script type="math/tex">M_0</script> 的归一化。回波测量值 <script type="math/tex">g_i</script> 的方程表达式如下：</p>
+<script type="math/tex; mode=display">g_i=\frac{M(t_i)}{M_0}=\sum_{j=1}^ma_jf_je^{-t_i/T_j}+\varepsilon_i</script><p>其中，i=1,…,n。<script type="math/tex">f_j</script>是T2驰豫时间为 <script type="math/tex">T_j</script> 的孔隙度的部分孔隙度，在NMR测井中，回波幅度往往采用孔隙度单位(p.u.)。<script type="math/tex">a_j</script>为极化因子，它的方程如下：</p>
+<script type="math/tex; mode=display">a_{j}=1-e^{-TW/T_{1j}}</script><p>通常等待时间很长，往往是T1驰豫时间的三倍，在这种情况下，因子<script type="math/tex">a_j</script>j为1。</p>
+<p>因为所有的<script type="math/tex">e^{-t_i/T_j}</script>都已知，求解<script type="math/tex">f_j</script>就是一个线性反演问题。可以用最小二乘法拟合来使下面的求和最小化，即：</p>
+<script type="math/tex; mode=display">\min\left\{\varphi(f)=\sum_{i=1}^{n}\frac{1}{\delta_{i}^{2}}\left[\sum_{j=1}^{m}f_{j}e^{-t_{i}/T_{j}}-g_{i}\right]\right\}</script><p>其中，<script type="math/tex">δ_i</script> 是第i个回波 <script type="math/tex">g_i</script>的测量误差。</p>
+<h2 id="多指数反演算法"><a href="#多指数反演算法" class="headerlink" title="多指数反演算法"></a>多指数反演算法</h2><p>一维核磁共振的一般响应方程为：</p>
+<script type="math/tex; mode=display">\mathrm{b(t)}=\int f(T_i)(c_1-c_2\cdot\exp{(-t/T_i)})dT_i+\varepsilon</script><p>其中，i=1,2。当i=1时表示T1信号，<script type="math/tex">c_1</script>=1，<script type="math/tex">c_2</script>=1表示饱和恢复法，若<script type="math/tex">c_1</script>=1，<script type="math/tex">c_2</script>=2表示反转恢复法；当i=2时表示T2信号，这时<script type="math/tex">c_1</script>=0，<script type="math/tex">c_2</script>=-1。</p>
+<p>上式的离散形式为：</p>
+<script type="math/tex; mode=display">b_k=\sum_{T_{i,min}}^{T_{i,max}}f(T_{i,j})\left[c_1-c_2\cdot exp^{-\frac{t_k}{T_{i,j}}}\right]+\varepsilon_k</script><p>其中，j=1,···n, n为预选的驰豫分量的个数；k=1,···m, m为回波个数，<script type="math/tex">t_k</script>为采集时间（通常为回波间隔的整数倍）；<script type="math/tex">b_k</script>为回波信号幅度；<script type="math/tex">T_{i,j}</script>为<script type="math/tex">T_i</script>预选的第 j个弛豫时间分量；<script type="math/tex">ε_k</script>为测量噪声；<script type="math/tex">f(T_{i,j})</script> 为弛豫时间<script type="math/tex">T_{i,j}</script>的幅度。</p>
+<p>求解上述方程，实际上是解第一类Fredholm积分方程，这是一个非适定问题，即在误差允许的条件下，存在不同的<script type="math/tex">f(T_{i,j})</script>驰豫时间分布函数都能相当好地拟合原始回波衰减曲线。</p>
+<h2 id="SVD算法"><a href="#SVD算法" class="headerlink" title="SVD算法"></a>SVD算法</h2><p>SVD算法基于如下分解定理：对任意的矩阵<script type="math/tex">A_{m×n}</script>，都可以分解为正交矩阵<script type="math/tex">U_{m×m}</script>，非负对角矩阵<script type="math/tex">W_{m×n}</script>以及正交矩阵<script type="math/tex">V_{n×n}</script>的转置的乘积，即</p>
+<script type="math/tex; mode=display">A_{m\times n}=U_{m\times m}\cdot[\mathrm{diag}(w_j)]_{m\times n}\cdot V_{n\times n}^T</script><p>对角元素<script type="math/tex">w_1>w_2>···>w_m≥0</script>，w称为矩阵A的奇异值。</p>
+<p>对于如下的多指数衰减T2模型，有</p>
+<script type="math/tex; mode=display">y=M·f</script><p>其中<script type="math/tex">y=(y_1,y_2,···,y_n)^T</script>为测量的自旋回波衰减信号，<script type="math/tex">M=[m_{ij}]_{n×m}=[exp(-t_i/T_{2j})]_(n×m)；f=(f_1,f_2,···,f_n)^T</script>为驰豫时间<script type="math/tex">T_{2j}</script>对应的各点的幅度值，<script type="math/tex">T_{2j}</script>为预先指定的T2时间分布系列，典型的取法为在<script type="math/tex">(T_{2min},T_{2max})</script>区间内对数均匀的选取m个点，也可采用2的幂指数布点、线性均匀布点等方式。若矩阵的条件数为无穷大，则该矩阵奇异；若矩阵的条件数太大，即其倒数超出了机器的浮点精度，则称该矩阵为病态的矩阵。采用SVD分解法来求解上式，系数矩阵<script type="math/tex">M_{m×n}=U_{m×m}·[diag(w_j)]_{m×n}·V_{n×n}^T</script>，则上式最小二乘意义下的解为：</p>
+<script type="math/tex; mode=display">f=V\cdot[diag(\frac{1}{\mathrm{w_{1}}},\frac{1}{\mathrm{w_{2}}},\cdots,\frac{SNR}{\mathrm{w_{1}}},0,\cdots,0)]\cdot(U^{T}\cdot\mathrm{y})</script><p>这里给出了矩阵条件数小于等于SNR的限制，避免了解的不确定性。其中SNR为从测量数据中估算出的信噪比。SNR定义为第一个回波的幅度值除以误差矢量r的标准差σ。</p>
+<h2 id="T2谱非负限制性的实现"><a href="#T2谱非负限制性的实现" class="headerlink" title="T2谱非负限制性的实现"></a>T2谱非负限制性的实现</h2><p>按照如上SVD算法对矩阵M进行奇异值分解后，根据信噪比计算出截断值为<script type="math/tex">SNR/w_1</script> ，对分解得到的非负矩阵<script type="math/tex">W_{m×n}</script>求逆，因为对角元素按其角标增大而减小，故求逆后，对角元素随其角标增大而增大，寻找到恰好比截断值小的对角元素的角标i，对i其后的对角元素赋值为0，对角标为i的元素则进行重新赋值：</p>
+<script type="math/tex; mode=display">W(i,i)=\frac{1}{w_{i}}*[(w_{i-1}-\frac{SNR}{w_{1}})/(w_{i-1}-\frac{1}{w_{i}})]</script><p>将重新赋值的对角矩阵 <script type="math/tex">W=diag(1/w_1 ,1/w_2 ,···,W(i,i),0,···,0)</script> 代入到f的式子中，若求得f的结果中存在负值，则记下负值的角标，并删除矩阵M中对应的列，删掉T2布点中对应的角标的值。将删列的矩阵M再进行SVD分解…，重复循环直到计算得到f中不再有负值存在。<br>缺点是会破坏T2分布的连续性，造成T2谱的畸形。</p>
+<h2 id="BRD算法"><a href="#BRD算法" class="headerlink" title="BRD算法"></a>BRD算法</h2><p>首先给定如下的目标函数：</p>
+<script type="math/tex; mode=display">\chi^2=\sum_{i=1}^n[y_1-\sum_{j=1}^m(f_j\cdot m_{ij})]^2+\lambda\cdot\sum_{j=1}^mf_j^2=||y-Mf||^2+\lambda||f||^2</script><p>这里<script type="math/tex">M=[m_{ij}]=[exp^{(-t_i/T_2j )}]</script>，λ为平滑因子。</p>
+<p>对幅度f=(f_1,f_1,···,f_m)^T的第k分量求极值并令其等于0，则有：</p>
+<script type="math/tex; mode=display">\frac{\partial\chi^2}{\partial f_k}=-2\sum_{i=1}^n\left[y_i-\sum_{j=1}^mf_j\cdot m_{ij}\right]\cdot m_{ik}+2\lambda\cdot f_k=0</script><p>交换求和顺序，并移项整理，可得：</p>
+<script type="math/tex; mode=display">\sum_{i=1}^m[f_j\cdot\sum_{j=1}^nm_{ik}\cdot m_{ij}]+\lambda\cdot f_k=\sum_{j=1}^mm_{ik}\cdot y_k</script><p>很容易验证，k=1,2, ···,m的m个等式组成的方程组满足：</p>
+<script type="math/tex; mode=display">(M^T\mathrm{M})\cdot\mathrm{f}+\lambda I_{m\times m}\cdot f=M^T\cdot y</script><p>上式中<script type="math/tex">I_{m×m}</script>为m×m单位矩阵。我们对方程y=M·f 做如下线性变换，令</p>
+<script type="math/tex; mode=display">f=\mathrm{M}^T\cdot c</script><p>未知变量<script type="math/tex">c=(c_1,c_1,···,c_n)^T</script>为n×1维的，而不是m×1，采用上述变换将m维T2域空间的解变换到n维时域空间来求解。则有：</p>
+<script type="math/tex; mode=display">M^T\cdot(M^T\text{M}+\lambda I_{n\times n})\cdot\text{c}=M^T\cdot\text{y}</script><p>则原问题的解f可以通过求解方程：</p>
+<script type="math/tex; mode=display">(M^T\text{M}+\lambda I_{n\times n})\cdot\text{c}=\text{y}</script><p>的解c，再通过线性变换<script type="math/tex">f=M^T·c</script>回代而获得，选择合适的λ，以保证矩<script type="math/tex">(M^T M+λI_{n×n} )·c</script>的可逆，则我们就可以很容易的求得方程的最小二乘解：</p>
+<script type="math/tex; mode=display">f=M^T\cdot(\mathrm{M}^T\mathrm{M}+\lambda\mathrm{I}(\mathrm{n}\times\mathrm{n})\cdot)^{-1}\cdot y</script><p>比较理想的平滑因子为：</p>
+<script type="math/tex; mode=display">\lambda=\frac{\sqrt n\cdot\sigma}{||c||}</script><h2 id="T2谱非负限制性的实现-1"><a href="#T2谱非负限制性的实现-1" class="headerlink" title="T2谱非负限制性的实现"></a>T2谱非负限制性的实现</h2><p>按照如上BRD算法对模平滑函数（惩罚函数）进行T2域空间变换到时域空间后，可得初始值<script type="math/tex">c_1=y/(M^T M+λI_{n×n})</script>，继而可得<script type="math/tex">c_k=M^T·c_1</script>，若<script type="math/tex">c_{ki}>0</script>则<script type="math/tex">f_i=c_{ki}</script>（若<script type="math/tex">c_{ki}≤0</script>则<script type="math/tex">f_i=0</script>），并将<script type="math/tex">c_{ki}>0</script>对应的矩阵M的相应列提取出来赋给新的矩阵A，然后用新矩阵A替代旧矩阵M，做以上循环求取新的<script type="math/tex">c_2</script>，<script type="math/tex">c_k</script>值。循环退出的条件有三：一，矩阵A为空即所有<script type="math/tex">c_k</script>均小于等于0；二，小于误差项即<script type="math/tex">c_2-c_1<1e-8</script>；三，超出规定的迭代次数。</p>
+<p>基于以上迭代方法的惩罚函数有三类：模平滑、斜率平滑及曲率平滑。这些平滑方法中惩罚项的作用是压制未知函数f的振荡性。</p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">HibisciDai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://hibiscidai.com/2024/05/14/核磁共振测井/">http://hibiscidai.com/2024/05/14/核磁共振测井/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://hibiscidai.com">HibisciDai</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86/">核磁共振原理</a><a class="post-meta__tags" href="/tags/%E6%B5%8B%E4%BA%95%E6%96%B9%E6%B3%95/">测井方法</a></div><div class="social-share pull-right" data-disabled="linkedin,diandian"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><nav id="pagination"><div class="prev-post pull-left"><a href="/2024/06/25/PyCharm%E6%8C%82%E8%BD%BDLinux%E6%9C%8D%E5%8A%A1%E5%99%A8/"><i class="fa fa-chevron-left">  </i><span>PyCharm挂载Linux服务器</span></a></div><div class="next-post pull-right"><a href="/2023/12/19/%E4%BA%BA%E4%BA%BA%E5%85%B1%E4%BA%AB%E7%9A%84%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span>人人共享的机器学习</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"><a target="_blank" rel="noopener" href="https://xn--mesr8b36x.agency/#/register?code=R5RS1JHy">好用、实惠、稳定的梯子,点击这里<img src="https://pic.imgdb.cn/item/65572abac458853aefef30cd.png" width="1000" height="124" object-fit="cover" ></a></div><div id="lv-container" data-id="city" data-uid="MTAyMC8zNTQ2NC8xMjAwMA=="><script>(function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+})(document, 'script');</script></div></div></div><footer class="footer-bg" style="background-image: url(/img/banner2.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2017 - 2024 By HibisciDai</div><div class="framework-info"><span>驱动 - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">hitokoto</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.0"></script><script src="/js/fancybox.js?version=1.9.0"></script><script src="/js/sidebar.js?version=1.9.0"></script><script src="/js/copy.js?version=1.9.0"></script><script src="/js/fireworks.js?version=1.9.0"></script><script src="/js/transition.js?version=1.9.0"></script><script src="/js/scroll.js?version=1.9.0"></script><script src="/js/head.js?version=1.9.0"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script src="/js/katex.js"></script><script src="/js/search/local-search.js"></script><script id="ribbon" src="/js/third-party/canvas-ribbon.js" size="150" alpha="0.6" zIndex="-1" data-click="false"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
