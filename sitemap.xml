@@ -2232,6 +2232,34 @@
   </url>
   
   <url>
+    <loc>http://hibiscidai.com/tags/Shadowsocks/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/VPN/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/VPS/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/%E7%BF%BB%E5%A2%99/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://hibiscidai.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2267,41 +2295,6 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/Shadowsocks/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/VPN/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/VPS/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/%E7%BF%BB%E5%A2%99/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://hibiscidai.com/tags/OJ%E7%BB%83%E4%B9%A0%E9%A2%98/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2323,6 +2316,13 @@
   </url>
   
   <url>
+    <loc>http://hibiscidai.com/tags/%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://hibiscidai.com/tags/%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2330,35 +2330,7 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/%E7%A1%AC%E4%BB%B6/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://hibiscidai.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%A3%8E%E6%A0%BC%E7%94%BB/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/%E6%A1%86%E6%9E%B6/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/Maven/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2379,7 +2351,28 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/JVM/</loc>
+    <loc>http://hibiscidai.com/tags/%E6%A1%86%E6%9E%B6/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/Maven/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/%E7%A1%AC%E4%BB%B6/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2394,6 +2387,13 @@
   
   <url>
     <loc>http://hibiscidai.com/tags/JAVA/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/JVM/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2456,6 +2456,20 @@
   </url>
   
   <url>
+    <loc>http://hibiscidai.com/tags/Mongodb/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/%E9%9B%86%E7%BE%A4/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://hibiscidai.com/tags/Spring/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2471,20 +2485,6 @@
   
   <url>
     <loc>http://hibiscidai.com/tags/PAT%E4%B9%99%E7%BA%A7/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/Mongodb/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/%E9%9B%86%E7%BE%A4/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2582,13 +2582,6 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/Linux/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://hibiscidai.com/tags/Python/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2617,7 +2610,7 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/%E6%B5%8B%E4%BA%95%E8%AE%A1%E7%AE%97/</loc>
+    <loc>http://hibiscidai.com/tags/Linux/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2631,7 +2624,28 @@
   </url>
   
   <url>
+    <loc>http://hibiscidai.com/tags/%E6%B5%8B%E4%BA%95%E8%AE%A1%E7%AE%97/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://hibiscidai.com/tags/PyTorch/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/Pytorch/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2659,27 +2673,6 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/Pytorch/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/WebDAV/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://hibiscidai.com/tags/%E5%B2%A9%E7%9F%B3%E7%89%A9%E7%90%86/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2695,6 +2688,13 @@
   
   <url>
     <loc>http://hibiscidai.com/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/tags/WebDAV/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2722,14 +2722,14 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>http://hibiscidai.com/tags/PythonMOOC/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/PythonMOOC/</loc>
+    <loc>http://hibiscidai.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2778,6 +2778,13 @@
   </url>
   
   <url>
+    <loc>http://hibiscidai.com/tags/%E6%B7%B1%E6%BE%9C/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://hibiscidai.com/tags/%E6%A0%B8%E7%A3%81%E5%85%B1%E6%8C%AF%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2786,13 +2793,6 @@
   
   <url>
     <loc>http://hibiscidai.com/tags/%E6%B5%8B%E4%BA%95%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/tags/%E6%B7%B1%E6%BE%9C/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2813,14 +2813,14 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/%E9%A5%B1%E5%92%8C%E5%BA%A6%E6%96%B9%E7%A8%8B/</loc>
+    <loc>http://hibiscidai.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
+    <loc>http://hibiscidai.com/tags/%E9%A5%B1%E5%92%8C%E5%BA%A6%E6%96%B9%E7%A8%8B/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2850,21 +2850,14 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/JAVA/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://hibiscidai.com/categories/%E6%97%A5%E5%BF%97/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://hibiscidai.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/categories/JAVA/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2885,6 +2878,13 @@
   </url>
   
   <url>
+    <loc>http://hibiscidai.com/categories/%E6%97%A5%E5%BF%97/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://hibiscidai.com/categories/%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2899,14 +2899,14 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/%E5%90%8E%E5%8F%B0/</loc>
+    <loc>http://hibiscidai.com/categories/%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/%E8%BD%AF%E4%BB%B6/</loc>
+    <loc>http://hibiscidai.com/categories/%E5%90%8E%E5%8F%B0/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2927,14 +2927,14 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/PAT/</loc>
+    <loc>http://hibiscidai.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://hibiscidai.com/categories/PAT/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -2983,13 +2983,6 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/Linux/</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://hibiscidai.com/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
@@ -2997,7 +2990,7 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/%E6%B5%8B%E4%BA%95%E8%AE%A1%E7%AE%97/</loc>
+    <loc>http://hibiscidai.com/categories/Linux/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3005,6 +2998,13 @@
   
   <url>
     <loc>http://hibiscidai.com/categories/%E7%9F%B3%E6%B2%B9%E5%9C%B0%E8%B4%A8/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://hibiscidai.com/categories/%E6%B5%8B%E4%BA%95%E8%AE%A1%E7%AE%97/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -3025,14 +3025,14 @@
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/Pyhton/</loc>
+    <loc>http://hibiscidai.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://hibiscidai.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://hibiscidai.com/categories/Pyhton/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
